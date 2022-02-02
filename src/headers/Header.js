@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
-
+import { Button } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchIcon from '@material-ui/icons/Search';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
@@ -9,6 +10,7 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import {Avatar} from "@material-ui/core";
 
 function Header() {
+    const history = useHistory()
     return (
         <div className="header">
             <div className='headerLeft'>
@@ -21,6 +23,15 @@ function Header() {
                         <p>コミュニティ</p>
                         <ArrowDropDownIcon />
                     </div>
+                    <Link to="/">
+                        ホーム画面へ
+                    </Link>
+                    <Link to="/signin" >
+                        ログイン画面へ
+                    </Link>
+                    <Link to="/signup" >
+                        ユーザー登録画面へ
+                    </Link>
                 </div>
                 <div className='headerLeft__object'>
                     <div className='search__form'>
