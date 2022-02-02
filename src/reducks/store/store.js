@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { UsersReducer } from '../users/reducers';
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';//Reduxで非同期処理を制御する==Actionsがasync/awaitとPromiseを使えるようにする
 
 export default function createStore(history) {
   return reduxCreateStore(

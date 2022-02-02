@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/reset.css"
+import "./assets/style.css"
 import { BrowserRouter, Switch, Router, Route } from "react-router-dom";
 import Routering from './Routering';
-import Header from './components/base/Header';
+import Header from './headers/Header';
 
 function App() {
   return (

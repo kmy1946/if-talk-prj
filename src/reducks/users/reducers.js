@@ -12,7 +12,7 @@ export const UsersReducer = (state=initialState.users, action) => {//③④
   switch (action.type) {
     case Action.SIGN_IN:
       return {
-        ...state,//stateを展開、すなわち（isSignedIn:false,uid:"",username:""）を表せる、もし記述漏れがあれば漏れた値は消え去る①
+        ...state,//stateを展開、つまり（isSignedIn:false,uid:"",username:""）を表せる、もし記述漏れがあれば漏れた値は消え去る①
         ...action.payload//actionsから受けたstateをpayloadで上書きする①
       }
       default:
