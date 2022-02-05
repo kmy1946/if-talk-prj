@@ -19,8 +19,9 @@ export const SIGN_OUT = "SIGN_OUT";
 export const signOutAction = () => {
   return {
     type: "SIGN_OUT",
-    payload: {
+    payload: {//初期化
       isSignedIn:false,
+      role: "",
       uid:"",
       username:""
     }

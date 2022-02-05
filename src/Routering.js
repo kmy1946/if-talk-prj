@@ -1,5 +1,5 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home, SignIn, SignUp } from './templates';
+import { Switch, Route } from "react-router-dom";
+import { Home, ProductEdit, Reset, SignIn, SignUp } from './templates';
 import Auth from "./templates/Auth";
 
 function Routering() {
@@ -7,8 +7,10 @@ function Routering() {
       <Switch>
         <Route exact path='/signup' component={SignUp}></Route>
         <Route exact path='/signin' component={SignIn}></Route>
+        <Route exact path='/signin/reset' component={Reset}></Route>
         <Auth>
-          <Route exact path='(/)?' component={Home}></Route>
+          <Route exact path={"(/)?"} component={Home}></Route>
+          <Route path="/product/edit(/:id)?" component={ProductEdit} />
         </Auth>
       </Switch>
   );

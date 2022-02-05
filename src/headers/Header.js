@@ -1,6 +1,5 @@
 import React from 'react';
 import './Header.css';
-import { Button } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchIcon from '@material-ui/icons/Search';
@@ -10,12 +9,11 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import {Avatar} from "@material-ui/core";
 
 function Header() {
-    const history = useHistory()
     return (
         <div className="header">
             <div className='headerLeft'>
                 <div className='headerLeft__object'>
-                    <h1>IF-TALK</h1>
+                    <h1>IF-Programmer</h1>
                     <ArrowDropDownIcon />
                 </div>
                 <div className='headerLeft__object'>
@@ -31,6 +29,9 @@ function Header() {
                     </Link>
                     <Link to="/signup" >
                         ユーザー登録画面へ
+                    </Link>
+                    <Link to='/product/edit'>
+                        投稿する
                     </Link>
                 </div>
                 <div className='headerLeft__object'>
@@ -55,7 +56,7 @@ function Header() {
                 <div className='headerRight__object'>
                     <div className='headerRight__publish'>
                         <CreateIcon />
-                        <p>投稿する</p>
+                            投稿する
                         <ArrowDropDownIcon />
                     </div>
                 </div>
@@ -94,9 +95,7 @@ function Header() {
             </div>
 
             <div className='headerRight'>
-
                  ...
-
             </div>
         </div>
       )

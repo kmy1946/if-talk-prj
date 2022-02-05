@@ -14,7 +14,12 @@ export const UsersReducer = (state=initialState.users, action) => {//③④
       return {
         ...state,//stateを展開、つまり（isSignedIn:false,uid:"",username:""）を表せる、もし記述漏れがあれば漏れた値は消え去る①
         ...action.payload//actionsから受けたstateをpayloadで上書きする①
-      }
+      };
+    case Action.SIGN_OUT:
+      return {//初期状態()initialStateに戻る
+        ...state,
+        ...action.payload
+      };
       default:
         return state
   }
