@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
-import { Home, ProductEdit, Reset, SignIn, SignUp } from './templates';
+import Page404 from "./components/Error/Page404";
+import { Home, ProductDetail, ProductEdit, ProductList, Reset, SignIn, SignUp } from './templates';
 import Auth from "./templates/Auth";
 
 function Routering() {
@@ -9,9 +10,13 @@ function Routering() {
         <Route exact path='/signin' component={SignIn}></Route>
         <Route exact path='/signin/reset' component={Reset}></Route>
         <Auth>
-          <Route exact path={"(/)?"} component={Home}></Route>
+          <Route exact path={"(/)?"} component={ProductList}></Route>
+          <Route exact path="/product/:id" component={ProductDetail} />
           <Route path="/product/edit(/:id)?" component={ProductEdit} />
         </Auth>
+        <Route>
+          <Page404 />
+        </Route>
       </Switch>
   );
 }

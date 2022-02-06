@@ -1,13 +1,16 @@
+import React from "react";
 import "./assets/reset.css"
 import "./assets/style.css"
 import Routering from './Routering';
-import Header from './headers/Header';
-function App() {
+import Header from "./components/Header/Header";
+const App = () => {
   return (
-    <main>
-      <Header />
-      <Routering />
-    </main>
+    <>
+      <Header/>
+      <main className="c-main">
+        <Routering />
+      </main>
+    </>
   );
 }
 

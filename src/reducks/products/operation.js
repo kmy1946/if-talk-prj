@@ -14,7 +14,33 @@
 //////
 import { db, FirebaseTimestamp } from "../../Firebase"
 import { push } from "connected-react-router"
+import { deleteProductAction, fetchProductsAction } from "./actions"
 const productsRef = db.collection('products')
+
+export const deleteProduct = (id) => {
+  return async (dispatch, getState) => {
+    productsRef.doc(id).delete()
+        .then(() => {
+          const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
+          const nextProducts = prevProducts.filter(product => product.id !== id)
+          dispatch(deleteProductAction(nextProducts))
+        })
+  }
+}
+
+export const fetchProducts = () => {
+  return async (dispatch) => {
+    productsRef.orderBy('updated_at', 'desc').get()//新しい順
+        .then(snapshots => {
+          const productList = []
+          snapshots.forEach(snapshots => {
+            const product = snapshots.data();
+            productList.push(product)
+          })
+          dispatch(fetchProductsAction(productList))
+        })
+  }
+}
 
 export const saveProduct = (id, name, images,  description, category, clients) => {
   return async (dispatch) => {
@@ -31,14 +57,16 @@ export const saveProduct = (id, name, images,  description, category, clients) =
     }
     if (id === ""){
       const ref = productsRef.doc();
-      const id = ref.id
-      data.id = id
       data.created_at = timestamp//新規作成時
+      id = ref.id
+      data.id = id
+      console.log('saveproducterrorimage:'+images)
     }
     
     return productsRef.doc(id).set(data, {merge: true})//〇set()は完全上書き ==>> × mergeによる更新部のみ反映=編集可能
         .then(() => {//データ処理成功時
           dispatch(push('/'))
+          console.log('ok')
         }).catch((error) => {
           throw new Error(error)
         })

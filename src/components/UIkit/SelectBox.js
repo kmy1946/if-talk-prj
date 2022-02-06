@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   FormControl: {
     marginBottom: 16,
     minWidth: 128,
-    width:"100%"
+    width:"20%"
   }
 });
 
@@ -24,7 +24,7 @@ const SelectBox = (props) => {
         onChange={(event) => props.select(event.target.value)}
       >
         {props.options.map((options) => (
-          <MenuItem key={options.id} value={options.id}>{options.name}</MenuItem>
+          <MenuItem key={options.id} value={options.name}>{options.name}</MenuItem>
         ))}
       </Select>
     </FormControl>

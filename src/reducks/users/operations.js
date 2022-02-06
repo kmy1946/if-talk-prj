@@ -73,7 +73,7 @@ export const signIn = (email, password) => {
         }
       }).catch((error) => {
         console.log(error)
-        alert('登録されていないメールアドレスです。もう一度ご確認ください。')
+        alert('ログイン出来ませんでした。もう一度ご確認ください。')
     })
   }
 }

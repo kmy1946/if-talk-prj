@@ -56,8 +56,8 @@ const ImageArea = (props) => {
           props.images.map(image => <ImagePreview delete={deleteImage} id={image.id} path={image.path} key={image.id} /> )
           )}
       </div>
-      <div className="u-text-right">
-        <span>画像を選択する</span>
+      <div className="u-text-right_post">
+        <span>　画像を選択する</span>
         <IconButton className={classes.icon}>
           <label>
             <AddPhotoAlternateIcon />

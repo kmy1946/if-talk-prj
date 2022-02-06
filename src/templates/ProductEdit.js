@@ -31,7 +31,7 @@ const ProductEdit = () => {
   //}, [setPrice])
 
   const categories = [
-    {id: "no-category", name: "カテゴリーなし"},
+    {id: "no-category", name: "なし"},
     {id: "py", name: "Python"},
     {id: "js", name: "Javascript"},
     {id: "rb", name: "Ruby"},
@@ -42,7 +42,7 @@ const ProductEdit = () => {
   ]
   const target_clients = [
     {id:"all", name:"全て"},
-    {id:"beginer", name:"初心者"},
+    {id:"beginner", name:"初心者"},
     {id:"intermediate", name:"中級者"},
     {id:"advanced", name:"上級者"}
   ]
@@ -59,26 +59,30 @@ const ProductEdit = () => {
             setDescription(product.description);
           })
     }
+    console.log(images)
   }, [id]);
 
   return (
     <section>
-      <h2 className="u-text__headline u-text-center">記事の登録と編集</h2>
-      <div className="c-section-container">
+      <div className="module-spacer--xsmall" />
+      <h2 className="u-text__headline_post u-text-center_post">記事の登録と編集</h2>
+      <div className="c-section-container_post">
         <ImageArea images={images} setImages={setImages} />
         <TextInput
-          fullWidth={true} label={"記事名"} multiline={false} required={true}
+          fullWidth={true} label={"タイトル"} multiline={false} required={true}
           onChange={inputName} rows={1} value={name} type={"text"}
         />
+        <div className="module-spacer--medium" />
         <SelectBox
           label={"カテゴリ"} required={true} fullWidth={true} options={categories} select={setCategory} value={category}
-        />
+        />　　　
         <SelectBox
           label={"対象者"} required={true} fullWidth={true} options={target_clients} select={setClients} value={clients}
         />
+        <div className="module-spacer--medium" />
         <TextInput
           fullWidth={true} label={"説明"} multiline={true} required={true}
-          onChange={inputDescription} rows={10} value={description} type={"text"}
+          onChange={inputDescription} rows={16} value={description} type={"text"}
         />
         {/*
         <TextInput
