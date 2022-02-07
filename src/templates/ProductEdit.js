@@ -20,6 +20,8 @@ const ProductEdit = () => {
         //[price, setPrice] = useState("");
         [description, setDescription] = useState("");
 
+  const username = localStorage.getItem('if-username')
+
   const inputName = useCallback((event) => {
     setName(event.target.value)
   }, [setName])
@@ -94,7 +96,7 @@ const ProductEdit = () => {
         <div className="center">
           <PrimaryButton
             label={"記事を投稿する"}
-            onClick={() => dispatch(saveProduct(id, name, images, description, category, clients))}
+            onClick={() => dispatch(saveProduct(id, name, images, description, category, clients, username))}
           />
         </div>
       </div>

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '100%'
   },
     clients: {
-      color:theme.palette.primary.main,
+      color:theme.palette.info.main,
       fontSize:16
   }
 }));
@@ -75,11 +75,14 @@ const ProductCard = (props) => {
             {props.name}
           </Typography>
           <Typography className='list-content__lang'>
-            言語：{props.category}
+            {props.category}
           </Typography>
-          <Typography className={classes.clients}>
-            対象者：{props.clients}
+          <Typography className='list-content__username'>
+            {props.username} さん
           </Typography>
+            <Typography className={classes.clients}>
+              {props.clients}
+            </Typography>
         </div>
         <IconButton onClick={handleClick}>
           <MoreVertIcon />

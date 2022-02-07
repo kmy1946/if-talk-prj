@@ -1,6 +1,23 @@
-import { signInAction, signOutAction } from "./actions";
+import { fetchProductsInBookMarkAction, signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, FirebaseTimestamp } from "../../Firebase/index";
+
+export const addProductToBookMark = (addedProduct) => {
+  return async (dispatch, getState) => {
+    const uid = getState().users.uid;
+    const bookmarkRef = db.collection('users').doc(uid).collection('bookmark').doc();//bookmarkサブコレクションを作成、idをbookmarkRef.idで参照可
+    addedProduct['bookmarkId'] = bookmarkRef.id;//bookmarkIdをフィールドとして渡す
+    console.log('bookmarkId,'+bookmarkRef.id)
+    await bookmarkRef.set(addedProduct)
+    dispatch(push('/'))
+  }
+};
+
+export const fetchProductsInBookMark = (products) => {
+  return async (dispatch) => {
+    dispatch(fetchProductsInBookMarkAction(products))
+  }
+}
 
 export const listenAuthState = () => {
   return async (dispatch) => {
@@ -60,6 +77,8 @@ export const signIn = (email, password) => {
           db.collection("users").doc(uid).get()
             .then(snappshot => {
               const data = snappshot.data()//ＤＢから取得したデータをdataに格納
+              localStorage.setItem('if-username', data.username)
+              console.log(data.username)
               dispatch(signInAction({
                 isSigneIn: true,
                 role: data.role,//dataのroleを渡す
@@ -113,7 +132,8 @@ export const signUp = (username, email, password, confirmPassword) => {
             username: username
           }
           db.collection("users").doc(uid).set(userInitialData)
-            .then(() => {
+            .then((res) => {
+              localStorage.setItem('if-username', username)
               dispatch(push('/'))
             }).catch((error) => {
               //dispatch(hideLoadingAction())
@@ -131,6 +151,7 @@ export const signOut = () => {
         .then(() => {
           dispatch(signOutAction());//reduxのstoreもSignOut
           dispatch(push('/signin'))
+          localStorage.removeItem('if-username')
         })
   }
 }

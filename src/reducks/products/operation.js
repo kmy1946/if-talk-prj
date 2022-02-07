@@ -42,7 +42,7 @@ export const fetchProducts = () => {
   }
 }
 
-export const saveProduct = (id, name, images,  description, category, clients) => {
+export const saveProduct = (id, name, images,  description, category, clients, username) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now()
 
@@ -52,6 +52,7 @@ export const saveProduct = (id, name, images,  description, category, clients) =
       clients: clients,
       description: description,
       images: images,
+      username: username,
       //price: parseInt(price, 10),//10進数
       updated_at: timestamp
     }

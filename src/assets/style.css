@@ -26,6 +26,26 @@
     -2px  0px 1px #003366,
     0px -2px 1px #003366;
 }
+.list-content__username {
+  position: relative;
+  font-size: 30px;
+  margin: 0;
+  bottom: 100%;
+  left: 55%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 0.85;
+  text-shadow:
+    2px  2px 1px #003366,
+    -2px  2px 1px #003366,
+    2px -2px 1px #003366,
+    -2px -2px 1px #003366,
+    2px  0px 1px #003366,
+    0px  2px 1px #003366,
+    -2px  0px 1px #003366,
+    0px -2px 1px #003366;
+}
 /*********** Module Spacer ***********/
 .module-spacer--extra-extra-small {
   height: 12px
@@ -69,6 +89,11 @@
   font-size: 1.563rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin: 0 auto 1rem auto;
+}
+
+.u-text__headline_detail {
+  color: #3fbb6e;
+  font-size: 1.563rem;
 }
 
 .c-section-container_post {

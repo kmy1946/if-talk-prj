@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import IconButton from "@material-ui/core/IconButton";
-import {Badge} from "@material-ui/core";
-import AddIcon from '@material-ui/icons/Add';
 import { ImageSwiper } from "../components/Products";
-import { db } from "../Firebase";
+import { db, FirebaseTimestamp } from "../Firebase";
 import { returnCodeToBr } from "../function/common";
+import { addProductToBookMark } from "../reducks/users/operations";
+import { ProductActionTable } from ".";
 
 const useStyles = makeStyles((theme) => ({
   sliderBox: {
@@ -22,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
           height: 400,
           width: 400
       },
+  },
+  username: {
+    textAlign: 'right',
+    fontSize:'14px',
+    fontWeight:"bold"
   },
   detail: {
       textAlign: 'left',
@@ -50,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductDetail = () => {
   const classes = useStyles()
+  const dispatch = useDispatch()
   const selector = useSelector(state => state)
   const path = selector.router.location.pathname//domein以降
   const id = path.split('/product/')[1];//２つ目=id
@@ -64,7 +67,21 @@ const ProductDetail = () => {
       })
   }, []);
 
-  const addProduct = useCallback()
+  const addProduct = useCallback(() => {
+    const timestamp = FirebaseTimestamp.now();
+    dispatch(addProductToBookMark({
+      added_at:timestamp,
+      description:product.description,
+      clients:product.clients,
+      category:product.category,
+      images:product.images,
+      name:product.name,
+      productId:product.id,
+      //created_at:product.created_at,
+      //updated_at:product.updated_at
+    }))
+    //console.log(product.id)
+  }, [product]);
   
   return (
     <section className="c-section-wrapin">
@@ -75,11 +92,13 @@ const ProductDetail = () => {
                         <ImageSwiper images={product.images}/>
                     </div>
                     <div className={classes.detail}>
-                        <h2 className="u-text__headline">{product.name}</h2>
+                        <div className="module-spacer--small"/>
+                        <p className={classes.username}>投稿者：{(product.username)}さん</p>
+                        <div className="module-spacer--small"/>
+                        <h2 className="u-text__headline_detail">{product.name}</h2>
+                        <div className="module-spacer--small"/>
                         <p className={classes.clients}>対象者：{(product.clients)}</p>
                         <p className={classes.category}>プログラミング言語：{(product.category)}</p>
-                        <div className="module-spacer--small"/>
-                        <div className="module-spacer--small"/>
                     </div>
                     <ul>
                       <p className="productdetail__description">{returnCodeToBr(product.description)}</p>
@@ -88,17 +107,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small"/>
-                <div>
-                      <IconButton>{/* onClick={() => dispatch(push('/cart'))}>*/}
-                        <Badge color="secondary">
-                          <AddIcon />
-                        </Badge>
-                        </IconButton>ブックマーク
-                        　
-                        <IconButton>
-                          <FavoriteBorderIcon />
-                      </IconButton>お気に入り
-                    </div>
+                <ProductActionTable addProduct={addProduct} productId={product.id}/>
             </div>
             )}
     </section>

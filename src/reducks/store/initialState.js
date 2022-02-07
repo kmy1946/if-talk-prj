@@ -3,6 +3,7 @@ const initialState = {
     list: []
   },
   users: {
+    bookmark:[],
     //icon: "",
     isSignedIn: false,
     role: "",

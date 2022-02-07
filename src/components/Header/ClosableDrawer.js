@@ -21,6 +21,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { db } from '../../Firebase';
 import {getUserRole} from "../../reducks/users/selectors";
+import { MapMenuList } from '.';
 
 const useStyles = makeStyles((theme) => ({
         drawer: {
@@ -114,25 +115,7 @@ const ClosableDrawer = (props) => {
                         </IconButton>
                     </div>
                     <Divider />
-                    <List>
-                        {menus.map(menu => (
-                            //((isAdministrator && menu.id === "register") || menu.id !== "register") && (
-                                <ListItem button key={menu.id} onClick={(e) => menu.func(e, menu.value)}>
-                                    <ListItemIcon>
-                                        {menu.icon}
-                                    </ListItemIcon>
-                                    <ListItemText primary={menu.label} />
-                                </ListItem>
-                         //   )
-                        ))
-                        }
-                        <ListItem button key="logout" onClick={() => dispatch(signOut())}>
-                            <ListItemIcon>
-                                <ExitToAppIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="ログアウト" />
-                        </ListItem>
-                    </List>
+                    <MapMenuList/>
                     <Divider variant="middle" />
                     <List>
 {/*

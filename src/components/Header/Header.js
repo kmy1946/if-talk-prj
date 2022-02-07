@@ -1,5 +1,5 @@
-import React, {useCallback, useState} from 'react';
-import {createStyles, makeStyles}     from '@material-ui/core/styles';
+import React, {useCallback, useEffect, useState} from 'react';
+import {makeStyles}     from '@material-ui/core/styles';
 import AppBar                         from '@material-ui/core/AppBar';
 import Toolbar                        from '@material-ui/core/Toolbar';
 import {useDispatch, useSelector}     from "react-redux";
@@ -8,6 +8,7 @@ import logo from "../../assets/img/icons/logo.png";
 import { ClosableDrawer, HeaderMenu } from "./index";
 import { push }                         from "connected-react-router"
 import { getIsSignedIn } from '../../reducks/users/selectors';
+import HeaderMenuRow from './HeaderMenuRow';
 
 const useStyles = makeStyles({
     root: {
@@ -44,6 +45,9 @@ const Header = () => {
       setOpen(!open)
       //console.log(open)
     }, [setOpen, open]);
+
+
+
     return (
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.menuBar}>
@@ -51,11 +55,21 @@ const Header = () => {
                 <img alt="If Logo" src={logo} width="128px"
                     onClick={() => dispatch(push('/'))}
                 />
-                {isSignedIn && (
+                {/*
+                {mobileView ? displayMobile() : displayDesktop()}
+                */}
+                {isSignedIn &&
+                
+                (
+                  window.innerWidth > 760 ?
+                  <div className={classes.iconButtons}>
+                    <HeaderMenuRow></HeaderMenuRow>
+                  </div>:(
                     <div className={classes.iconButtons}>
                         <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
-                    </div>
-                )}
+                    </div>)
+                )
+                }
             </Toolbar>
         </AppBar>
         <ClosableDrawer open={open} onClose={handleDrawerToggle} />

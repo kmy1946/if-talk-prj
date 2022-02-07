@@ -5,3 +5,5 @@ export { default as Reset } from './Reset';
 export { default as ProductEdit } from './ProductEdit';
 export { default as ProductList } from './ProductList';
 export { default as ProductDetail } from './ProductDetail';
+export { default as ProductActionTable } from './ProductActionTable';
+export { default as BookMarkList } from './BookMarkList';
