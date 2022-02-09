@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { TextInput, PrimaryButton } from "../components/UIkit";
 import { signIn } from "../reducks/users/operations";
 import { push } from "connected-react-router";
+import { ProductList } from ".";
 
 const SignIn = () => {
   const dispatch = useDispatch()
@@ -17,29 +18,38 @@ const SignIn = () => {
     setPassword(event.target.value)
   }, [setPassword])
 
-  return (
-    <div className="c-section-container">
-      <h2 className="u-text__headline u-text-center">サインイン</h2>
-      <div className="module-spacer--medium" />
-      <TextInput
-          fullWidth={true} label={"メールアドレス"} multiline={false} required={true}
-          rows={1} value={email} type={"email"} onChange={inputEmail}
-      />
-      <TextInput
-          fullWidth={true} label={"パスワード"} multiline={false} required={true}
-          rows={1} value={password} type={"password"} onChange={inputPassword}
-      />
-      <div className="module-spacer--medium" />
-      <div className="center">
-        <PrimaryButton
-          label={"Sign in"}
-          onClick={() => dispatch(signIn(email, password))}
+  const if_username = localStorage.getItem('if-username')
+
+  if (if_username) {
+    window.location.href = 'http://127.0.0.1:3000/ ';
+  } else {
+    return (
+      <div className="c-section-container">
+        <h2 className="u-text__headline u-text-center">サインイン</h2>
+        <div className="module-spacer--medium" />
+        <TextInput
+            fullWidth={true} label={"メールアドレス"} multiline={false} required={true}
+            rows={1} value={email} type={"email"} onChange={inputEmail}
+        />
+        <TextInput
+            fullWidth={true} label={"パスワード"} multiline={false} required={true}
+            rows={1} value={password} type={"password"} onChange={inputPassword}
         />
         <div className="module-spacer--medium" />
-        <p onClick={() => {dispatch(push('/signup'))}}>アカウントをお持ちでない方</p>
-        <p onClick={() => {dispatch(push('/signin/reset'))}}>パスワードを忘れた方</p>
+        <div className="center">
+          <PrimaryButton
+            label={"Sign in"}
+            onClick={() => dispatch(signIn(email, password))}
+          />
+          <div className="module-spacer--medium" />
+          <p onClick={() => {dispatch(push('/signup'))}}>アカウントをお持ちでない方</p>
+          <p onClick={() => {dispatch(push('/signin/reset'))}}>パスワードを忘れた方</p>
+        </div>
       </div>
-    </div>
-  )
+    )
+
+
+  }
+
 }
 export default SignIn;

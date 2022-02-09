@@ -1,0 +1,18 @@
+
+.b {
+  float: right;
+  width: 20.7vw;
+  /*height: 100vh;*/
+  min-height:500px;
+  background: rgb(255, 255, 255);
+  box-shadow: 2px 2px 4px;
+  margin-top: 90px;
+  margin-right: 15px;
+}
+.c {
+  float: left;
+  background: rgb(255, 255, 255);
+  width: calc(147vw - 70.7vw);
+  /*height: calc((100vw - 70.7vh) * 0.7);*/
+  min-height:500px;
+}

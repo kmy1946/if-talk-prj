@@ -46,8 +46,6 @@ const Header = () => {
       //console.log(open)
     }, [setOpen, open]);
 
-
-
     return (
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.menuBar}>
@@ -55,15 +53,12 @@ const Header = () => {
                 <img alt="If Logo" src={logo} width="128px"
                     onClick={() => dispatch(push('/'))}
                 />
-                {/*
-                {mobileView ? displayMobile() : displayDesktop()}
-                */}
                 {isSignedIn &&
                 
                 (
                   window.innerWidth > 760 ?
                   <div className={classes.iconButtons}>
-                    <HeaderMenuRow></HeaderMenuRow>
+                    <HeaderMenuRow />
                   </div>:(
                     <div className={classes.iconButtons}>
                         <HeaderMenu handleDrawerToggle={handleDrawerToggle} />

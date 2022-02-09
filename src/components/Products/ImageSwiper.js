@@ -6,16 +6,18 @@ import NoImage from "../../assets/img/src/no_image.png";
 const ImageSwiper = (props) => {
   const [params] = useState({
     pagination: {
-      el: 'swiper-pagination',
+      el: '.swiper-pagination',
       type: 'bullets',
       clickable: true,
       dynamicBullets:true
     },
+
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
-    },
-    loop:true
+  },
+    loop:true,
+    spaceBetween: 30
   })
 
   const images = props.images
@@ -29,7 +31,7 @@ const ImageSwiper = (props) => {
         ) : (
         images.map(image => (
           <div className="p-media__thumb" key={image.id}>
-            <img src={image.path} alt="商品画像"/>
+            <img src={image.path} alt="記事画像"/>
           </div>
         ))
       )}

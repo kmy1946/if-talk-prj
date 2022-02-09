@@ -9,9 +9,15 @@ const ProductList = () => {
   const selector = useSelector((state) => state);
   const products = getProducts(selector);//productsにproducts情報を格納
 
+  
+  const query = selector.router.location.search;
+  //const query = window.location.search
+  const clients = /^\?clients=/.test(query) ? query.split('?clients=')[1] : ""
+  const category = /^\?category=/.test(query) ? query.split('?category=')[1] : ""
+
   useEffect(() => {
-    dispatch((fetchProducts()))
-  }, []);
+    dispatch(fetchProducts(clients, category))
+},[query])
   //console.log(products);
 
   return (

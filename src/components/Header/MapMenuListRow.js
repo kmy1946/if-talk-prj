@@ -49,11 +49,13 @@ const MapMenuListRow = (props) => {
 
     return (
       <>
+      {/*
                     <IconButton onClick={() => dispatch(signOut())}>
-                      <Badge color="secondary">
+                      <Badge color="primary">
                         <PersonIcon/>
                       </Badge>
                     </IconButton>
+      */}
                     　
                     <IconButton onClick={() => dispatch(signOut())}>
                       <Badge color="secondary">

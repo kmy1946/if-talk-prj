@@ -59,12 +59,14 @@ const ProductDetail = () => {
 
   const [product, setProduct] = useState(null);
 
+
   useEffect(() => {
     db.collection('products').doc(id).get()
       .then(doc => {
         const data = doc.data();
         setProduct(data)//productのstateを更新
       })
+
   }, []);
 
   const addProduct = useCallback(() => {
@@ -107,7 +109,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small"/>
-                <ProductActionTable addProduct={addProduct} productId={product.id}/>
+                <ProductActionTable addProduct={addProduct} productId={product.id}/>お気に入り
             </div>
             )}
     </section>

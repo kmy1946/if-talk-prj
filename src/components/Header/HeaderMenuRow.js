@@ -56,7 +56,7 @@ const HeaderMenuRow = (props) => {
             <BorderColorIcon />
           </a>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => dispatch(push('/bookmark'))}>
           <Badge badgeContent={productsInBookMark.length} color="secondary">
             <FavoriteBorderIcon />
           </Badge>

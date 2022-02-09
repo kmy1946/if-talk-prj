@@ -46,6 +46,9 @@
     -2px  0px 1px #003366,
     0px -2px 1px #003366;
 }
+.toplist__menu {
+  margin-left: auto;
+}
 /*********** Module Spacer ***********/
 .module-spacer--extra-extra-small {
   height: 12px
@@ -62,10 +65,15 @@
 
 /*********** Section ***********/
 .c-main {
-  padding: 96px 0
+  padding: 96px 0;
+  height: auto;
 }
 
-
+.clearfix:after {
+  clear: both;
+  content: '';
+  display: block;
+}
 .u-text-left_post {
   text-align: left;
 }

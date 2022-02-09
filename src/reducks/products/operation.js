@@ -28,17 +28,21 @@ export const deleteProduct = (id) => {
   }
 }
 
-export const fetchProducts = () => {
+export const fetchProducts = (clients, category) => {
   return async (dispatch) => {
-    productsRef.orderBy('updated_at', 'desc').get()//新しい順
-        .then(snapshots => {
-          const productList = []
+    let query = productsRef.orderBy('updated_at', 'desc')
+    query = (clients !== "") ? query.where('clients', '==', clients) : query;
+    query = (category !== "") ? query.where('category', '==', category) : query;
+
+    query.get()//queryを実行
+      .then(snapshots => {
+            const productList = []
           snapshots.forEach(snapshots => {
             const product = snapshots.data();
             productList.push(product)
           })
           dispatch(fetchProductsAction(productList))
-        })
+      })
   }
 }
 
@@ -67,7 +71,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
     return productsRef.doc(id).set(data, {merge: true})//〇set()は完全上書き ==>> × mergeによる更新部のみ反映=編集可能
         .then(() => {//データ処理成功時
           dispatch(push('/'))
-          console.log('ok')
+          //console.log('ok')
         }).catch((error) => {
           throw new Error(error)
         })

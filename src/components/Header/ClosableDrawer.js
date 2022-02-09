@@ -3,24 +3,18 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {makeStyles, createStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {push} from "connected-react-router";
-import {useDispatch, useSelector} from "react-redux";
-import {signOut} from "../../reducks/users/operations";
+import {useDispatch} from "react-redux";
 import {TextInput} from "../UIkit";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import AddIcon from '@material-ui/icons/Add';
-import HistoryIcon from '@material-ui/icons/History';
 import PersonIcon from '@material-ui/icons/Person';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { db } from '../../Firebase';
-import {getUserRole} from "../../reducks/users/selectors";
 import { MapMenuList } from '.';
 
 const useStyles = makeStyles((theme) => ({
@@ -52,16 +46,18 @@ const ClosableDrawer = (props) => {
     //const isAdministrator = (userRole === "administrator");
 
     const selectMenu = (event, path) => {
-        dispatch(push(path));
+        dispatch(push(path));//pathはvalueで指定
         props.onClose(event, false);//menu選択時に閉じる
     };
 
     const [searchKeyword, setSearchKeyword] = useState("")
-      //    [filters, setFilters] = useState([
-        //      {func: selectMenu, label: "すべて",    id: "all",    value: "/"              },
-          //    {func: selectMenu, label: "メンズ",    id: "male",   value: "/?gender=male"  },
-            //  {func: selectMenu, label: "レディース", id: "female", value: "/?gender=female"},
-//          ]);
+
+    const [filters, setFilters] = useState([
+        {func: selectMenu, label: "全て", id: "all", value: "/"},
+        {func: selectMenu, label: "初心者", id: "beginner", value: "/?clients=初心者"},
+        {func: selectMenu, label: "中級者", id: "intermediate", value: "/?clients=中級者"},
+        {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}
+    ])
 
     const menus = [
         {func: selectMenu, label: "記事作成",    icon: <BorderColorIcon />, id: "register", value: "/product/edit"},
@@ -69,18 +65,20 @@ const ClosableDrawer = (props) => {
         {func: selectMenu, label: "お気に入り",    icon: <FavoriteBorderIcon/>,   id: "history1",  value: "/order/history"},
         {func: selectMenu, label: "プロフィール", icon: <PersonIcon/>,    id: "profile",  value: "/user/mypage"},
     ];
-//
-//    useEffect(() => {
-  //      db.collection('categories').orderBy("order", "asc").get()
-    //        .then(snapshots => {
-      //          const list = []
-        //        snapshots.forEach(snapshot => {
-          //          const category = snapshot.data()
-            //        list.push({func: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`})
-//                })
-  //              setFilters(prevState => [...prevState, ...list])
-    //        });
-//    },[])
+
+    useEffect(() => {
+        db.collection('categories')
+            .orderBy('order', 'asc')
+            .get()
+            .then((snapshot) => {
+                const list = []
+                snapshot.forEach(snapshot => {
+                    const category = snapshot.data()
+                    list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
+                })
+                setFilters(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
+            })
+    }, [])
 
     const inputSearchKeyword = useCallback((event) => {
         setSearchKeyword(event.target.value)
@@ -118,14 +116,13 @@ const ClosableDrawer = (props) => {
                     <MapMenuList/>
                     <Divider variant="middle" />
                     <List>
-{/*
                         {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
                             </ListItem>
                         ))}
-*/}
                     </List>
+                    <Divider variant="middle" />
                 </div>
             </Drawer>
         </nav>

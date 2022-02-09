@@ -5,13 +5,14 @@ import { CardContent } from "@material-ui/core";
 import { CardMedia } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import NoImage from "../../assets/img/src/no_image.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { IconButton } from "@material-ui/core";
 import { Menu } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ListIcon from '@material-ui/icons/List';
 import { deleteProduct } from "../../reducks/products/operation";
+import { getUserRole } from "../../reducks/users/selectors";
 
 //import { theme } from "../../assets/theme";
 
@@ -24,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       margin: 16,
       width: 'calc(33.3333% - 32px)'
-    }
+    },
+    
   },
     content: {
       display:'flex',
@@ -34,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 16
       }
   },
+    list_iconbutton: {
+      right:0
+    },
     media: {
       height: 0,
       paddingTop: '100%'
@@ -46,6 +51,23 @@ const useStyles = makeStyles((theme) => ({
 const ProductCard = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  const selector = useSelector(state => state);
+  const userRole = getUserRole(selector)
+  const isAdministrator = (userRole === "customer");//customerのみ編集可能
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//投稿者のみ編集削除可能にする
+//1.localstrageからユーザーネーム＃後でユーザーネームのユニーク化をする
+//2.dbのproductのユーザーネームを拾う
+////db.collection('products').doc(id).get()
+////
+////
+//3.ユーザーネーム＝ユーザーネームを確認（１＝２）
+//4.合致すれば編集削除を表示
+  const current_user = localStorage.getItem('if-username')//
+  const if_product_username = (selector)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -81,12 +103,16 @@ const ProductCard = (props) => {
             {props.username} さん
           </Typography>
             <Typography className={classes.clients}>
-              {props.clients}
+              To : {props.clients}
             </Typography>
         </div>
-        <IconButton onClick={handleClick}>
-          <MoreVertIcon />
-        </IconButton>
+        {isAdministrator && (
+                    <>
+        <div className='toplist__menu'>
+          <IconButton onClick={handleClick}>
+            <ListIcon />
+          </IconButton>
+        </div>
         <Menu
           anchorEl={anchorEl}
           keepMounted
@@ -110,6 +136,11 @@ const ProductCard = (props) => {
             削除する
           </MenuItem>
         </Menu>
+
+        </>
+                )}
+
+
       </CardContent>
     </Card>
   )

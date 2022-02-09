@@ -7,9 +7,12 @@ export const addProductToBookMark = (addedProduct) => {
     const uid = getState().users.uid;
     const bookmarkRef = db.collection('users').doc(uid).collection('bookmark').doc();//bookmarkサブコレクションを作成、idをbookmarkRef.idで参照可
     addedProduct['bookmarkId'] = bookmarkRef.id;//bookmarkIdをフィールドとして渡す
-    console.log('bookmarkId,'+bookmarkRef.id)
+
     await bookmarkRef.set(addedProduct)
     dispatch(push('/'))
+
+    //await bookmarkRef.set(addedProduct)
+    //dispatch(push('/'))
   }
 };
 
@@ -76,9 +79,9 @@ export const signIn = (email, password) => {
           const uid = user.uid
           db.collection("users").doc(uid).get()
             .then(snappshot => {
-              const data = snappshot.data()//ＤＢから取得したデータをdataに格納
+              const data = snappshot.data()
               localStorage.setItem('if-username', data.username)
-              console.log(data.username)
+              //console.log(data.username)
               dispatch(signInAction({
                 isSigneIn: true,
                 role: data.role,//dataのroleを渡す
@@ -88,6 +91,7 @@ export const signIn = (email, password) => {
 
               dispatch(push('/'))
               alert('ログインに成功しました！！')
+              window.location.reload()
             })
         }
       }).catch((error) => {
@@ -151,7 +155,11 @@ export const signOut = () => {
         .then(() => {
           dispatch(signOutAction());//reduxのstoreもSignOut
           dispatch(push('/signin'))
+          localStorage.removeItem('if_user_id')
+          localStorage.removeItem('if_username')
+          localStorage.removeItem('if_user_name')
           localStorage.removeItem('if-username')
+          window.location.reload()
         })
   }
 }

@@ -16,6 +16,7 @@ const ProductEdit = () => {
   const [images, setImages] = useState([]),
         [name, setName] = useState(""),
         [category, setCategory] = useState(""),
+        [categories, setCategories] = useState([]),
         [clients, setClients] = useState(""),
         //[price, setPrice] = useState("");
         [description, setDescription] = useState("");
@@ -32,16 +33,6 @@ const ProductEdit = () => {
   //  setName(event.target.value)
   //}, [setPrice])
 
-  const categories = [
-    {id: "no-category", name: "なし"},
-    {id: "py", name: "Python"},
-    {id: "js", name: "Javascript"},
-    {id: "rb", name: "Ruby"},
-    {id: "php", name: "PHP"},
-    {id: "go", name: "Go"},
-    {id: "html", name: "HTML"},
-    {id: "css", name: "CSS"},
-  ]
   const target_clients = [
     {id:"all", name:"全て"},
     {id:"beginner", name:"初心者"},
@@ -51,7 +42,8 @@ const ProductEdit = () => {
 
   useEffect(() => {
     if (id !== "") {//編集ページではない時
-      db.collection('products').doc(id).get().then(snapshot => {
+      db.collection('products').doc(id).get()
+          .then(snapshot => {
             const product = snapshot.data();
             setImages(product.images);
             setName(product.name);
@@ -61,13 +53,44 @@ const ProductEdit = () => {
             setDescription(product.description);
           })
     }
-    console.log(images)
+    //console.log(images)
   }, [id]);
+
+  useEffect(() => {
+    db.collection('categories')//databaseに追加可能
+        .orderBy('order', 'asc')
+        .get()
+        .then(snapshots => {
+          const list = []
+          snapshots.forEach(snapshot => {
+            const data = snapshot.data()
+            //console.log(data)
+            list.push({
+              id:data.id,
+              name:data.name
+            })
+          })
+          setCategories(list)
+        })
+  }, [])
+
+  const edit_title = () => {
+    if (id !== "") {
+      return (
+        <h2 className="u-text__headline_post u-text-center_post">記事の編集</h2>
+      )
+    } else {
+      return (
+        <h2 className="u-text__headline_post u-text-center_post">記事の登録</h2>
+        )
+    }
+  }
 
   return (
     <section>
       <div className="module-spacer--xsmall" />
-      <h2 className="u-text__headline_post u-text-center_post">記事の登録と編集</h2>
+      {edit_title()}
+
       <div className="c-section-container_post">
         <ImageArea images={images} setImages={setImages} />
         <TextInput

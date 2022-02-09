@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
 import IconButton from "@material-ui/core/IconButton";
 import {Badge} from "@material-ui/core";
-import CreateIcon from '@material-ui/icons/Create';
 import {useDispatch, useSelector} from "react-redux";
 //import {getProductsInCart, getUserId} from "../../reducks/users/selectors";
 import {push} from "connected-react-router"
-import AddIcon from '@material-ui/icons/Add';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { db } from '../../Firebase';
@@ -55,7 +53,7 @@ const HeaderMenu = (props) => {
                 <BorderColorIcon />
             </a>
         </IconButton>
-       <IconButton>
+       <IconButton onClick={() => dispatch(push('/bookmark'))}>
             <Badge badgeContent={productsInBookMark.length} color="secondary">
                 <FavoriteBorderIcon />
             </Badge>
