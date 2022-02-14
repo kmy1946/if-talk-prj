@@ -1,0 +1,30 @@
+
+  return (
+    <div>
+      <Header/>
+      {
+        (
+          window.innerWidth > 760 ?
+          <>
+
+          
+            {(() => {
+                    if (if_user_name) {
+                      console.log('exist'+if_user_name)
+                      return (
+                        <Routering />
+                        )
+                    } else {
+                      console.log('no_if_user_id')
+                      return (
+                      <>
+                        <main className="c-main">
+                          <Routering />
+                        </main>
+                      </>
+                      )
+                    }
+                  }
+                )
+              ()
+            }

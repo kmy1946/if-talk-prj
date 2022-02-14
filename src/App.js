@@ -3,35 +3,38 @@ import "./App.css";
 import "./assets/reset.css";
 import "./assets/style.css";
 import Routering from './Routering';
-import Header from "./components/Header/Header";
-import { SideBar } from "./templates";
+import { Header } from "./components/Header";
+import { SideBar, TopSwiper } from "./templates";
+import { makeStyles } from "@material-ui/core";
+import { theme } from "./assets/theme";
+import { Footer } from "./components/Footer";
+import { useDispatch } from "react-redux";
+import { push } from "connected-react-router";
+
+const useStyles = makeStyles({})
 
 const App = () => {
+  const classes = useStyles()
+  const dispatch = useDispatch()
+
   const if_user_name = localStorage.getItem('if-username')
   localStorage.setItem('if_user_name', if_user_name)
+
   return (
     <div>
       <Header/>
-      {          
+      {
         (
           window.innerWidth > 760 ?
           <>
             {(() => {
                     if (if_user_name) {
-                      //console.log(if_user_id)
-                        return (
-                          <>
-                            <div className="c c-main clearfix">
-                              <Routering />
-                            </div>
-                            
-                            <div className="b clear_box">
-                              <SideBar/>
-                            </div>
-                          </>
+                      //console.log('exist'+if_user_name)
+                      return (
+                        <Routering />
                         )
                     } else {
-                      //console.log('no_if_user_id')
+                      console.log('no_if_user_id')
                       return (
                       <>
                         <main className="c-main">
@@ -40,8 +43,10 @@ const App = () => {
                       </>
                       )
                     }
-            })()}
-
+                  }
+                )
+              ()
+            }
           </>
           :
           <>
@@ -51,6 +56,7 @@ const App = () => {
           </>
         )
       }
+      <Footer/>
     </div>
   );
 }

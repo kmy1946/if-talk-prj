@@ -13,9 +13,11 @@
 //////{merge: true}なし => 上書き
 //////
 import { db, FirebaseTimestamp } from "../../Firebase"
+import { format } from 'date-fns'
 import { push } from "connected-react-router"
 import { deleteProductAction, fetchProductsAction } from "./actions"
-const productsRef = db.collection('products')
+
+const productsRef = db.collection('products')//.where("username", "==", username.uid)
 
 export const deleteProduct = (id) => {
   return async (dispatch, getState) => {
@@ -24,17 +26,20 @@ export const deleteProduct = (id) => {
           const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
           const nextProducts = prevProducts.filter(product => product.id !== id)
           dispatch(deleteProductAction(nextProducts))
-        })
+        }).catch((error) => {alert('権限がありません')})
   }
 }
 
-export const fetchProducts = (clients, category) => {
+export const fetchProducts = (clients, category, updated_at_month) => {
   return async (dispatch) => {
     let query = productsRef.orderBy('updated_at', 'desc')
+
     query = (clients !== "") ? query.where('clients', '==', clients) : query;
     query = (category !== "") ? query.where('category', '==', category) : query;
 
-    query.get()//queryを実行
+    query = (updated_at_month !== "") ? query.where('updated_at_month', '==', updated_at_month) : query;//updated_at_monthで判別
+
+    query.get()
       .then(snapshots => {
             const productList = []
           snapshots.forEach(snapshots => {
@@ -46,9 +51,17 @@ export const fetchProducts = (clients, category) => {
   }
 }
 
-export const saveProduct = (id, name, images,  description, category, clients, username) => {
+export const saveProduct = (id, name, images,  description, category, clients, username, uid) => {
   return async (dispatch) => {
-    const timestamp = FirebaseTimestamp.now()
+    if (images.length === 0 || description === "" || category === "" || clients === ""){
+      alert("必須項目が未入力です。")
+      return false//何も実行しない
+    }
+  
+    //const timestamp = FirebaseTimestamp.now()
+    const myShapedDate = format(new Date(), 'yyyyMMddHHmmss');
+    const myShapedDate_month = format(new Date(), 'yyyyMM');
+    const myShapedDate_date = format(new Date(), 'yyyyMMdd');
 
     const data = {
       name: name,
@@ -58,21 +71,32 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       images: images,
       username: username,
       //price: parseInt(price, 10),//10進数
-      updated_at: timestamp
+      uid:localStorage.getItem('if-uid'),
+      featured:false,
+      updated_at: myShapedDate,
+
+      updated_at_month: myShapedDate_month,
+      updated_at_date: myShapedDate_date,
     }
-    if (id === ""){
+    console.log(data.updated_at)
+
+    if (id === ""){//新規作成時
       const ref = productsRef.doc();
-      data.created_at = timestamp//新規作成時
+
+      data.created_at = myShapedDate
+
       id = ref.id
       data.id = id
-      console.log('saveproducterrorimage:'+images)
     }
     
-    return productsRef.doc(id).set(data, {merge: true})//〇set()は完全上書き ==>> × mergeによる更新部のみ反映=編集可能
+    return productsRef.doc(id).set(data, {merge: true})//where("uid", "==", data.uid).//〇set()は完全上書き ==>> × mergeによる更新部のみ反映=編集可能
+    
         .then(() => {//データ処理成功時
+          //console.log('data.uid')
           dispatch(push('/'))
           //console.log('ok')
         }).catch((error) => {
+          alert('権限がありません')
           throw new Error(error)
         })
   }

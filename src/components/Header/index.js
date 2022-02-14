@@ -1,5 +1,11 @@
-export {default as Header} from './Headering';
-export {default as HeaderMenu} from './HeaderMenu';
-export {default as ClosableDrawer} from './ClosableDrawer';
-export { default as MapMenuList } from './MapMenuList';
-export {default as MapMenuListRow} from './MapMenuListRow';
+export {default as Header} from './HeaderBaseGroup/Header';
+export {default as HeaderMenu} from './HeaderMenu/HeaderMenu';
+export {default as ClosableDrawer} from './ClosableDrawer/ClosableDrawer';
+export { default as ClosableDrawerGuest } from './ClosableDrawer/ClosableDrawerGuest';
+export { default as MapMenuList } from './HeaderMenu/MapMenuList';
+export { default as MapMenuListGuest } from './Guest/MapMenuListGuest';
+export {default as MapMenuListRow} from './HeaderMenu/MapMenuListRow';
+export { default as LogoText } from './HeaderBaseGroup/LogoText';
+export { default as LogoTextGuest } from './HeaderBaseGroup/LogoTextGuest';
+export { default as HeaderMenuGuest } from './Guest/HeaderMenuGuest';
+export { default as MapMenuGuestRow } from './Guest/MapMenuGuestRow';

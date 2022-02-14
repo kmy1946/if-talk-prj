@@ -8,6 +8,17 @@
   height: 60px;
   justify-content: space-around;
 }
+.logotext {
+  font-family: cursive;
+  margin-bottom: 20px;
+}
+.headermenurow {
+  margin-bottom: 10px;
+}
+.header_button__mobile_group {
+    text-align: right;
+    white-space: nowrap;
+}
 .headerLeft {
   display: flex;
 }

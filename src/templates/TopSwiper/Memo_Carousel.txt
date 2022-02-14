@@ -1,0 +1,56 @@
+//////pc_ver
+<Carousel 
+breakPoints={breakPoints} renderArrow={myArrow}
+
+  renderPagination={({ pages, onClick }) => {
+    return (
+      <Container direction="row" className={classes.topswiper__paginationbutton}>
+        {pages.map(page => {
+          return (
+            <Button
+              className={classes.topswiper__paginationIconButton}
+              key={page}
+              onClick={() => onClick(page)}
+            >
+            <SwapHorizIcon
+              className={classes.topswiper__paginationIcon}
+            />
+            </Button>
+          )
+        })}
+      
+      </Container>
+    )
+  }}
+>
+
+
+
+///////mobile_ver
+                  <Carousel breakPoints={breakPoints_mobile} renderArrow={myArrow} 
+                    renderPagination={({ pages, onClick }) => {
+                      return (
+                        <Container direction="row" className={classes.topswiper__paginationbutton__mobile}>
+                          
+                          {pages.map(page => {
+                            return (
+                              <Button
+                                className={classes.topswiper__paginationIconButton__mobile}
+                                key={page}
+                                onClick={() => onClick(page)}
+                              >
+                              <SwapHorizIcon
+                                className={classes.topswiper__paginationIcon__mobile}
+                              />
+                              </Button>
+                            )
+                          })}
+                        
+                        </Container>
+                      )
+                    }}
+                  >
+
+
+
+C:\python_envs\venv_matome_site\if-talk-prj\if-talks

@@ -8,7 +8,7 @@ export const getIsSignedIn  = createSelector(
 )
 export const getProductsInBookMark  = createSelector(
   [usersSelector],
-  state => state.bookmark
+  state => state.bookmark//bookmarkを展開
 )
 export const getUseId  = createSelector(
   [usersSelector],
@@ -18,7 +18,6 @@ export const getUsename  = createSelector(
   [usersSelector],
   state => state.username
 )
-//////////////////////////////////////////////////////////////
 export const getUserRole = createSelector(
   [usersSelector],
   state => state.role

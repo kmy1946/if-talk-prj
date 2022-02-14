@@ -1,24 +1,22 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { makeStyles } from "@material-ui/core";
+import { Divider, makeStyles } from "@material-ui/core";
 import { ImageSwiper } from "../components/Products";
 import { db, FirebaseTimestamp } from "../Firebase";
 import { returnCodeToBr } from "../function/common";
 import { addProductToBookMark } from "../reducks/users/operations";
-import { ProductActionTable } from ".";
+import { getIsSignedIn } from "../reducks/users/selectors";
+import { ProductActionTableBookMark } from ".";
 
 const useStyles = makeStyles((theme) => ({
   sliderBox: {
-      [theme.breakpoints.down('sm')]: {
-          margin: '0 auto 24px auto',
-          height: 320,
-          width: 320
-      },
       [theme.breakpoints.up('sm')]: {
           margin: '0 auto',
           height: 400,
-          width: 400
+          width: 400,
+          marginTop: '100px'
       },
+      marginTop: '100px'
   },
   username: {
     textAlign: 'right',
@@ -46,8 +44,7 @@ const useStyles = makeStyles((theme) => ({
   category: {
     fontSize: 15,
     textAlign:"right"
-
-  }
+  },
 }))
 
 const ProductDetail = () => {
@@ -56,7 +53,7 @@ const ProductDetail = () => {
   const selector = useSelector(state => state)
   const path = selector.router.location.pathname//domein以降
   const id = path.split('/product/')[1];//２つ目=id
-
+  const isSignedIn = getIsSignedIn(selector);
   const [product, setProduct] = useState(null);
 
 
@@ -69,7 +66,7 @@ const ProductDetail = () => {
 
   }, []);
 
-  const addProduct = useCallback(() => {
+  const addProductToBookmark = useCallback(() => {
     const timestamp = FirebaseTimestamp.now();
     dispatch(addProductToBookMark({
       added_at:timestamp,
@@ -84,7 +81,7 @@ const ProductDetail = () => {
     }))
     //console.log(product.id)
   }, [product]);
-  
+
   return (
     <section className="c-section-wrapin">
       {product && (
@@ -102,14 +99,23 @@ const ProductDetail = () => {
                         <p className={classes.clients}>対象者：{(product.clients)}</p>
                         <p className={classes.category}>プログラミング言語：{(product.category)}</p>
                     </div>
-                    <ul>
+                    <div>
                       <p className="productdetail__description">{returnCodeToBr(product.description)}</p>
-                    </ul>
-
+                    </div>
                 </div>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small"/>
-                <ProductActionTable addProduct={addProduct} productId={product.id}/>お気に入り
+                {isSignedIn ? 
+                  (
+                    <>
+                      <ProductActionTableBookMark addProductBookMark={addProductToBookmark} productId={product.id}/>お気に入り
+                    </>
+                  )
+                  :
+                  (
+                    <></>
+                  )
+                }
             </div>
             )}
     </section>

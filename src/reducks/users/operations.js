@@ -1,6 +1,7 @@
 import { fetchProductsInBookMarkAction, signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
 import { auth, db, FirebaseTimestamp } from "../../Firebase/index";
+import { format } from 'date-fns'
 
 export const addProductToBookMark = (addedProduct) => {
   return async (dispatch, getState) => {
@@ -31,6 +32,7 @@ export const listenAuthState = () => {
           db.collection("users").doc(uid).get()
             .then(snappshot => {
               const data = snappshot.data()//ＤＢから取得したデータをdataに格納
+              //console.log(data)
 
               dispatch(signInAction({
                 isSignedIn: true,
@@ -38,8 +40,8 @@ export const listenAuthState = () => {
                 uid: uid,
                 username: data.username//dataのusername
               }))
-            })
-      } else {
+            }).catch((error) => console.log(error))
+        } else {
         dispatch(push('/signin'))
       }
     })
@@ -80,7 +82,9 @@ export const signIn = (email, password) => {
           db.collection("users").doc(uid).get()
             .then(snappshot => {
               const data = snappshot.data()
+              
               localStorage.setItem('if-username', data.username)
+              localStorage.setItem('if-uid', uid)
               //console.log(data.username)
               dispatch(signInAction({
                 isSigneIn: true,
@@ -91,8 +95,8 @@ export const signIn = (email, password) => {
 
               dispatch(push('/'))
               alert('ログインに成功しました！！')
-              window.location.reload()
-            })
+              //window.location.reload()
+          })
         }
       }).catch((error) => {
         console.log(error)
@@ -126,13 +130,14 @@ export const signUp = (username, email, password, confirmPassword) => {
 
         if (user) {
           const uid = user.uid;
-          const timestamp = FirebaseTimestamp.now();
+          //const timestamp = FirebaseTimestamp.now();
+          const myShapedDate = format(new Date(), 'yyyyMMddHHmmss');
           const userInitialData = {
-            created_at: timestamp,
+            created_at: myShapedDate,
             email: email,
             role: "customer",
             uid: uid,
-            updated_at: timestamp,
+            updated_at: myShapedDate,
             username: username
           }
           db.collection("users").doc(uid).set(userInitialData)
@@ -154,11 +159,12 @@ export const signOut = () => {
     auth.signOut()
         .then(() => {
           dispatch(signOutAction());//reduxのstoreもSignOut
-          dispatch(push('/signin'))
+          dispatch(push('/guest'))
           localStorage.removeItem('if_user_id')
           localStorage.removeItem('if_username')
           localStorage.removeItem('if_user_name')
           localStorage.removeItem('if-username')
+          localStorage.removeItem('if-uid')
           window.location.reload()
         })
   }

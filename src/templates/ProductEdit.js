@@ -4,34 +4,30 @@ import ImageArea from "../components/Products/ImageArea";
 import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
 import { db } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
+import './productedit.css';
 
 const ProductEdit = () => {
   const dispatch = useDispatch()
   let id = window.location.pathname.split('/product/edit')[1];
   if (id !== "") {
       id = id.split('/')[1]
-      //console.log('after split / ', id)
   }
-
   const [images, setImages] = useState([]),
         [name, setName] = useState(""),
         [category, setCategory] = useState(""),
         [categories, setCategories] = useState([]),
         [clients, setClients] = useState(""),
-        //[price, setPrice] = useState("");
         [description, setDescription] = useState("");
 
   const username = localStorage.getItem('if-username')
 
+  const featured = false
   const inputName = useCallback((event) => {
     setName(event.target.value)
   }, [setName])
   const inputDescription = useCallback((event) => {
     setDescription(event.target.value)
   }, [setDescription])
-  //const inputPrice = useCallback((event) => {
-  //  setName(event.target.value)
-  //}, [setPrice])
 
   const target_clients = [
     {id:"all", name:"全て"},
@@ -49,15 +45,14 @@ const ProductEdit = () => {
             setName(product.name);
             setCategory(product.category);
             setClients(product.clients);
-            //setPrice(data.price);
             setDescription(product.description);
-          })
+            
+      })
     }
-    //console.log(images)
   }, [id]);
 
   useEffect(() => {
-    db.collection('categories')//databaseに追加可能
+    db.collection('categories')
         .orderBy('order', 'asc')
         .get()
         .then(snapshots => {
@@ -90,7 +85,6 @@ const ProductEdit = () => {
     <section>
       <div className="module-spacer--xsmall" />
       {edit_title()}
-
       <div className="c-section-container_post">
         <ImageArea images={images} setImages={setImages} />
         <TextInput
@@ -105,16 +99,11 @@ const ProductEdit = () => {
           label={"対象者"} required={true} fullWidth={true} options={target_clients} select={setClients} value={clients}
         />
         <div className="module-spacer--medium" />
+
         <TextInput
-          fullWidth={true} label={"説明"} multiline={true} required={true}
-          onChange={inputDescription} rows={16} value={description} type={"text"}
+            fullWidth={true} label={"説明"} multiline={true} required={true}
+            onChange={inputDescription} rows={16} value={description} type={"text"}
         />
-        {/*
-        <TextInput
-          fullWidth={true} label={"価格"} multiline={false} required={false}
-          onChange={inputPrice} rows={1} value={price} type={"text"}
-        />
-        */}
         <div className="module-spacer--medium" />
         <div className="center">
           <PrimaryButton
@@ -123,6 +112,7 @@ const ProductEdit = () => {
           />
         </div>
       </div>
+
     </section>
   )
 }

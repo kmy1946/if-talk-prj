@@ -1,6 +1,6 @@
 const initialState = {
   products: {
-    list: []
+    list: [],
   },
   users: {
     bookmark:[],
