@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TextInput, PrimaryButton, GreenButton } from "../components/UIkit";
 import { signIn } from "../reducks/users/operations";
 import { push } from "connected-react-router";
 import { makeStyles } from "@material-ui/core";
+import { getIsSignedIn } from "../reducks/users/selectors";
 
 const useStyles = makeStyles({
   guest_login: {
@@ -14,7 +15,8 @@ const useStyles = makeStyles({
 const SignIn = () => {
   const classes = useStyles();
   const dispatch = useDispatch()
-  
+  const selector = useSelector(state => state);
+  const isSignedIn = getIsSignedIn(selector);
   const [email, setEmail] = useState(""),
         [password, setPassword] = useState("");
 
@@ -35,11 +37,8 @@ const SignIn = () => {
     setPassword(event.target.id)
   }, [setPassword])
 
-  if (if_username) {
-    <></>
-  } else {
     return (
-      <>
+        <>
         <div className="c-section-container">
           <div className="center">
               <GreenButton
@@ -69,11 +68,7 @@ const SignIn = () => {
             <p onClick={() => {dispatch(push('/signin/reset'))}}>パスワードを忘れた方</p>
           </div>
         </div>
-      </>
+        </>
     )
-
-
-  }
-
 }
 export default SignIn;

@@ -1,8 +1,18 @@
+import { makeStyles } from "@material-ui/core";
 import React from "react";
+
+const useStyles = makeStyles({
+  contact: {
+    textAlign:"center"
+  }
+})
 const Contact = () => {
+  const classes = useStyles();
   return (
-    <div>
-      COnstact
+    <div className={classes.contact}>
+      <a href="/contact">
+        CONTACT To Manager
+      </a>
     </div>
   )
 }

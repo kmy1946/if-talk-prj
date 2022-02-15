@@ -50,7 +50,7 @@ const TopSwiperCard = (props) => {
   const userRole = getUserRole(selector)
 
   const isSignedIn = getIsSignedIn(selector);
-  const guest_href = `/guest/product/${props.id}`
+  const guest_href = `/product/${props.id}`
 
   const isAdministrator = (userRole === "customer");//customerのみ編集可能
 
@@ -67,14 +67,14 @@ const TopSwiperCard = (props) => {
         {isSignedIn ? 
           (
             <>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(push('/users/product/'+props.id))}}>
           {images ?
             (
           <CardMedia
               className={classes.media}
               image={props.images[0].path}
               title=""
-              onClick={() => dispatch(push('/product/'+props.id))}
+              onClick={() => dispatch(push('/users/product/'+props.id))}
           />)
           :
           (<><NoImage /></>)

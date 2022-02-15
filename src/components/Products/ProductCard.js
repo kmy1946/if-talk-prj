@@ -150,7 +150,7 @@ const ProductCard = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/product/'+props.id))}
+            onClick={() => dispatch(push('/users/product/'+props.id))}
             title=""
           />
           </Box>
@@ -176,7 +176,7 @@ const ProductCard = (props) => {
                                                           >
                                                             <MenuItem
                                                               onClick={() => {
-                                                                dispatch(push('/product/edit/'+props.id))
+                                                                dispatch(push('/users/product/edit/'+props.id))
                                                                 handleClose()
                                                               }}
                                                             >
@@ -199,7 +199,7 @@ const ProductCard = (props) => {
             })()}
 
           <CardContent className={classes.content}>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(push('/users/product/'+props.id))}}>
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>
@@ -226,7 +226,7 @@ const ProductCard = (props) => {
             />
             </Box>
             <CardContent className={classes.content}>
-              <div onClick={() => {dispatch(push('/guest/product/'+props.id))}}>
+              <div onClick={() => {dispatch(push('/product/'+props.id))}}>
                   <Typography color="textSecondary" className={classes.name}>
                     {props.name}
                   </Typography>

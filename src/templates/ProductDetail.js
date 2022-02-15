@@ -21,25 +21,14 @@ const useStyles = makeStyles((theme) => ({
   username: {
     textAlign: 'right',
     fontSize:'14px',
-    fontWeight:"bold"
   },
   detail: {
-      textAlign: 'left',
-      [theme.breakpoints.down('sm')]: {
-          margin: '0 auto 16px auto',
-          height: 320,
-          width: 320
-      },
-      [theme.breakpoints.up('sm')]: {
-          margin: '0 auto',
-          height: 'auto',
-          width: 400
-      },
+    textAlign:'left',
+    margin:'1vw'
   },
   clients: {
       fontSize: 15,
       textAlign:"right"
-
   },
   category: {
     fontSize: 15,
@@ -82,27 +71,35 @@ const ProductDetail = () => {
     //console.log(product.id)
   }, [product]);
 
+  const detail_clients = () => {
+    if (product.clients == '全て') {
+      return (
+        <p className={classes.clients}>{(product.clients)}の人 向け</p>
+      )
+    } else {
+      return (
+        <p className={classes.clients}>{(product.clients)} 向け</p>
+      )
+    }
+  }
+
   return (
     <section className="c-section-wrapin">
       {product && (
         <div>
-                <div className="p-grid__row">
+          <div className={classes.detail}>
                     <div className={classes.sliderBox}>
                         <ImageSwiper images={product.images}/>
                     </div>
-                    <div className={classes.detail}>
-                        <div className="module-spacer--small"/>
-                        <p className={classes.username}>投稿者：{(product.username)}さん</p>
-                        <div className="module-spacer--small"/>
+                         <p className={classes.category}>{(product.category)} 関連</p>
                         <h2 className="u-text__headline_detail">{product.name}</h2>
                         <div className="module-spacer--small"/>
-                        <p className={classes.clients}>対象者：{(product.clients)}</p>
-                        <p className={classes.category}>プログラミング言語：{(product.category)}</p>
-                    </div>
+                        {detail_clients()}
                     <div>
-                      <p className="productdetail__description">{returnCodeToBr(product.description)}</p>
+                      <div className="productdetail__description">{returnCodeToBr(product.description)}</div>
                     </div>
-                </div>
+                <p className={classes.username}><small>投稿者：</small>{(product.username)}<small>さん</small></p>
+          </div>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small"/>
                 {isSignedIn ? 

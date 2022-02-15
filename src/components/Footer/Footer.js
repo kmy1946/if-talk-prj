@@ -15,7 +15,9 @@ const Footer = () => {
   return (
         <div className='footer_group'>
           <Container>
+            <br/>
             <Contact/>
+            <br/>
             <Typography>
             </Typography>
             <Typography className="footer__title">

@@ -10,7 +10,7 @@ export const addProductToBookMark = (addedProduct) => {
     addedProduct['bookmarkId'] = bookmarkRef.id;//bookmarkIdをフィールドとして渡す
 
     await bookmarkRef.set(addedProduct)
-    dispatch(push('/'))
+    dispatch(push('/users/bookmark/'))
 
     //await bookmarkRef.set(addedProduct)
     //dispatch(push('/'))
@@ -93,7 +93,7 @@ export const signIn = (email, password) => {
                 username: data.username//dataのusername
               }))
 
-              dispatch(push('/'))
+              dispatch(push('/users/'))
               alert('ログインに成功しました！！')
               //window.location.reload()
           })
@@ -143,7 +143,7 @@ export const signUp = (username, email, password, confirmPassword) => {
           db.collection("users").doc(uid).set(userInitialData)
             .then((res) => {
               localStorage.setItem('if-username', username)
-              dispatch(push('/'))
+              dispatch(push('/users/'))
             }).catch((error) => {
               //dispatch(hideLoadingAction())
               alert('アカウント登録に失敗しました。もう1度お試しください。')
@@ -159,7 +159,7 @@ export const signOut = () => {
     auth.signOut()
         .then(() => {
           dispatch(signOutAction());//reduxのstoreもSignOut
-          dispatch(push('/guest'))
+          dispatch(push('/'))
           localStorage.removeItem('if_user_id')
           localStorage.removeItem('if_username')
           localStorage.removeItem('if_user_name')

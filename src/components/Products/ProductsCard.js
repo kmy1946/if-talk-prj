@@ -135,12 +135,12 @@ const ProductsCard = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/product/'+props.id))}
+            onClick={() => dispatch(push('/users/product/'+props.id))}
             title=""
           />
           </Box>
           <CardContent className={classes.content}>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(push('/users/product/'+props.id))}}>
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>
@@ -167,7 +167,7 @@ const ProductsCard = (props) => {
             >
             <MenuItem
                                 onClick={() => {
-                                  dispatch(push('/product/edit/'+props.id))
+                                  dispatch(push('/users/product/edit/'+props.id))
                                   handleClose()
                                 }}
             >
@@ -213,48 +213,6 @@ const ProductsCard = (props) => {
                 </Typography>
                 <a href={guest_href} className={classes.guest_hreflink} />
           </CardContent>
-
-          {(() => {
-                    if (if_current_uid === props.uid) {
-                      //console.log(if_user_name)
-                      
-                        return (
-                            <>
-                            <div className='toplist__menu'>
-                              <IconButton onClick={handleClick}>
-                                <ListIcon />
-                              </IconButton>
-                            </div>
-                            <Menu
-                              anchorEl={anchorEl}
-                              keepMounted
-                              open={Boolean(anchorEl)}
-                              onClose={handleClose}
-                              className={classes.admin_menu}
-                            >
-                              <MenuItem
-                                onClick={() => {
-                                  dispatch(push('/product/edit/'+props.id))
-                                  handleClose()
-                                }}
-                              >
-                                編集する
-                              </MenuItem>
-                              <MenuItem
-                                onClick={() => {
-                                  dispatch(deleteProduct(props.id))
-                                  handleClose()
-                                }}
-                              >
-                                削除する
-                              </MenuItem>
-                            </Menu>
-                            </>
-                            )
-                    } else {
-                      return false
-                    }
-            })()}
       </Box>
       )
     }

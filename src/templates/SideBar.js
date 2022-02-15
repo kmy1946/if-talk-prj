@@ -39,13 +39,11 @@ const SideBar = () => {
     dispatch(push(path));//pathはvalueで指定
 };
 
-  const [searchKeyword, setSearchKeyword] = useState("")
-
   const [filters, setFilters] = useState([
-      {func: selectMenu, label: "全て", id: "all", value: "/?clients=全て"},
-      {func: selectMenu, label: "初心者", id: "beginner", value: "/?clients=初心者"},
-      {func: selectMenu, label: "中級者", id: "intermediate", value: "/?clients=中級者"},
-      {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}
+      {func: selectMenu, label: "全て", id: "all", value: "/users/?clients=全て"},
+      {func: selectMenu, label: "初心者", id: "beginner", value: "/users/?clients=初心者"},
+      {func: selectMenu, label: "中級者", id: "intermediate", value: "/users/?clients=中級者"},
+      {func: selectMenu, label: "上級者", id: "advanced", value: "/users/?clients=上級者"}
   ])
 
   const [filters_cat, setFilters_cat] = useState([])
@@ -57,40 +55,19 @@ const SideBar = () => {
               const list = []
               snapshot.forEach(snapshot => {
                   const category = snapshot.data()
-                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
+                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/users/?category=${category.name}`})
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
           })
   }, [])
 
-  const inputSearchKeyword = useCallback((event) => {
-      setSearchKeyword(event.target.value)
-  }, [setSearchKeyword])
-
-
   return(
     <div>
                 <div>
-                    {/*
-                    <p className='sidebar__p'>
-                        サイドバー
-                    </p>
-                    */}
-                    {/*
-                    <div className={classes.searchField}>
-                        <TextInput
-                            fullWidth={false} label={"検索"} multiline={false}
-                            onChange={inputSearchKeyword} required={false} rows={1} value={searchKeyword} type={"text"}
-                        />
-                        <IconButton>
-                            <SearchIcon />
-                        </IconButton>
-                    </div>
-                    */}
                     {/*<MapMenuList/>*/}
                     
                     <List>
-                        <p className="sidebar__title">言語</p>
+                        <p className="sidebar__title">カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText >

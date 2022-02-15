@@ -6,7 +6,7 @@ const LogoTextGuest = () => {
   const dispatch = useDispatch()
 
   return (
-      <div className="logotext" onClick={() => dispatch(push('/guest'))}>
+      <div className="logotext" onClick={() => dispatch(push('/'))}>
         <small>
           IF-Programmer
         </small>

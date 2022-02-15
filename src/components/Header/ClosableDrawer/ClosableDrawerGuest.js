@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
             [theme.breakpoints.up('sm')]: {
                 flexShrink: 0,
                 width: 256
-            }
+            },
         },
         // necessary for content to be below app bar
         toolbar: theme.mixins.toolbar,
         drawerPaper: {
-            width: 256,
+            width: 256
         },
         searchField: {
             alignItems: 'center',

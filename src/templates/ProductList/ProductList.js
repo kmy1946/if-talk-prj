@@ -1,9 +1,10 @@
 import { Card, makeStyles } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TopSwiper } from "..";
 import { ProductCardMobile, ProductCards } from "../../components/Products";
 import ProductCard from "../../components/Products/ProductCard";
+import { PrimaryButton } from "../../components/UIkit";
 import { fetchProducts } from "../../reducks/products/operation";
 import { getProducts } from "../../reducks/products/selectors";
 
@@ -32,6 +33,9 @@ const useStyles = makeStyles({
     margin:'4px',
     fontSize:'17px',
     fontWeight:'bold'
+  },
+  loadbutton_div: {
+    margin:'-75px'
   }
 })
 const ProductList = () => {
@@ -40,6 +44,11 @@ const ProductList = () => {
   const selector = useSelector((state) => state);
   const products = getProducts(selector);//productsにproducts情報を格納
 
+  const [page, setPage] = useState(10);
+  const updatePost = async () => {
+    setPage(page + 5);
+  };
+
   const query = selector.router.location.search;
   //const query = window.location.search
   const clients = /^\?clients=/.test(query) ? query.split('?clients=')[1] : ""
@@ -47,8 +56,8 @@ const ProductList = () => {
   const updated_at_month = /^\?updated_at_month=/.test(query) ? query.split('?updated_at_month=')[1] : ""
 
   useEffect(() => {
-    dispatch(fetchProducts(clients, category, updated_at_month))//, created_at
-  },[query])
+    dispatch(fetchProducts(clients, category, updated_at_month, page))//, created_at
+  },[query, page])
   //console.log(products);
 
 
@@ -129,6 +138,9 @@ const ProductList = () => {
                 <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
               )
             ))}
+            <div>
+              <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
+            </div>
           </Card>
         </>
         :
@@ -140,7 +152,9 @@ const ProductList = () => {
                 <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
               )
             ))}
+            <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
           </Card>
+          
         </>
             )
           }

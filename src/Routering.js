@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import Page404 from "./components/Error/Page404";
-import { Home, ProductDetail, ProductEdit, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
+import { Home, ProductDetail, ProductEdit, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
 import Auth from "./templates/Auth";
 import './App.css'
 
@@ -12,7 +12,8 @@ function Routering() {
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>
         <Route exact path='/signin/reset' component={Reset}></Route>
 
-        <Route exact path={"/guest"}>
+        <Route exact path={"/"}>
+          <>
          <TopSwiper />
          {
             (
@@ -31,7 +32,7 @@ function Routering() {
                   </div>
                   */}
                   <div className="child2">
-                    <SideBar/>
+                    <SideBarGuest/>
                   </div>
                 </div>
               </>
@@ -43,12 +44,13 @@ function Routering() {
               </>
             )
           }
+          </>
         </Route>
 
-        <Route exact path="/guest/product/:id" component={ProductDetail} />
+        <Route exact path="/product/:id" component={ProductDetail} />
         
         <Auth>
-          <Route exact path={"(/)?"}>
+          <Route exact path={"(/users/)?"}>
           <TopSwiper />
           {
             (
@@ -80,9 +82,9 @@ function Routering() {
             )
           }
           </Route>
-          <Route exact path="/product/:id" component={ProductDetail} />
-          <Route path="/product/edit(/:id)?" component={ProductEdit} />
-          <Route exact path='/bookmark' component={BookMarkList} />
+          <Route exact path="/users/product/:id" component={ProductDetail} />
+          <Route path="/users/product/edit(/:id)?" component={ProdctEditRich} />
+          <Route exact path='/users/bookmark' component={BookMarkList} />
         </Auth>
         <Route>
           <Page404 />

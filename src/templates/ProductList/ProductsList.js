@@ -1,11 +1,13 @@
 import { Card, makeStyles } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TopSwiper } from "..";
 import { ProductCardMobile, ProductCards, ProductsCard } from "../../components/Products";
 import ProductCard from "../../components/Products/ProductCard";
+import { GreenButton, PrimaryButton } from "../../components/UIkit";
 import { fetchProducts } from "../../reducks/products/operation";
 import { getProducts } from "../../reducks/products/selectors";
+import { getIsSignedIn } from "../../reducks/users/selectors";
 
 const useStyles = makeStyles({
   list__card: {
@@ -26,6 +28,9 @@ const useStyles = makeStyles({
     margin:'4px',
     fontSize:'17px',
     fontWeight:'bold'
+  },
+  loadbutton_div: {
+    margin:'-75px'
   }
 })
 const ProductsList = () => {
@@ -34,6 +39,12 @@ const ProductsList = () => {
   const selector = useSelector((state) => state);
   const products = getProducts(selector);//productsにproducts情報を格納
 
+  const isSignedIn = getIsSignedIn(selector);
+
+  const [page, setPage] = useState(10);
+  const updatePost = async () => {
+    setPage(page + 5);
+  };
   const query = selector.router.location.search;
   //const query = window.location.search
   const clients = /^\?clients=/.test(query) ? query.split('?clients=')[1] : ""
@@ -41,8 +52,8 @@ const ProductsList = () => {
   const updated_at_month = /^\?updated_at_month=/.test(query) ? query.split('?updated_at_month=')[1] : ""
 
   useEffect(() => {
-    dispatch(fetchProducts(clients, category, updated_at_month))//, created_at
-  },[query])
+    dispatch(fetchProducts(clients, category, updated_at_month, page))//, created_at
+  },[query, page])
   //console.log(products);
 
   const list__title__clients = () => {
@@ -57,7 +68,7 @@ const ProductsList = () => {
         </p>
       )
     } else {
-      return (
+      return (//category
         <p className={classes.list__title}>
           <small>
             絞り込み：
@@ -83,7 +94,7 @@ const ProductsList = () => {
           {list__title__sliced+year_text+list__title__rest+month_text}
         </p>
       )
-    } else {
+    } else {//clients
       return (
         <>
           {list__title__clients()}
@@ -93,11 +104,11 @@ const ProductsList = () => {
   }
 
   const list__title = () => {
-    if (query !== null) {
-      return (
+    if (query !== '') {
+      return (//month
         <>{list__title_updated_at_month()}</>
       )
-    } else {
+    } else {//empty
       return (
         <p className={classes.list__title}>記事一覧</p>
         )
@@ -113,31 +124,37 @@ const ProductsList = () => {
       <div className="p-grid__row">
 
         {
-            (
-              window.innerWidth > 760 ?
-        <>
-          <Card className={classes.list__card}>
-            {list__title()}
-            {products.length > 0 && (
-              products.map(product => (
-                <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
-              )
-            ))}
-          </Card>
-        </>
-        :
-        <>
-          <Card className={classes.list__card_mobile}>
-            {list__title()}
-            <p className={classes.list__title}>記事一覧</p>
-            {products.length > 0 && (
-              products.map(product => (
-                <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
-              )
-            ))}
-          </Card>
-        </>
-            )
+          (
+            window.innerWidth > 760 ?
+              <>
+                <Card className={classes.list__card}>
+                  {list__title()}
+                  {products.length > 0 && (
+                    products.map(product => (
+                      <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                    )
+                  ))}
+                  <div className={classes.loadbutton_div}>
+                    <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
+                  </div>
+                </Card>
+              </>
+              :
+              <>
+                <Card className={classes.list__card_mobile}>
+                  {list__title()}
+                  <p className={classes.list__title}>記事一覧</p>
+                  {products.length > 0 && (
+                    products.map(product => (
+                      <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                    )
+                  ))}
+                  <div>
+                    <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
+                  </div>
+                </Card>
+              </>
+          )
         }
       </div>
     </section>

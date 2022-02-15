@@ -34,7 +34,7 @@ const App = () => {
                         <Routering />
                         )
                     } else {
-                      console.log('no_if_user_id')
+                      //console.log('user_is_not_signedin')
                       return (
                       <>
                         <main className="c-main">

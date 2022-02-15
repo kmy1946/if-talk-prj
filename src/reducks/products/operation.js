@@ -30,7 +30,7 @@ export const deleteProduct = (id) => {
   }
 }
 
-export const fetchProducts = (clients, category, updated_at_month) => {
+export const fetchProducts = (clients, category, updated_at_month, page) => {
   return async (dispatch) => {
     let query = productsRef.orderBy('updated_at', 'desc')
 
@@ -39,7 +39,7 @@ export const fetchProducts = (clients, category, updated_at_month) => {
 
     query = (updated_at_month !== "") ? query.where('updated_at_month', '==', updated_at_month) : query;//updated_at_monthで判別
 
-    query.get()
+    query.limit(page).get()
       .then(snapshots => {
             const productList = []
           snapshots.forEach(snapshots => {
@@ -47,7 +47,7 @@ export const fetchProducts = (clients, category, updated_at_month) => {
             productList.push(product)
           })
           dispatch(fetchProductsAction(productList))
-      })
+      }).catch((error) => console.log(error))
   }
 }
 

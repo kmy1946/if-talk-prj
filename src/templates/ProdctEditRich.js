@@ -37,7 +37,7 @@ const ProdctEditRich = () => {
   }
 
   const dispatch = useDispatch()
-  let id = window.location.pathname.split('/product/edit')[1];
+  let id = window.location.pathname.split('/users/product/edit')[1];
   if (id !== "") {
       id = id.split('/')[1]
   }
@@ -50,7 +50,6 @@ const ProdctEditRich = () => {
 
   const username = localStorage.getItem('if-username')
 
-  const featured = false
   const inputName = useCallback((event) => {
     setName(event.target.value)
   }, [setName])
@@ -75,7 +74,6 @@ const ProdctEditRich = () => {
             setCategory(product.category);
             setClients(product.clients);
             setDescription(product.description);
-            
       })
     }
   }, [id]);
@@ -128,17 +126,15 @@ const ProdctEditRich = () => {
           label={"対象者"} required={true} fullWidth={true} options={target_clients} select={setClients} value={clients}
         />
         <div className="module-spacer--medium" />
-        <Editor editorState={editorState} wrapperClassName="wrapper-class"
-                editorClassName="editor-class" toolbarClassName="toolbar-class"
-                onEditorStateChange={setEditorState} value={description} 
-        />
+        <Editor
+        editorState={editorState}
+        onEditorStateChange={handleEditorChange}
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        toolbarClassName="toolbar-class"
+        value={description} type={"text"} required={true} fullWidth={true} 
+      />
       <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
-      {/*
-        <TextInput
-            fullWidth={true} label={"説明"} multiline={true} required={true}
-            onChange={inputDescription} rows={16} value={description} type={"text"}
-        />
-      */}
         <div className="module-spacer--medium" />
         <div className="center">
           <PrimaryButton

@@ -59,9 +59,6 @@ const useStyles = makeStyles({
 
 const TopSwiper = () => {
   const classes = useStyles()
-  //const dispatch = useDispatch()
-  //const selector = useSelector((state) => state);
-  //const featuredproducts = getProducts(selector);
 
   const breakPoints = [
     { width: 1, itemsToShow: 4 },

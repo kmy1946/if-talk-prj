@@ -37,7 +37,8 @@ const useStyles = makeStyles({
     },
     header__right_guest: {
       margin: '0 0 0 auto',
-      marginBottom:'20px'
+      marginBottom:'20px',
+      color:'green'
     },
   }
 );
@@ -95,7 +96,7 @@ const Header = () => {
                       <LogoTextGuest/>
                         <div className={classes.header__right_guest}>
                           <small>
-                            プログラミング情報サイト
+                            プログラミング情報サイト　
                           </small>
                           <a href='/signin'>
                             <small>

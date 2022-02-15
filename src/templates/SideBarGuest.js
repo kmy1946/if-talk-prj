@@ -51,11 +51,12 @@ const SideBarGuest = () => {
   const [searchKeyword, setSearchKeyword] = useState("")
 
   const [filters, setFilters] = useState([
-      {func: selectMenu, label: "全て", id: "all", value: "/"},
-      {func: selectMenu, label: "初心者", id: "beginner", value: "/guest/?clients=初心者"},
-      {func: selectMenu, label: "中級者", id: "intermediate", value: "/guest/?clients=中級者"},
-      {func: selectMenu, label: "上級者", id: "advanced", value: "/guest/?clients=上級者"}
-  ])
+    {func: selectMenu, label: "全て", id: "all", value: "/?clients=全て"},
+    {func: selectMenu, label: "初心者", id: "beginner", value: "/?clients=初心者"},
+    {func: selectMenu, label: "中級者", id: "intermediate", value: "/?clients=中級者"},
+    {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}
+])
+
   const [filters_cat, setFilters_cat] = useState([])
   useEffect(() => {
       db.collection('categories')
@@ -65,7 +66,7 @@ const SideBarGuest = () => {
               const list = []
               snapshot.forEach(snapshot => {
                   const category = snapshot.data()
-                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/guest/?category=${category.name}`})
+                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
           })
@@ -99,7 +100,7 @@ const SideBarGuest = () => {
                     <Divider variant="middle" />
                     */}
                     <List>
-                        <p className="sidebar__title">言語</p>
+                        <p className="sidebar__title">カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText >
