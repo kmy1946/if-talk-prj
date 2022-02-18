@@ -2,32 +2,139 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import ImageArea from "../components/Products/ImageArea";
 import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
-import { db } from "../Firebase";
+import { db, storage } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
 import './productedit.css';
-import { EditorState } from 'draft-js';
-import { ContentState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import { EditorState, DefaultDraftBlockRenderMap, convertFromRaw,
+          ContentState, convertToRaw, AtomicBlockUtils, RichUtils,
+          getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';//, getDefaultKeyBinding, RichUtils
+import createImagePlugin from "@draft-js-plugins/image";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { convertToHTML } from 'draft-convert';
+import { convertToHTML, } from 'draft-convert';
 import DOMPurify from 'dompurify';
-/////////////////////////////////////////////////////////////////////
+//import { draftToHtml as draftToHtml_unused } from 'draftjs-to-html';
+//import CodeUtils from 'draft-js-code';
+import Immutable from 'immutable';
+import { EditorComponent } from ".";
+import htmlToDraft from "html-to-draftjs"
+import TextEditor from "./Editor/TextEditor";
+import draftToHtml from "draftjs-to-html";
+
+//import draftToHtml from 'draftjs-to-html-fork';//code,highlight supported
+
 /////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////draft.js
+const blockRenderMap = Immutable.Map({//デフォルトのBlockRenderMapにタグに対応するMapオブジェクト
+  'section': {
+    element: 'section',
+  },
+  'unstyled': {
+    element: 'span',
+    aliasedElements: ['div'],
+  },
+  'code': {
+    element: 'code',
+  }
+});
+const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
+
 const ProdctEditRich = () => {
-  let _contentState = ContentState.createFromText('Sample content state');
+  const dispatch = useDispatch()
+  const styleMap = {//customstulemap
+    'STRIKETHROUGH': {
+      textDecoration: 'line-through',
+    },
+    'HIGHLIGHT': {
+      backgroundColor:'red'
+    },
+    'BOLD': {
+      fontWeight: 'bold',
+    },
+  };
+
+  const uploadDescription_Images = (props) => {
+    const {block, contentState} = props;
+    //const {foo} = props.blockProps;
+    const data = contentState.getEntity(block.getEntityAt(0)).getData();
+    //console.log({foo})
+    console.log('data:',data)
+    return <img src={props.data}/>
+  }
+  const myBlockRenderer = (block) => {
+    //console.log(block.getType())
+    if (block.getType() === "blockquote") {
+      return {
+        editable: true,
+      }
+    }
+    if (block.getType() === "unstyled") {
+      return {
+        editable: true,
+      }
+    }
+    if (block.getType() === "atomic") {
+      console.log(block.getType())
+      return {
+        component: uploadDescription_Images,
+        editable: true,
+        props: {
+          foo: 'foo',
+        },
+      }
+    }
+    return null
+  }
+
+  const myBlockStyleFn = (contentBlock) => {
+    const type = contentBlock.getType();
+    if (type === 'custom') {
+      console.log(type)
+      return {
+        //component: Code_Component,
+        editable: false,
+        props: {
+          foo: 'bar',
+        },
+      }
+    }
+  }
+
+
+  function uploadImageCallBack(file) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();//オブジェクト作成
+      xhr.open("POST", "https://api.imgur.com/3/image");
+      xhr.setRequestHeader("Authorization", "Client-ID 8d26ccd12712fca");
+      const data = new FormData();//
+      data.append("image", file);
+      xhr.send(data);
+      xhr.addEventListener("load", () => {
+        const response = JSON.parse(xhr.responseText);
+        resolve(response);
+      });
+      xhr.addEventListener("error", () => {
+        const error = JSON.parse(xhr.responseText);
+        reject(error);
+      });
+    });
+  }
+
+  let _contentState = ContentState.createFromText('Sample Content');
   const raw = convertToRaw(_contentState)
   const [contentState, setContentState] = useState(raw)
-  
   const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
+    () => EditorState.createEmpty(),//htmlToEState(html)//
   );
-  const  [description, setDescription] = useState(null);
-  const handleEditorChange = (state) => {
+  const  [description, setDescription] = useState();
+  const handleEditorChange = (state, e) => {
     setEditorState(state);
     convertContentToHTML();
   }
+  //console.log(editorState)
   const convertContentToHTML = () => {
-    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+    let currentContentAsHTML = draftToHtml(convertToRaw(editorState.getCurrentContent()))//convertToHTML(editorState.getCurrentContent());
     setDescription(currentContentAsHTML);
   }
   const createMarkup = (html) => {
@@ -35,19 +142,41 @@ const ProdctEditRich = () => {
       __html: DOMPurify.sanitize(html)
     }
   }
-
-  const dispatch = useDispatch()
-  let id = window.location.pathname.split('/users/product/edit')[1];
+  
+  let id = window.location.pathname.split('/product/edit')[1];
   if (id !== "") {
       id = id.split('/')[1]
   }
   const [images, setImages] = useState([]),
+        [descfile, setDescfile] = useState([]),
         [name, setName] = useState(""),
         [category, setCategory] = useState(""),
         [categories, setCategories] = useState([]),
         [clients, setClients] = useState("");
         //[description, setDescription] = useState("");
 
+  const uploadImage = useCallback((event, file) => {
+    const fileimage = 'https://firebasestorage.googleapis.com/v0/b/if-talks.appspot.com/o/images%2FUw7eijZdalG7hRqx?alt=media&token=559363ab-df23-40f6-b052-581a940902a7'
+    let blob = new Blob(file, {type: "image/jpeg"});
+    const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const N=16;
+    const fileName = Array.from(crypto.getRandomValues(new Uint32Array(N))).map((n)=>S[n%S.length]).join('')
+  
+    const uploadRef = storage.ref('description').child(fileName);
+    const uploadTask = uploadRef.put(blob);
+
+    console.log('file:',file)
+    console.log('blob:',blob)
+    uploadTask.then(() => {
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        const newImage = {id: fileName, path: downloadURL};
+        console.log('newImage.path:',newImage.path)
+        setDescfile((prevState => [...prevState, newImage]))
+        console.log('desc:',descfile)
+      }).catch((error) => console.log(error))
+    }).catch((error) => console.log(error))
+  }, [setDescfile]);
+  
   const username = localStorage.getItem('if-username')
 
   const inputName = useCallback((event) => {
@@ -108,6 +237,25 @@ const ProdctEditRich = () => {
     }
   }
 
+  const imagePlugin = createImagePlugin();
+
+  const Image = (props) => {
+    return <img src={props.src} alt="" />;
+  };
+
+  const Media = (props) => {
+    const entity = props.contentState.getEntity(props.block.getEntityAt(0)).getData();
+    const { src } = entity.getData();
+    const type = entity.getType();
+
+    let media;
+    if (type === "image") {
+      media = <Image src={src} />;
+    }
+
+    return media;
+  };
+
   return (
     <section>
       <div className="module-spacer--xsmall" />
@@ -126,22 +274,70 @@ const ProdctEditRich = () => {
           label={"対象者"} required={true} fullWidth={true} options={target_clients} select={setClients} value={clients}
         />
         <div className="module-spacer--medium" />
-        <Editor
-        editorState={editorState}
-        onEditorStateChange={handleEditorChange}
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        toolbarClassName="toolbar-class"
-        value={description} type={"text"} required={true} fullWidth={true} 
-      />
-      <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
-        <div className="module-spacer--medium" />
+        {/*
+        <EditorComponent wrapperClassName="wrapper-class" editorClassName="editor-class" toolbarClassName="toolbar-class"
+          description={description}
+          editorState={editorState} handleEditorChange={handleEditorChange} 
+        />
+        */}{/*
+        <TextEditor description={description}/>
+        {description}
+        */}
+        <Editor //contenteditable="true"
+          editorState={editorState}
+          onEditorStateChange={handleEditorChange} 
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          value={description}
+          toolbar={{
+            options: ['inline', 'blockType','fontFamily', 'textAlign', 'list', 'colorPicker', 'link', 'image', 'emoji', 'remove', 'history'],//
+            inline: { inDropdown: true, options: ['bold', 'italic', 'underline', 'monospace','strikethrough', 'superscript', 'subscript'] },//
+            list: { inDropdown: true },
+            textAlign: { inDropdown: true },
+            link: { inDropdown: true },
+            history: { inDropdown: true },
+            blockType: { options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote'], },
+
+            //image: {urlEnabled: true, uploadEnabled: true,uploadCallback: (file) => uploadImage(file),//upload_DescriptionImages,
+              //previewImage: true,alt: { present: true, mandatory: true },inputAccept: "image/*",}
+            }}
+          localization={{
+            locale: 'ja',
+            }}
+          customStyleMap={styleMap}
+          blockStyleFn={myBlockStyleFn}
+          blockRendererFn={myBlockRenderer}
+          blockRenderMap={extendedBlockRenderMap}
+          //plugins={plugins}
+          //plugins={[imagePlugin]}
+          //readOnly={true}
+        />
+        {/*}
+        <Editor //contenteditable="true"
+          editorState={editorState} onEditorStateChange={handleEditorChange} 
+          wrapperClassName="wrapper-class" editorClassName="editor-class" toolbarClassName="toolbar-class"
+          value={description}
+          //blockRendererFn={myBlockRenderer}
+        />
+        */}
         <div className="center">
           <PrimaryButton
             label={"記事を投稿する"}
             onClick={() => dispatch(saveProduct(id, name, images, description, category, clients, username))}
           />
         </div>
+        <br/>
+
+        <p>Preview:</p>
+        <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
+        <div className="preview">
+          <p>送信データ：</p>
+          <br/>
+          {description}
+        </div>
+      
+        <div className="module-spacer--medium" />
       </div>
 
     </section>

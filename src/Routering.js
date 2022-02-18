@@ -1,12 +1,18 @@
 import { Switch, Route } from "react-router-dom";
 import Page404 from "./components/Error/Page404";
-import { Home, ProductDetail, ProductEdit, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
+import { ProductDetail, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
 import Auth from "./templates/Auth";
 import './App.css'
-
+import EditorApp from "./templates/EditorApp";
+import { Contact } from "./components/Footer";
+//import RichEditor from "./templates/RichEditor";
+import TextEditor from "./templates/Editor/TextEditor";
+import TextEdition from "./templates/Editor/TextEdition";
 function Routering() {
   return (
       <Switch>
+        <Route exact path='/textedition' component={TextEdition}/>
+        <Route exact path='/texteditor' component={TextEditor}/>
         <Route exact path='/signup' component={SignUp}></Route>
         <Route exact path='/signin' component={SignIn}></Route>
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>
@@ -14,6 +20,11 @@ function Routering() {
 
         <Route exact path={"/"}>
           <>
+          {/*
+          <div class="text-image">
+            <img src="bg_image.jpg" />
+          </div>
+          */}
          <TopSwiper />
          {
             (
@@ -48,6 +59,7 @@ function Routering() {
         </Route>
 
         <Route exact path="/product/:id" component={ProductDetail} />
+        <Route exact path="/contact" component={Contact} />
         
         <Auth>
           <Route exact path={"(/users/)?"}>
@@ -82,8 +94,11 @@ function Routering() {
             )
           }
           </Route>
-          <Route exact path="/users/product/:id" component={ProductDetail} />
+          <Route exact path="/product/:id" component={ProductDetail} />
           <Route path="/users/product/edit(/:id)?" component={ProdctEditRich} />
+
+          <Route path="/users/editorapp" component={EditorApp} />
+
           <Route exact path='/users/bookmark' component={BookMarkList} />
         </Auth>
         <Route>

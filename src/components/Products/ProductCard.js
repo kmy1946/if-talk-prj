@@ -69,6 +69,12 @@ const useStyles = makeStyles((theme) => ({
       whiteSpace: 'noWrap',
       marginLeft:'auto'
     },
+    updated_at: {
+      position:'absolute',
+      fontSize:'10px',
+      right:'1vw',
+      bottom:'1vw',
+    },
     clients: {
       color:theme.palette.info.main,
       fontSize:16,
@@ -150,7 +156,7 @@ const ProductCard = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/users/product/'+props.id))}
+            onClick={() => dispatch(push('/product/'+props.id))}
             title=""
           />
           </Box>
@@ -199,7 +205,7 @@ const ProductCard = (props) => {
             })()}
 
           <CardContent className={classes.content}>
-            <div onClick={() => {dispatch(push('/users/product/'+props.id))}}>
+            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>
@@ -232,6 +238,9 @@ const ProductCard = (props) => {
                   </Typography>
                   <Typography className={classes.category}>
                     {props.category}
+                  </Typography>
+                  <Typography className={classes.updated_at}>
+                    {props.updated_at}
                   </Typography>
               </div>
             </CardContent>

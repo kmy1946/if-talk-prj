@@ -22,9 +22,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
     fontSize:'14px',
   },
+  detail_group: {
+    textAlign:'center'
+  },
   detail: {
-    textAlign:'left',
-    margin:'1vw'
+    margin:'10vw',
+    maxWidth:'auto'
   },
   clients: {
       fontSize: 15,
@@ -86,7 +89,7 @@ const ProductDetail = () => {
   return (
     <section className="c-section-wrapin">
       {product && (
-        <div>
+        <div className={classes.detail_group}>
           <div className={classes.detail}>
                     <div className={classes.sliderBox}>
                         <ImageSwiper images={product.images}/>

@@ -1,5 +1,5 @@
 //ClosableDrawerをと同じ
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Divider, makeStyles } from "@material-ui/core";
 
 import List from '@material-ui/core/List';

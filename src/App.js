@@ -4,12 +4,9 @@ import "./assets/reset.css";
 import "./assets/style.css";
 import Routering from './Routering';
 import { Header } from "./components/Header";
-import { SideBar, TopSwiper } from "./templates";
 import { makeStyles } from "@material-ui/core";
-import { theme } from "./assets/theme";
 import { Footer } from "./components/Footer";
 import { useDispatch } from "react-redux";
-import { push } from "connected-react-router";
 
 const useStyles = makeStyles({})
 

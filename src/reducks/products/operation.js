@@ -78,7 +78,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       updated_at_month: myShapedDate_month,
       updated_at_date: myShapedDate_date,
     }
-    console.log(data.updated_at)
+    //console.log(data.updated_at)
 
     if (id === ""){//新規作成時
       const ref = productsRef.doc();

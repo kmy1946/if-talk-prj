@@ -119,7 +119,7 @@ const ClosableDrawer = (props) => {
                                 <ListItemText primary={filter.label} />
                             </ListItem>
                         ))}
-                        <Divider variant="middle" /><p className="sidebar__title">言語</p>
+                        <Divider variant="middle" /><p className="sidebar__title">カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
@@ -128,7 +128,7 @@ const ClosableDrawer = (props) => {
                     </List>
                     <Divider variant="middle" />
                     <List>
-                        <p className="sidebar__title">　投稿日</p>
+                        <p className="sidebar__title">　アーカイブ</p>
                         {filters_updated_month.map(pd_filter => (
                             <ListItem button key={pd_filter.id} onClick={(e) => pd_filter.func(e, pd_filter.value)}>
                                 <ListItemText className={classes.sidebarleft__text}>

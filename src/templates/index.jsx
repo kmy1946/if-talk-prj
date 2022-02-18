@@ -7,7 +7,7 @@ export { default as SignIn } from './SignIn';
 export { default as Reset } from './Reset';
 export { default as ProductEdit } from './ProductEdit';
 export { default as ProdctEditRich } from './ProdctEditRich';
-
+export { default as EditorComponent } from './Editor/EditorComponent';
 export { default as ProductList } from './ProductList/ProductList';
 export { default as ProductsList } from './ProductList/ProductsList';
 export { default as ProductDetail } from './ProductDetail';

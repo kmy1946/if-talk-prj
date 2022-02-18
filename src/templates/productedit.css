@@ -1,11 +1,13 @@
 .wrapper-class {
   padding: 1rem;
   border: 1px solid #ccc;
+  word-wrap: normal
 }
 .editor-class {
-  background-color:lightgray;
+  background-color:rgb(231, 231, 231);
   padding: 1rem;
   border: 1px solid #ccc;
+  word-wrap: normal
 }
 .toolbar-class {
   border: 1px solid #ccc;
@@ -13,4 +15,83 @@
 .preview {
   padding: 1rem;
   margin-top: 1rem;
+}
+
+/**/
+.editors {
+	background-color: rgb(209, 209, 209);
+}
+
+button {
+	border-radius: 2px;
+	margin: 0.25em;
+	width: auto;
+	font-family: "Times";
+	line-height: 200%;
+	border-radius: 3px;
+	border: none;
+	color: #263135;
+}
+
+button.underline {
+	text-decoration: underline;
+}
+
+.underline,
+.bold,
+.italic,
+.highlight {
+	font-size: 1em;
+	text-align: center;
+}
+
+.editorContainer {
+	padding: 4em 1em 1em 1em;
+	margin: 1em;
+}
+
+.editors {
+	border: 1px transparent solid;
+	padding: 1.5em 2em 2.75em 2em;
+	margin: 1.25em;
+	font-family: "Gotham Pro";
+	font-size: 1.1em;
+	border-radius: 6px;
+	text-align: left;
+	line-height: 1.25em;
+	color: black;
+}
+
+button.underline {
+	text-decoration: underline;
+}
+
+.strikethrough {
+	text-decoration: line-through;
+	font-size: 1em;
+}
+
+a:link,
+a:visited {
+	/* color: linear-gradient(to bottom, #6a11cb 0%, #2575fc 100%); */
+	color: radial-gradient(#16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+}
+
+code {
+	color: #e83e8c;
+	font-size: 16px;
+	padding: 14px;
+}
+blockquote {
+	color:#ff864e;
+	background-color: rgb(236, 236, 236);
+	position: relative;
+	margin: 2em 0;
+	padding: 1em 1em 1em 0.6em;
+	font-size: .9em;
+	border-left: 5px solid rgb(221, 221, 221);
+	border-radius: 2px;
+}
+.link {
+	background-color: black;
 }

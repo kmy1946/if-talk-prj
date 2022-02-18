@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 
 const ImageArea = (props) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const images = props.images;
 
   const deleteImage = useCallback(async (id) => {

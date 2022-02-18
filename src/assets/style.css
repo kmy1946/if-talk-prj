@@ -14,7 +14,6 @@
 .productdetail__description {
   text-align: left;
   width: 100%;
-  padding: 20px;
 }
 .list-content__lang {
   position: relative;
@@ -111,6 +110,12 @@
 .guest_signin__p {
   white-space: nowrap;
   color: #3fbb6e;
+}
+.sidebar_group {
+  zoom: 0.8;
+}
+.sidebar_left_group {
+  zoom: 0.8;
 }
 .sidebar__title {
   color: #1e73c2;
@@ -292,14 +297,14 @@
   width: 100%;
   z-index: 9999;
 }
-
+/*
 .c-section__loading > p {
   color: #444;
   font-weight: 600;
   margin-top: 1rem;
   text-align: center;
 }
-
+*/
 .center {
   margin: 0 auto;
   margin-top: 60px;

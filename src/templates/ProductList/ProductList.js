@@ -60,7 +60,6 @@ const ProductList = () => {
   },[query, page])
   //console.log(products);
 
-
   const list__title__clients = () => {
     if (query.slice( 0, 9 ) == '?clients=') {
       const list__title__clients = query.slice(9, 30)
@@ -73,7 +72,7 @@ const ProductList = () => {
         </p>
       )
     } else {
-      return (
+      return (//category
         <p className={classes.list__title}>
           <small>
             絞り込み：
@@ -83,6 +82,7 @@ const ProductList = () => {
       )
     }
   }
+
   const list__title_updated_at_month = () => {
     if (query.slice( 0, 18 ) == '?updated_at_month=') {
       const list__title__all = query.slice(18, 30)//202202
@@ -98,7 +98,7 @@ const ProductList = () => {
           {list__title__sliced+year_text+list__title__rest+month_text}
         </p>
       )
-    } else {
+    } else {//clients
       return (
         <>
           {list__title__clients()}
@@ -108,11 +108,11 @@ const ProductList = () => {
   }
 
   const list__title = () => {
-    if (query !== null) {
-      return (
+    if (query !== '') {
+      return (//month
         <>{list__title_updated_at_month()}</>
       )
-    } else {
+    } else {//empty
       return (
         <p className={classes.list__title}>記事一覧</p>
         )
@@ -135,7 +135,7 @@ const ProductList = () => {
             {list__title()}
             {products.length > 0 && (
               products.map(product => (
-                <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
               )
             ))}
             <div>
@@ -149,7 +149,7 @@ const ProductList = () => {
             {list__title()}
             {products.length > 0 && (
               products.map(product => (
-                <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
               )
             ))}
             <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>

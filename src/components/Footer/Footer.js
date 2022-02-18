@@ -3,10 +3,12 @@ import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container";
 import {makeStyles} from '@material-ui/core/styles';
 import './Footer.css'
-import { Contact } from ".";
 
 const useStyles = makeStyles({
-
+  contact_link_box: {
+    textAlign:'center',
+    fontFamily:'cursive',
+  }
 }
 );
 
@@ -16,7 +18,9 @@ const Footer = () => {
         <div className='footer_group'>
           <Container>
             <br/>
-            <Contact/>
+            <div className={classes.contact_link_box}>
+              <a href='/contact'>Contact to Manager</a>
+            </div>
             <br/>
             <Typography>
             </Typography>

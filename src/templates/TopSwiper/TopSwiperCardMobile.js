@@ -49,7 +49,7 @@ const TopSwiperCardMobile = (props) => {
   const userRole = getUserRole(selector)
 
   const isSignedIn = getIsSignedIn(selector);
-  const guest_href = `/guest/product/${props.id}`
+  const guest_href = `/product/${props.id}`
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
 

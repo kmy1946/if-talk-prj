@@ -125,7 +125,7 @@ const ProductsCard = (props) => {
 
   const if_user_name = localStorage.getItem('if-username')
 
-  const guest_href = `/guest/product/${props.id}`
+  const guest_href = `/product/${props.id}`
 
   return (
     <Card className={classes.root}>
@@ -135,12 +135,12 @@ const ProductsCard = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/users/product/'+props.id))}
+            onClick={() => dispatch(push('/product/'+props.id))}
             title=""
           />
           </Box>
           <CardContent className={classes.content}>
-            <div onClick={() => {dispatch(push('/users/product/'+props.id))}}>
+            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>

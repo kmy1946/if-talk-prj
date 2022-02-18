@@ -128,7 +128,7 @@ const ProductCardMobile = (props) => {
 
   const if_user_name = localStorage.getItem('if-username')
 
-  const guest_href = `/guest/product/${props.id}`
+  const guest_href = `/product/${props.id}`
   const user_href = `/product/${props.id}`
 
   return (
@@ -172,7 +172,7 @@ const ProductCardMobile = (props) => {
                             >
                               <MenuItem
                                 onClick={() => {
-                                  dispatch(push('/product/edit/'+props.id))
+                                  dispatch(push('/users/product/edit/'+props.id))
                                   handleClose()
                                 }}
                               >

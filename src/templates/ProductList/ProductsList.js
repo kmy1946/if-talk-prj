@@ -131,7 +131,7 @@ const ProductsList = () => {
                   {list__title()}
                   {products.length > 0 && (
                     products.map(product => (
-                      <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                      <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
                     )
                   ))}
                   <div className={classes.loadbutton_div}>
@@ -146,7 +146,7 @@ const ProductsList = () => {
                   <p className={classes.list__title}>記事一覧</p>
                   {products.length > 0 && (
                     products.map(product => (
-                      <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid}/>
+                      <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
                     )
                   ))}
                   <div>

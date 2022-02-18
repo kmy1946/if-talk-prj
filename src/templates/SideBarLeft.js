@@ -1,13 +1,12 @@
 //ClosableDrawerをと同じ
-import React, {useCallback, useEffect, useState} from "react";
-import { Divider, makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core";
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
-import { db } from "../Firebase";
 import { getIsSignedIn } from "../reducks/users/selectors";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,8 +50,7 @@ const SideBarLeft = () => {
   return(
     <div>
                 <div>
-                    <List>
-                        <p className="sidebar__title">　投稿</p>
+                    <List className="sidebar_left_group">
                         {isSignedIn ? (
                             <>
                             {filters_updated_month.map(filter => (

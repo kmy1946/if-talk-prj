@@ -8,7 +8,7 @@ const LogoTextGuest = () => {
   return (
       <div className="logotext" onClick={() => dispatch(push('/'))}>
         <small>
-          IF-Programmer
+          ITのタネ
         </small>
       </div>
   )

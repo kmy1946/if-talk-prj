@@ -8,7 +8,7 @@ const LogoText = () => {
   return (
       <div className="logotext" onClick={() => dispatch(push('/users/'))}>
         <small>
-          IF-Programmer
+          ITのタネ
         </small>
       </div>
   )

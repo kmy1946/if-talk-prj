@@ -1,13 +1,12 @@
 //ClosableDrawerをと同じ
-import React, {useCallback, useEffect, useState} from "react";
-import { Divider, makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core";
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
-import { db } from "../Firebase";
 
 const useStyles = makeStyles((theme) => ({
   sidebarleft__text:{
@@ -39,8 +38,7 @@ const SideBarLeftGuest = () => {
   return(
     <div>
                 <div>
-                    <List>
-                        <p className="sidebar__title">　投稿</p>
+                    <List className="sidebar_left_group">
                         {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText className={classes.sidebarleft__text}>

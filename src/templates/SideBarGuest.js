@@ -5,17 +5,9 @@ import { Divider, makeStyles } from "@material-ui/core";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import AddIcon from '@material-ui/icons/Add';
-import PersonIcon from '@material-ui/icons/Person';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 import { db } from "../Firebase";
-import { MapMenuList } from "../components/Header";
-import { TextInput } from "../components/UIkit";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -84,7 +76,7 @@ const SideBarGuest = () => {
                     <p className='sidebar__p'>
                         サイドバー
                     </p>
-                    */}
+                    
                     <div className={classes.searchField}>
                         <TextInput
                             fullWidth={false} label={"検索"} multiline={false}
@@ -99,7 +91,7 @@ const SideBarGuest = () => {
                     <Divider variant="middle" />
                     <Divider variant="middle" />
                     */}
-                    <List>
+                    <List  className="sidebar_group">
                         <p className="sidebar__title">カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>

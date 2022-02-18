@@ -4,10 +4,7 @@ import Carousel, { consts } from 'react-elastic-carousel'
 import TopSwiperCard from "./TopSwiperCard";
 import { db } from "../../Firebase";
 import { TopSwiperCardMobile } from "..";
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import IconButton from "@material-ui/core/IconButton";
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
-import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 
 const useStyles = makeStyles({
   topswiper__paginationbutton: {

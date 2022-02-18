@@ -3,10 +3,7 @@ import {makeStyles}     from '@material-ui/core/styles';
 import AppBar                         from '@material-ui/core/AppBar';
 import Toolbar                        from '@material-ui/core/Toolbar';
 import {useDispatch, useSelector}     from "react-redux";
-//import {getSignedIn} from "../../reducks/users/selectors";
-import logo from "../../../assets/img/icons/logo.png";
 import { ClosableDrawer, HeaderMenu } from "../index";
-import { push }                         from "connected-react-router"
 import { getIsSignedIn } from '../../../reducks/users/selectors';
 import HeaderMenuRow from '../HeaderMenu/HeaderMenuRow';
 import LogoText from './LogoText';
@@ -25,6 +22,7 @@ const useStyles = makeStyles({
       backgroundColor: "#fff",
       color: '#444',
       height:'40px',
+      backgroundColor:'#eeeeee'
     },
     toolbar: {
       margin: '0 auto',
