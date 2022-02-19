@@ -4,7 +4,7 @@ export { default as SideBarGuest } from './SideBarGuest';
 export { default as SideBarLeft } from './SideBarLeft';
 export { default as SignUp } from './Register/SignUp';
 export { default as SignIn } from './Register/SignIn';
-export { default as Reset } from './Reset';
+export { default as Reset } from './Register/Reset';
 export { default as ProductEdit } from './ProductEdit';
 export { default as ProdctEditRich } from './ProdctEditRich';
 export { default as EditorComponent } from './Editor/EditorComponent';

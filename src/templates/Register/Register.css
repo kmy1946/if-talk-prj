@@ -1,14 +1,77 @@
+.Item-Content-Flg1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 40px solid #75eaff;;
+  border-bottom: 40px solid transparent;
+}
+.Item-Content-Flg2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-left: 40px solid transparent;
+  border-bottom: 40px solid #75eaff;
+}
+.Item-Content-Flg3 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-right: 40px solid #75eaff;;
+  border-bottom: 40px solid transparent;
+}
+.Item-Content-Flg4 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-right: 40px solid transparent;
+  border-bottom: 40px solid #75eaff;
+}
+
 .signup-title {
   color: #449ef1;
   font-weight: 700;
   font-size: 20px;
 }
+.signin-title {
+  color: #449ef1;
+  font-weight: 700;
+  font-size: 20px;
+}
+.reset-title {
+  color: #449ef1;
+  font-weight: 700;
+  font-size: 20px;
+}
 .c-section-container_register {
+  position: relative;
   margin: 0 auto;
-  max-width: 400px;
+  margin-top: 60px;
+  max-width: 500px;
   padding: 1rem;
   height: auto;
+  border-radius: 2px;
   width: calc(100% - 2rem);
+  transition: box-shadow 0.35s;
+}
+.c-section-container_register:hover {
+  
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+.signup-form__group {
+  margin: 0 auto;
+  width: calc(100% - 10vw);
+}
+.signin-form__group {
+  margin: 0 auto;
+  width: calc(100% - 10vw);
+}
+.reset-form__group {
+  margin: 0 auto;
+  width: calc(100% - 10vw);
+}
+.reset__message {
+  white-space: nowrap;
+  color: rgb(116, 116, 116);
 }
 .c-section-container__guest {
   margin: 0 auto;
@@ -31,6 +94,15 @@
   font-weight: 550;
 }
 .signup__register-link:hover {
+  color: rgb(122, 195, 255);
+  font-weight: 550;
+  text-decoration: none;
+}
+.signin__register-link {
+  color: rgb(0, 120, 218);
+  font-weight: 550;
+}
+.signin__register-link:hover {
   color: rgb(122, 195, 255);
   font-weight: 550;
   text-decoration: none;

@@ -40,16 +40,21 @@ const SignIn = () => {
 
     return (
         <>
-        <div className="c-section-container_register">
-          <div className="center">
+        {/*
+        <div className="center">
               <GreenButton
                 label={"ゲストユーザーとしてログイン"}
                 onClick={() => {dispatch(push('/signin_asguest'))}}
                 className={classes.guest_login}
                 />
-          </div>
+        </div>
+        */}
+        <div className="c-section-container_register">
+          <div className="Item-Content-Flg1" />
+          <div className="Item-Content-Flg2" />
+          <p className="center signin-title">ログイン</p>
           <div className="module-spacer--medium" />
-          <div className="module-spacer--medium" />
+          <div className="signin-form__group">
           <TextInput
               fullWidth={true} label={"メールアドレス"} multiline={false} required={true}
               rows={1} value={email} type={"email"} onChange={inputEmail}
@@ -58,16 +63,17 @@ const SignIn = () => {
               fullWidth={true} label={"パスワード"} multiline={false} required={true}
               rows={1} value={password} type={"password"} onChange={inputPassword}
           />
+          </div>
           <div className="center">
             <PrimaryButton
               label={"ログイン"}
               onClick={() => dispatch(signIn(email, password))}
             />
-
             <div className="module-spacer--medium" />
             <p onClick={() => {dispatch(push('/signup'))}} className='signup__register-link'>アカウントをお持ちでない方</p>
             <p onClick={() => {dispatch(push('/signin/reset'))}} className='signup__register-link'>パスワードを忘れた方</p>
           </div>
+          <div className="module-spacer--small" />
         </div>
         </>
     )

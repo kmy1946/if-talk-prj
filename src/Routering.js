@@ -25,7 +25,7 @@ function Routering() {
           <>
           {/*
           <div className="text-image">
-            <img src="paragraph_sample.jpg" />
+            <img src="描画.svg" />
           </div>
           */}
          <TopSwiper />
