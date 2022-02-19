@@ -96,7 +96,7 @@ const Header = () => {
                           <small>
                             プログラミング情報サイト　
                           </small>
-                          <a href='/signin'>
+                          <a href='/signin' className='header__signin-link'>
                             <small>
                               ユーザー関連
                             </small>

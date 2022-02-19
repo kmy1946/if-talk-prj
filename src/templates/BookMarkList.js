@@ -18,9 +18,9 @@ const BookMarkList = () => {
 
   return (
     <section className="c-section-wrapin">
-      <h1 className="u-text__headline">
+      <p className="u-text__headline__bookmark">
         お気に入りリスト
-      </h1>
+      </p>
 
       {isSignedIn ? 
       <List>

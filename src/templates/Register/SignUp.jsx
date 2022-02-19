@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { TextInput } from "../components/UIkit";
-import { PrimaryButton } from "../components/UIkit";
-import { signUp } from "../reducks/users/operations";
+import { TextInput } from "../../components/UIkit";
+import { PrimaryButton } from "../../components/UIkit";
+import { signUp } from "../../reducks/users/operations";
 import { push } from "connected-react-router";
-
+import './Register.css';
 const SignUp = () => {
   const dispatch = useDispatch()
   const [username, setUsername] = useState(""),
@@ -26,8 +26,8 @@ const SignUp = () => {
   }, [setConfirmPassword])
 
   return (
-    <div className="c-section-container">
-      <h2 className="u-text__headline u-text-center">アカウント登録</h2>
+    <div className="c-section-container_register">
+      <p className="center signup-title">アカウント登録</p>
       <div className="module-spacer--medium" />
       <TextInput
           fullWidth={true} label={"ユーザー名"} multiline={false} required={true}
@@ -51,8 +51,9 @@ const SignUp = () => {
           label={"アカウントを登録する"}
           onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
         />
-        <div className="module-spacer--medium" />
-        <p onClick={() => {dispatch(push('/signin'))}}>アカウントをお持ちの方はこちら</p>
+        <div className="center">
+          <a href="/signin" className='signup-register-link'>アカウントをお持ちの方はこちら</a>
+        </div>
       </div>
     </div>
   )

@@ -1,3 +1,11 @@
+.whensignin-link {
+  text-decoration: none;
+  color: #50ca37;
+}
+.whensignin-link:hover {
+  text-decoration: none;
+  color: #1b7909;
+}
 .guest_signin__button {
   font-size: 1px;
 }
@@ -239,7 +247,12 @@
   font-size: 1.263rem;
   margin: 15px;
 }
-
+.u-text__headline__bookmark {
+  margin-top: 100px;
+  font-size: 20px;
+  color: #3a3a3a;
+  font-weight: bold;
+}
 .c-section-container_post {
   margin: 0 auto;
   max-width: 100%;
@@ -254,14 +267,6 @@
 }
 
 .c-section-container {
-  margin: 0 auto;
-  max-width: 400px;
-  padding: 1rem;
-  height: auto;
-  width: calc(100% - 2rem);
-}
-
-.c-section-container__guest {
   margin: 0 auto;
   max-width: 400px;
   padding: 1rem;

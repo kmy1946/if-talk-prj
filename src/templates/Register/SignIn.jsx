@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TextInput, PrimaryButton, GreenButton } from "../components/UIkit";
-import { signIn } from "../reducks/users/operations";
+import { TextInput, PrimaryButton, GreenButton } from "../../components/UIkit";
+import { signIn } from "../../reducks/users/operations";
 import { push } from "connected-react-router";
 import { makeStyles } from "@material-ui/core";
-import { getIsSignedIn } from "../reducks/users/selectors";
+//import { getIsSignedIn } from "../reducks/users/selectors";
+import './Register.css';
 
 const useStyles = makeStyles({
   guest_login: {
@@ -16,7 +17,7 @@ const SignIn = () => {
   const classes = useStyles();
   const dispatch = useDispatch()
   const selector = useSelector(state => state);
-  const isSignedIn = getIsSignedIn(selector);
+  //const isSignedIn = getIsSignedIn(selector);
   const [email, setEmail] = useState(""),
         [password, setPassword] = useState("");
 
@@ -39,7 +40,7 @@ const SignIn = () => {
 
     return (
         <>
-        <div className="c-section-container">
+        <div className="c-section-container_register">
           <div className="center">
               <GreenButton
                 label={"ゲストユーザーとしてログイン"}
@@ -64,8 +65,8 @@ const SignIn = () => {
             />
 
             <div className="module-spacer--medium" />
-            <p onClick={() => {dispatch(push('/signup'))}}>アカウントをお持ちでない方</p>
-            <p onClick={() => {dispatch(push('/signin/reset'))}}>パスワードを忘れた方</p>
+            <p onClick={() => {dispatch(push('/signup'))}} className='signup__register-link'>アカウントをお持ちでない方</p>
+            <p onClick={() => {dispatch(push('/signin/reset'))}} className='signup__register-link'>パスワードを忘れた方</p>
           </div>
         </div>
         </>

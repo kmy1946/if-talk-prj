@@ -12,6 +12,13 @@
   font-family: 'Times New Roman', Times, serif;
   margin-bottom: 20px;
 }
+.header__signin-link {
+  color: rgb(0, 100, 231);
+}
+.header__signin-link:hover {
+  text-decoration: none;
+  color: rgb(109, 172, 255);
+}
 .header__bordercoloricon_group {
   bottom: 8px;
 }

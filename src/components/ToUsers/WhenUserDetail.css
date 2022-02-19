@@ -1,0 +1,52 @@
+.whenuserdetail {
+  margin: 150px;
+}
+.whenuserdetail_title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+ul.cp_list {
+	padding: 0.5em;
+	list-style: none;
+}
+ul.cp_list li {
+	position: relative;
+  text-align: left;
+	padding: 0.5em 1em 0.5em 2.3em;
+	margin-bottom:5px;
+	border-bottom: 1px solid rgb(7, 209, 0);
+}
+ul.cp_list li:after,
+ul.cp_list li:before {
+	content:'';
+	position: absolute;
+	transform: rotate(45deg);
+}
+ul.cp_list li:before {
+	top: 0.7em;
+	left: 0.2em;
+	width: 12px;
+	height: 12px;
+	border:2px solid rgb(8, 233, 0);
+}
+ul.cp_list li:after {
+	top: 0.9em;
+	left: 0.7em;
+	width: 14px;
+	height: 14px;
+	background: rgb(8, 233, 0);
+	transform: rotate(60deg);
+}
+.cp_list__description {
+  text-align: left;
+  padding: 30px;
+}
+.whenuserdetail__register_link {
+  color: rgb(0, 130, 190);
+  font-weight: 800;
+}
+.whenuserdetail__register_link:hover {
+  text-decoration: none;
+  color: rgb(138, 218, 255);
+}

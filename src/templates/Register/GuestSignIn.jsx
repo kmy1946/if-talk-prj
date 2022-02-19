@@ -1,9 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { TextInput, PrimaryButton, GreyButton, GreenButton } from "../components/UIkit";
-import { signIn } from "../reducks/users/operations";
+import { TextInput, PrimaryButton, GreyButton, GreenButton } from "../../components/UIkit";
+import { signIn } from "../../reducks/users/operations";
 import { push } from "connected-react-router";
-import { ProductList } from ".";
+import { ProductList } from "..";
+import './Register.css';
 
 const SignIn = () => {
   const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const SignIn = () => {
   } else {
     return (
       <>
-        <div className="c-section-container">
+        <div className="c-section-container_register">
           <div className="c-section-container__guest">
             <div className="center">
               <GreenButton

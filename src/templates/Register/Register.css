@@ -1,0 +1,37 @@
+.signup-title {
+  color: #449ef1;
+  font-weight: 700;
+  font-size: 20px;
+}
+.c-section-container_register {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 1rem;
+  height: auto;
+  width: calc(100% - 2rem);
+}
+.c-section-container__guest {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 1rem;
+  height: auto;
+  width: calc(100% - 2rem);
+}
+.signup-register-link {
+  color: rgb(0, 224, 11);
+  font-weight: 500;
+}
+.signup-register-link:hover {
+  color: rgb(36, 255, 47);
+  font-weight: 550;
+  text-decoration: none;
+}
+.signup__register-link {
+  color: rgb(0, 120, 218);
+  font-weight: 550;
+}
+.signup__register-link:hover {
+  color: rgb(122, 195, 255);
+  font-weight: 550;
+  text-decoration: none;
+}

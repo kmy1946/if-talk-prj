@@ -9,6 +9,7 @@ import { Contact } from "./components/Footer";
 import TextEditor from "./templates/Editor/TextEditor";
 import TextEdition from "./templates/Editor/TextEdition";
 import NewArticle from "./templates/Editor/NewArticle";
+import { WhenUserDetail } from "./components/ToUsers";
 function Routering() {
   return (
       <Switch>
@@ -18,12 +19,13 @@ function Routering() {
         <Route exact path='/signin' component={SignIn}></Route>
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>
         <Route exact path='/signin/reset' component={Reset}></Route>
+        <Route exact path='/whensignin' component={WhenUserDetail} />
 
         <Route exact path={"/"}>
           <>
           {/*
-          <div class="text-image">
-            <img src="bg_image.jpg" />
+          <div className="text-image">
+            <img src="paragraph_sample.jpg" />
           </div>
           */}
          <TopSwiper />
