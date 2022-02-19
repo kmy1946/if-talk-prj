@@ -46,14 +46,9 @@ const useStyles = makeStyles((theme) => ({
       right:0
     },
     media: {
-      //height: 0,
-      //objectFit: 'cover',
-      //overflow: 'hidden',
-      //margin:0,
       width:'9vh',
       height:'9vh',
       borderRadius:'2px'
-      //width:'400px'
   },
     product_image:{
       padding:'4px',
@@ -85,8 +80,6 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '6vw',
       marginLeft: '35vw',
       whiteSpace: 'noWrap'
-  },
-    admin_menu: {
   },
     list__vertical_divider: {
       marginLeft:'-10px',
@@ -174,30 +167,22 @@ const ProductCard = (props) => {
                       </Typography>
                     </div>
                     <Menu
-                      anchorEl={anchorEl}
-                                                            keepMounted
-                                                            open={Boolean(anchorEl)}
-                                                            onClose={handleClose}
-                                                            className={classes.admin_menu}
-                                                          >
-                                                            <MenuItem
-                                                              onClick={() => {
-                                                                dispatch(push('/users/product/edit/'+props.id))
-                                                                handleClose()
-                                                              }}
-                                                            >
-                                                              編集する
-                                                            </MenuItem>
-                                                            <MenuItem
-                                                              onClick={() => {
-                                                                dispatch(deleteProduct(props.id))
-                                                                handleClose()
-                                                              }}
-                                                            >
-                                                              削除する
-                                                            </MenuItem>
-                                                          </Menu>
-                                                          </>
+                      anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose} className={classes.admin_menu}
+                    >
+                      <MenuItem onClick={() => {
+                                dispatch(push('/users/product/edit/'+props.id))
+                                handleClose()}}
+                      >
+                        編集する
+                      </MenuItem>
+                      <MenuItem
+                          onClick={() => { dispatch(deleteProduct(props.id))
+                                                                handleClose() }}
+                      >
+                        削除する
+                      </MenuItem>
+                    </Menu>
+                  </>
                 )
                 } else {
                 return false
@@ -212,7 +197,11 @@ const ProductCard = (props) => {
                 <Typography className={classes.category}>
                   {props.category}
                 </Typography>
-
+                <Typography className={classes.updated_at}>
+                  {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
+                  {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
+                  {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
+                </Typography>
             </div>
           </CardContent>
 
@@ -240,7 +229,9 @@ const ProductCard = (props) => {
                     {props.category}
                   </Typography>
                   <Typography className={classes.updated_at}>
-                    {props.updated_at}
+                    {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
+                    {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
+                    {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
                   </Typography>
               </div>
             </CardContent>

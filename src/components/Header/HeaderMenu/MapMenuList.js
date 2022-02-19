@@ -67,7 +67,6 @@ const MapMenuList = (props) => {
                          //   )
                         ))
                         }
-                        
                         <ListItem button key="logout" onClick={() => dispatch(signOut())}>
                         <ExitToAppIcon/>　
                             <ListItemText ><small>ログアウト</small></ListItemText>

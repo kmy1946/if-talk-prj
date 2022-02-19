@@ -6,19 +6,21 @@ import { db, storage } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
 import './productedit.css';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, DefaultDraftBlockRenderMap, convertFromRaw,
-          ContentState, convertToRaw, AtomicBlockUtils, RichUtils,
-          getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';//, getDefaultKeyBinding, RichUtils
+import { EditorState, DefaultDraftBlockRenderMap, //convertFromRaw,
+          ContentState, convertToRaw, //AtomicBlockUtils, RichUtils,
+          //getDefaultKeyBinding, KeyBindingUtil
+        } from 'draft-js';//, getDefaultKeyBinding, RichUtils
 import createImagePlugin from "@draft-js-plugins/image";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { convertToHTML, } from 'draft-convert';
+//import "draft-js/dist/Draft.css";
+//import { convertToHTML, } from 'draft-convert';
 import DOMPurify from 'dompurify';
 //import { draftToHtml as draftToHtml_unused } from 'draftjs-to-html';
 //import CodeUtils from 'draft-js-code';
 import Immutable from 'immutable';
-import { EditorComponent } from ".";
-import htmlToDraft from "html-to-draftjs"
-import TextEditor from "./Editor/TextEditor";
+//import { EditorComponent } from ".";
+//import htmlToDraft from "html-to-draftjs"
+//import TextEditor from "./Editor/TextEditor";
 import draftToHtml from "draftjs-to-html";
 
 //import draftToHtml from 'draftjs-to-html-fork';//code,highlight supported
@@ -45,9 +47,6 @@ const ProdctEditRich = () => {
   const styleMap = {//customstulemap
     'STRIKETHROUGH': {
       textDecoration: 'line-through',
-    },
-    'HIGHLIGHT': {
-      backgroundColor:'red'
     },
     'BOLD': {
       fontWeight: 'bold',
@@ -101,7 +100,6 @@ const ProdctEditRich = () => {
     }
   }
 
-
   function uploadImageCallBack(file) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();//オブジェクト作成
@@ -148,35 +146,10 @@ const ProdctEditRich = () => {
       id = id.split('/')[1]
   }
   const [images, setImages] = useState([]),
-        [descfile, setDescfile] = useState([]),
         [name, setName] = useState(""),
         [category, setCategory] = useState(""),
         [categories, setCategories] = useState([]),
         [clients, setClients] = useState("");
-        //[description, setDescription] = useState("");
-
-  const uploadImage = useCallback((event, file) => {
-    const fileimage = 'https://firebasestorage.googleapis.com/v0/b/if-talks.appspot.com/o/images%2FUw7eijZdalG7hRqx?alt=media&token=559363ab-df23-40f6-b052-581a940902a7'
-    let blob = new Blob(file, {type: "image/jpeg"});
-    const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const N=16;
-    const fileName = Array.from(crypto.getRandomValues(new Uint32Array(N))).map((n)=>S[n%S.length]).join('')
-  
-    const uploadRef = storage.ref('description').child(fileName);
-    const uploadTask = uploadRef.put(blob);
-
-    console.log('file:',file)
-    console.log('blob:',blob)
-    uploadTask.then(() => {
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        const newImage = {id: fileName, path: downloadURL};
-        console.log('newImage.path:',newImage.path)
-        setDescfile((prevState => [...prevState, newImage]))
-        console.log('desc:',descfile)
-      }).catch((error) => console.log(error))
-    }).catch((error) => console.log(error))
-  }, [setDescfile]);
-  
   const username = localStorage.getItem('if-username')
 
   const inputName = useCallback((event) => {
@@ -291,14 +264,13 @@ const ProdctEditRich = () => {
           toolbarClassName="toolbar-class"
           value={description}
           toolbar={{
-            options: ['inline', 'blockType','fontFamily', 'textAlign', 'list', 'colorPicker', 'link', 'image', 'emoji', 'remove', 'history'],//
+            options: ['inline', 'blockType','fontFamily', 'textAlign', 'list', 'colorPicker', 'link', 'image', 'remove', 'history'],//, 'emoji'
             inline: { inDropdown: true, options: ['bold', 'italic', 'underline', 'monospace','strikethrough', 'superscript', 'subscript'] },//
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
             link: { inDropdown: true },
             history: { inDropdown: true },
             blockType: { options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote'], },
-
             //image: {urlEnabled: true, uploadEnabled: true,uploadCallback: (file) => uploadImage(file),//upload_DescriptionImages,
               //previewImage: true,alt: { present: true, mandatory: true },inputAccept: "image/*",}
             }}

@@ -102,11 +102,7 @@ const TopSwiper = () => {
 
               {(
                 window.innerWidth > 760 ?
-                  <>
-                        {/*
-                <Grid item xs={12} md={15} lg={15}>
-                        */}
-                        
+                  <>                        
                   <Carousel breakPoints={breakPoints} renderArrow={myArrow}
 
                     renderPagination={({ pages, onClick }) => {
@@ -138,9 +134,6 @@ const TopSwiper = () => {
                     )
                     }
                   </Carousel>
-                  {/*
-                </Grid>
-                  */}
                 </>
                 :
                 <>

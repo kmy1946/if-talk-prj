@@ -82,7 +82,6 @@ const ProductList = () => {
       )
     }
   }
-
   const list__title_updated_at_month = () => {
     if (query.slice( 0, 18 ) == '?updated_at_month=') {
       const list__title__all = query.slice(18, 30)//202202
@@ -106,7 +105,6 @@ const ProductList = () => {
       )
     }
   }
-
   const list__title = () => {
     if (query !== '') {
       return (//month

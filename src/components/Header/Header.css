@@ -9,8 +9,20 @@
   justify-content: space-around;
 }
 .logotext {
-  font-family: cursive;
+  font-family: 'Times New Roman', Times, serif;
   margin-bottom: 20px;
+}
+.header__bordercoloricon_group {
+  bottom: 8px;
+}
+.header__bordercoloricon_a {
+  display: block;
+  width: 35px;
+  height: 35px;
+  text-decoration: none;
+}
+.header__bordercoloricon {
+  color: rgb(50, 122, 255);
 }
 .headermenurow {
   margin-bottom: 4px;

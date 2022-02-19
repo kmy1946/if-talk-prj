@@ -26,8 +26,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center'
   },
   detail: {
-    margin:'10vw',
+    margin:'3vw',
     maxWidth:'auto'
+  },
+  detail_name: {
+    textAlign: 'left',
+    fontSize:27,
+    fontWeight:'bold',
+    color:'#575757',
+    padding: '0.25em 0.5em',/*上下 左右の余白*/
+    color: '#494949',/*\文字色*/
+    background: 'transparent',/*背景透明に*/
+    borderLeft: 'solid 5px #7db4e6'
   },
   clients: {
       fontSize: 15,
@@ -36,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   category: {
     fontSize: 15,
     textAlign:"right"
+  },
+  updated_at: {
+    textAlign:'right',
+    fontSize:10
   },
 }))
 
@@ -95,13 +109,18 @@ const ProductDetail = () => {
                         <ImageSwiper images={product.images}/>
                     </div>
                          <p className={classes.category}>{(product.category)} 関連</p>
-                        <h2 className="u-text__headline_detail">{product.name}</h2>
+                        <p className={classes.detail_name}>{product.name}</p>
                         <div className="module-spacer--small"/>
                         {detail_clients()}
                     <div>
                       <div className="productdetail__description">{returnCodeToBr(product.description)}</div>
                     </div>
                 <p className={classes.username}><small>投稿者：</small>{(product.username)}<small>さん</small></p>
+                <p className={classes.updated_at}>
+                  {product.updated_at.substr(0,4)}/{product.updated_at.substr(4,2)}/
+                  {product.updated_at.substr(6,2)}, {product.updated_at.substr(8,2)}:
+                  {product.updated_at.substr(10,2)}:{product.updated_at.substr(12,2)}
+                </p>
           </div>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small"/>

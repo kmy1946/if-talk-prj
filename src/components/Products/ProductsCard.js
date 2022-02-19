@@ -68,6 +68,12 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '35vw',
       whiteSpace: 'noWrap'
   },
+  updated_at: {
+    position:'absolute',
+    fontSize:'10px',
+    right:'1vw',
+    bottom:'1vw',
+  },
     admin_menu: {
   },
     list__vertical_divider: {
@@ -211,6 +217,11 @@ const ProductsCard = (props) => {
                   <CreateIcon />
                   {props.username} さん
                 </Typography>
+                <Typography className={classes.updated_at}>
+                    {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
+                    {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
+                    {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
+                  </Typography>
                 <a href={guest_href} className={classes.guest_hreflink} />
           </CardContent>
       </Box>

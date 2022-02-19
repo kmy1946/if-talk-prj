@@ -4,13 +4,6 @@
 .guest_signup__button {
   font-size: 1px;
 }
-.logotext {
-  font-family: cursive;
-}
-.header__bordercoloricon {
-  width: 35px;
-  text-decoration: none;
-}
 .productdetail__description {
   text-align: left;
   width: 100%;
@@ -128,22 +121,15 @@
   height: 44px;
   position: relative;
   font-size: 30px;
+  color: #000000;
   margin: 0;
   margin-top: 20px;
   left: 50%;
   transform: translate(-50%, -20%);
+  /*
   color: white;
-  opacity: 0.85;
-  text-shadow:
-    1px  1px 1px #555555,
-    -1px  1px 1px #000000,
-    1px -1px 1px #000000,
-    -1px -1px 1px #000000,
-    1px  0px 1px #000000,
-    0px  1px 1px #000000,
-    -1px  0px 1px #000000,
-    0px -1px 1px #000000;
-    /* 文字数制限 */
+  text-shadow:1px  1px 1px #000000,-1px  1px 1px #000000,1px -1px 1px #000000,-1px -1px 1px #000000,1px  0px 1px #000000,0px  1px 1px #000000,-1px  0px 1px #000000,0px -1px 1px #000000;
+  */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

@@ -47,10 +47,8 @@ const HeaderMenuRow = (props) => {
 
   return (
         <div className='headermenurow'>
-          <IconButton>
-            <a href='/users/product/edit/' className='header__bordercoloricon'>
-              <BorderColorIcon />
-            </a>
+            <IconButton onClick={() => dispatch(push('/users/product/edit'))}>
+              <BorderColorIcon className='header__bordercoloricon'/>
           </IconButton>
           <IconButton onClick={() => dispatch(push('/users/bookmark'))}>
             <Badge badgeContent={productsInBookMark.length} color="secondary">

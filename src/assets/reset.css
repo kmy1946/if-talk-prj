@@ -99,7 +99,7 @@ button, input, optgroup, select, textarea {
 }
 
 button {
-  overflow: visible
+  overflow: visible;
 }
 
 button, select {
@@ -321,6 +321,14 @@ dd, dt, li {
       font-size: 16px;
       letter-spacing: 0
   }
+}
+
+.img_swiper {
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  height: auto;
+  max-width: calc(100% - 5vw);
+  vertical-align: middle
 }
 
 img {
