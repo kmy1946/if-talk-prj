@@ -1,6 +1,9 @@
 .whenuserdetail {
   margin: 150px;
 }
+.whenuserdetail_mobile {
+  margin: 5px;
+}
 .whenuserdetail_title {
   font-weight: bold;
   font-size: 20px;
