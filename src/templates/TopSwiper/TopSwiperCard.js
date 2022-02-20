@@ -8,6 +8,7 @@ import NoImage from "../../assets/img/src/no_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -67,14 +68,14 @@ const TopSwiperCard = (props) => {
         {isSignedIn ? 
           (
             <>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id))}}>
           {images ?
             (
           <CardMedia
               className={classes.media}
               image={props.images[0].path}
               title=""
-              onClick={() => dispatch(push('/product/'+props.id))}
+              onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id))}}
           />)
           :
           (<><NoImage /></>)
@@ -94,7 +95,7 @@ const TopSwiperCard = (props) => {
             :
             (
             <>
-            <a href={guest_href} className='featured-content__href'>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className='featured-content__href'>
             
             {images ?
             (
@@ -102,7 +103,10 @@ const TopSwiperCard = (props) => {
               className={classes.media}
               image={props.images[0].path}
               title=""
-              onClick={() => dispatch(push('/product/'+props.id))}
+              onClick={() => {
+                dispatch(showLoadingAction("Loading..."));
+                dispatch(push('/product/'+props.id))}
+              }
           />)
           :
           (<><NoImage /></>)
@@ -115,7 +119,7 @@ const TopSwiperCard = (props) => {
                   {props.name}
                 </Typography>
           </CardContent>
-          </a>
+          </div>
           </>
           )
         }

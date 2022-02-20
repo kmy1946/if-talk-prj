@@ -8,6 +8,7 @@ import NoImage from "../../assets/img/src/no_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   featured_mobile__container:{
@@ -62,14 +63,14 @@ const TopSwiperCardMobile = (props) => {
         {isSignedIn ? 
           (//遷移先URLが異なる
             <>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
             {images ?
               (
                 <CardMedia
                   className={classes.media_mobile}
                   image={props.images[0].path}
                   title=""
-                  onClick={() => dispatch(push('/product/'+props.id))}
+                  onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id))}}
                 />
               )
               : 
@@ -93,13 +94,16 @@ const TopSwiperCardMobile = (props) => {
           :
           (
           <>
-            <a href={guest_href} className='featured-content__href_mobile'>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className='featured-content__href_mobile'>
               {images ? (
                 <CardMedia
                     className={classes.media_mobile}
                     image={props.images[0].path}
                     title=""
-                    onClick={() => dispatch(push('/product/'+props.id))}
+                    onClick={() => {
+                      dispatch(showLoadingAction("Loading..."));
+                      dispatch(push('/product/'+props.id))}
+                    }
                 />
                 )
                 : 
@@ -113,7 +117,7 @@ const TopSwiperCardMobile = (props) => {
                     {props.name}
                   </Typography>
                 </CardContent>
-              </a>
+              </div>
             </>
           )
         }

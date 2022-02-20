@@ -1,5 +1,6 @@
 import { fetchProductsInBookMarkAction, signInAction, signOutAction } from "./actions";
 import { push } from "connected-react-router";
+import {hideLoadingAction, showLoadingAction} from "../loading/actions";
 import { auth, db, FirebaseTimestamp } from "../../Firebase/index";
 import { format } from 'date-fns'
 
@@ -65,46 +66,6 @@ export const resetPassword = (email) => {
   }
 }
 
-export const signIn = (email, password) => {
-  return async ( dispatch ) => {//dispatch->actionsを呼び出す、getState()->storeの現在のstateを取得する
-    //validation
-    if (email === "" || password === ""){
-      alert("必須項目が未入力です。")
-      return false
-    }
-
-    auth.signInWithEmailAndPassword(email, password)
-      .then(result => {
-        const user = result.user
-
-        if (user) {
-          const uid = user.uid
-          db.collection("users").doc(uid).get()
-            .then(snappshot => {
-              const data = snappshot.data()
-              
-              localStorage.setItem('if-username', data.username)
-              localStorage.setItem('if-uid', uid)
-              //console.log(data.username)
-              dispatch(signInAction({
-                isSigneIn: true,
-                role: data.role,//dataのroleを渡す
-                uid: uid,
-                username: data.username//dataのusername
-              }))
-
-              dispatch(push('/users/'))
-              alert('ログインに成功しました！！')
-              //window.location.reload()
-          })
-        }
-      }).catch((error) => {
-        console.log(error)
-        alert('ログイン出来ませんでした。もう一度ご確認ください。')
-    })
-  }
-}
-
 export const signUp = (username, email, password, confirmPassword) => {
   return async (dispatch) => {
     // validation
@@ -143,9 +104,10 @@ export const signUp = (username, email, password, confirmPassword) => {
           db.collection("users").doc(uid).set(userInitialData)
             .then((res) => {
               localStorage.setItem('if-username', username)
-              dispatch(push('/users/'))
+              dispatch(push('/'))//users/'))
+              dispatch(hideLoadingAction())
             }).catch((error) => {
-              //dispatch(hideLoadingAction())
+              dispatch(hideLoadingAction())
               alert('アカウント登録に失敗しました。もう1度お試しください。')
               throw new Error(error)
           })
@@ -154,18 +116,76 @@ export const signUp = (username, email, password, confirmPassword) => {
   }
 }
 
+export const signIn = (email, password) => {
+  return async ( dispatch ) => {//dispatch->actionsを呼び出す、getState()->storeの現在のstateを取得する
+    //validation
+    dispatch(showLoadingAction("Sign in..."));
+    if (email === "" || password === ""){
+      dispatch(hideLoadingAction());
+      alert("必須項目が未入力です。")
+      return false
+    }
+    //if (!isValidEmailFormat(email)) {
+    //  dispatch(hideLoadingAction());
+    //  alert('メールアドレスの形式が不正です。')
+    //  return false
+    //}
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then(result => {
+        const user = result.user
+        const userState = result.user
+        if (!userState) {
+          dispatch(hideLoadingAction());
+          throw new Error('ユーザーIDを取得できません');
+        }
+        if (user) {
+          const uid = user.uid
+          db.collection("users").doc(uid).get()
+            .then(snappshot => {
+              const data = snappshot.data()
+              
+              localStorage.setItem('if-username', data.username)
+              localStorage.setItem('if-uid', uid)
+              //console.log(data.username)
+              dispatch(signInAction({
+                isSigneIn: true,
+                role: data.role,//dataのroleを渡す
+                uid: uid,
+                username: data.username//dataのusername
+              }))
+              dispatch(hideLoadingAction());
+              dispatch(push('/'))//users/'))
+              alert('ログインに成功しました！！')
+              //window.location.reload()
+          })
+        }
+      }).catch((error) => {
+        dispatch(hideLoadingAction());
+        console.log(error)
+        alert('ログイン出来ませんでした。もう一度ご確認ください。')
+    })
+  }
+}
+
 export const signOut = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    dispatch(showLoadingAction("Sign out..."));
+    const uid = getState().users.uid
+
     auth.signOut()
-        .then(() => {
-          dispatch(signOutAction());//reduxのstoreもSignOut
-          dispatch(push('/'))
-          localStorage.removeItem('if_user_id')
-          localStorage.removeItem('if_username')
-          localStorage.removeItem('if_user_name')
-          localStorage.removeItem('if-username')
-          localStorage.removeItem('if-uid')
-          window.location.reload()
-        })
+      .then(() => {
+        dispatch(signOutAction());//reduxのstoreもSignOut
+        dispatch(push('/'))
+        localStorage.removeItem('if_user_id')
+        localStorage.removeItem('if_username')
+        localStorage.removeItem('if_user_name')
+        localStorage.removeItem('if-username')
+        localStorage.removeItem('if-uid')
+        //window.location.reload()
+      }).catch(() => {
+          dispatch(hideLoadingAction());
+          throw new Error('ログアウトに失敗しました。')
+      })
   }
 }

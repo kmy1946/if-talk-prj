@@ -1,4 +1,5 @@
 const initialState = {
+  loading: { state: false, text: "" },
   products: {
     list: [],
   },

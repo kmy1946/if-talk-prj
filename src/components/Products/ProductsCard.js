@@ -17,6 +17,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import { deleteProduct } from "../../reducks/products/operation";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
 import { db } from "../../Firebase";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 //import { theme } from "../../assets/theme";
 
@@ -173,6 +174,7 @@ const ProductsCard = (props) => {
             >
             <MenuItem
                                 onClick={() => {
+                                  dispatch(showLoadingAction("Loading..."));
                                   dispatch(push('/users/product/edit/'+props.id))
                                   handleClose()
                                 }}
@@ -222,7 +224,7 @@ const ProductsCard = (props) => {
                     {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
                     {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
                   </Typography>
-                <a href={guest_href} className={classes.guest_hreflink} />
+                <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className={classes.guest_hreflink} />
           </CardContent>
       </Box>
       )

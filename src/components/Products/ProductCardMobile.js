@@ -16,6 +16,7 @@ import { useTheme } from "@material-ui/styles";
 import CreateIcon from '@material-ui/icons/Create';
 import { deleteProduct } from "../../reducks/products/operation";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -139,7 +140,7 @@ const ProductCardMobile = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/product/'+props.id))}
+            onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}
             title=""
           />
           </Box>
@@ -232,7 +233,7 @@ const ProductCardMobile = (props) => {
                   {props.username} さん
                 </Typography>
                 */}
-                <a href={guest_href} className={classes.guest_hreflink} />
+                <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className={classes.guest_hreflink} />
           </CardContent>
       </Box>
       )

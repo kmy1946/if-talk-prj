@@ -15,10 +15,13 @@
     "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.14",
+    "@redux-devtools/extension": "^3.2.2",
+    "@reduxjs/toolkit": "^1.7.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "connected-react-router": "^6.8.0",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.28.0",
     "dompurify": "^2.3.5",
     "draft-convert": "^2.1.12",
@@ -44,6 +47,7 @@
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "swiper": "^5.4.5",
@@ -53,7 +57,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "staging": "cross-env NODE_ENV=\"development\" vue-cli-service build && firebase use if-talks && firebase deploy",
+    "deploy": "cross-env NODE_ENV=\"production\" vue-cli-service build && firebase use itnotane && firebase deploy"
   },
   "eslintConfig": {
     "extends": [

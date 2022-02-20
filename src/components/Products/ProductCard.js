@@ -13,10 +13,9 @@ import { Menu } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import ListIcon from '@material-ui/icons/List';
 import { useTheme } from "@material-ui/styles";
-import CreateIcon from '@material-ui/icons/Create';
 import { deleteProduct } from "../../reducks/products/operation";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
-import { db } from "../../Firebase";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 //import { theme } from "../../assets/theme";
 
@@ -109,18 +108,9 @@ const ProductCard = (props) => {
   const selector = useSelector(state => state);
   const userRole = getUserRole(selector)
   const isSignedIn = getIsSignedIn(selector);
-  const isAdministrator = (userRole === "customer");//customerのみ編集可能
+  //const isAdministrator = (userRole === "customer");//customerのみ編集可能
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//投稿者のみ編集削除可能にする
-//1.localstrageからユーザーid
-//2.productのuidを取得
-//3.1=2を検証（IF分岐）
-//4.合致すれば編集・削除を表示
   const if_current_uid = localStorage.getItem('if-uid')//
-
-  //if_product_uid['uid'] = 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -134,9 +124,8 @@ const ProductCard = (props) => {
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
 
-  const if_user_name = localStorage.getItem('if-username')
-
-  const guest_href = `/guest/product/${props.id}`
+  //const if_user_name = localStorage.getItem('if-username')
+  //const guest_href = `/guest/product/${props.id}`
 
   return (
     
@@ -149,7 +138,7 @@ const ProductCard = (props) => {
           <CardMedia
             className={classes.media}
             image={images[0].path}
-            onClick={() => dispatch(push('/product/'+props.id))}
+            onClick={() => dispatch(push('/users/product/'+props.id))}
             title=""
           />
           </Box>
@@ -170,14 +159,15 @@ const ProductCard = (props) => {
                       anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose} className={classes.admin_menu}
                     >
                       <MenuItem onClick={() => {
-                                dispatch(push('/users/product/edit/'+props.id))
-                                handleClose()}}
+                        dispatch(showLoadingAction("Loading..."));
+                        dispatch(push('/users/product/edit/'+props.id))
+                        handleClose()}}
                       >
                         編集する
                       </MenuItem>
                       <MenuItem
-                          onClick={() => { dispatch(deleteProduct(props.id))
-                                                                handleClose() }}
+                        onClick={() => { dispatch(deleteProduct(props.id))
+                        handleClose() }}
                       >
                         削除する
                       </MenuItem>
@@ -185,12 +175,12 @@ const ProductCard = (props) => {
                   </>
                 )
                 } else {
-                return false
+                  return false
               }
             })()}
 
           <CardContent className={classes.content}>
-            <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>
@@ -221,7 +211,7 @@ const ProductCard = (props) => {
             />
             </Box>
             <CardContent className={classes.content}>
-              <div onClick={() => {dispatch(push('/product/'+props.id))}}>
+              <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
                   <Typography color="textSecondary" className={classes.name}>
                     {props.name}
                   </Typography>

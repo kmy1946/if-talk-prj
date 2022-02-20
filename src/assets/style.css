@@ -273,7 +273,6 @@
   height: auto;
   width: calc(100% - 2rem);
 }
-
 .c-section__loading {
   align-items: center;
   background: rgba(255, 255, 255, 0.7);
@@ -288,14 +287,13 @@
   width: 100%;
   z-index: 9999;
 }
-/*
+
 .c-section__loading > p {
   color: #444;
   font-weight: 600;
   margin-top: 1rem;
   text-align: center;
 }
-*/
 .center {
   margin: 0 auto;
   margin-top: 60px;

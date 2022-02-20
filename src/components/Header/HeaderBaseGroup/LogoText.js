@@ -6,7 +6,7 @@ const LogoText = () => {
   const dispatch = useDispatch()
 
   return (
-      <div className="logotext" onClick={() => dispatch(push('/users/'))}>
+      <div className="logotext" onClick={() => dispatch(push('/'))}>
         <small>
           ITのタネ
         </small>

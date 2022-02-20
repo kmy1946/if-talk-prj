@@ -7,6 +7,7 @@ import ProductCard from "../../components/Products/ProductCard";
 import { PrimaryButton } from "../../components/UIkit";
 import { fetchProducts } from "../../reducks/products/operation";
 import { getProducts } from "../../reducks/products/selectors";
+import { getIsSignedIn } from "../../reducks/users/selectors";
 
 const useStyles = makeStyles({
   list__card: {
@@ -43,6 +44,8 @@ const ProductList = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const products = getProducts(selector);//productsにproducts情報を格納
+
+  const isSignedIn = getIsSignedIn(selector);
 
   const [page, setPage] = useState(10);
   const updatePost = async () => {

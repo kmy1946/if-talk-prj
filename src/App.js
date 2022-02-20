@@ -4,57 +4,58 @@ import "./assets/reset.css";
 import "./assets/style.css";
 import Routering from './Routering';
 import { Header } from "./components/Header";
-import { makeStyles } from "@material-ui/core";
 import { Footer } from "./components/Footer";
-import { useDispatch } from "react-redux";
-
-const useStyles = makeStyles({})
+import { Loading } from "./components/UIkit";
+import { useDispatch, useSelector } from "react-redux";
+import { getIsSignedIn } from "./reducks/users/selectors";
 
 const App = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch()
+  const selector = useSelector((state) => state);
 
   const if_user_name = localStorage.getItem('if-username')
   localStorage.setItem('if_user_name', if_user_name)
+  //localStorage.setItem('if_signedin', isSignedIn)
 
   return (
-    <div>
-      <Header/>
-      {
-        (
-          window.innerWidth > 760 ?
-          <>
-            {(() => {
-                    if (if_user_name) {
-                      //console.log('exist'+if_user_name)
-                      return (
-                        <Routering />
-                        )
-                    } else {
-                      //console.log('user_is_not_signedin')
-                      return (
-                      <>
-                        <main className="c-main">
+    <Loading>
+      <div>
+        <Header/>
+        {
+          (
+            window.innerWidth > 760 ?
+            <>
+              {(() => {
+                      if (if_user_name) {
+                        //console.log('exist'+if_user_name)
+                        return (
                           <Routering />
-                        </main>
-                      </>
-                      )
+                          )
+                      } else {
+                        //console.log('user_is_not_signedin')
+                        return (
+                        <>
+                          <main className="c-main">
+                            <Routering />
+                          </main>
+                        </>
+                        )
+                      }
                     }
-                  }
-                )
-              ()
-            }
-          </>
-          :
-          <>
-            <main className="c-main">
-              <Routering />
-            </main>
-          </>
-        )
-      }
-      <Footer/>
-    </div>
+                  )
+                ()
+              }
+            </>
+            :
+            <>
+              <main className="c-main">
+                <Routering />
+              </main>
+            </>
+          )
+        }
+        <Footer/>
+      </div>
+    </Loading>
   );
 }
 

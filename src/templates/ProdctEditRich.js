@@ -22,6 +22,7 @@ import Immutable from 'immutable';
 //import htmlToDraft from "html-to-draftjs"
 //import TextEditor from "./Editor/TextEditor";
 import draftToHtml from "draftjs-to-html";
+import { hideLoadingAction,  } from "../reducks/loading/actions";
 
 //import draftToHtml from 'draftjs-to-html-fork';//code,highlight supported
 
@@ -140,11 +141,16 @@ const ProdctEditRich = () => {
       __html: DOMPurify.sanitize(html)
     }
   }
-  
+
   let id = window.location.pathname.split('/product/edit')[1];
+  if (id === undefined) {//新規作成時UncaughtError回避
+    id = ""
+  }
   if (id !== "") {
       id = id.split('/')[1]
+      console.log(id)
   }
+
   const [images, setImages] = useState([]),
         [name, setName] = useState(""),
         [category, setCategory] = useState(""),
@@ -178,6 +184,7 @@ const ProdctEditRich = () => {
             setDescription(product.description);
       })
     }
+    dispatch(hideLoadingAction());
   }, [id]);
 
   useEffect(() => {

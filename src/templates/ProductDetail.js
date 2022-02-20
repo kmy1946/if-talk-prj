@@ -7,6 +7,7 @@ import { returnCodeToBr } from "../function/common";
 import { addProductToBookMark } from "../reducks/users/operations";
 import { getIsSignedIn } from "../reducks/users/selectors";
 import { ProductActionTableBookMark } from ".";
+import { hideLoadingAction } from "../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   sliderBox: {
@@ -64,12 +65,12 @@ const ProductDetail = () => {
 
 
   useEffect(() => {
+    dispatch(hideLoadingAction());
     db.collection('products').doc(id).get()
       .then(doc => {
         const data = doc.data();
         setProduct(data)//productのstateを更新
       })
-
   }, []);
 
   const addProductToBookmark = useCallback(() => {

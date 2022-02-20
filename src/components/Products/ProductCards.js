@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Divider, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { Card } from "@material-ui/core";
 import { CardContent } from "@material-ui/core";
 import { CardMedia } from "@material-ui/core";
@@ -8,17 +8,10 @@ import { Typography } from "@material-ui/core";
 import NoImage from "../../assets/img/src/no_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
-import { IconButton } from "@material-ui/core";
-import { Menu } from "@material-ui/core";
-import { MenuItem } from "@material-ui/core";
-import ListIcon from '@material-ui/icons/List';
 import { useTheme } from "@material-ui/styles";
-import SkipNextIcon from '@material-ui/icons/SkipNext';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import { deleteProduct } from "../../reducks/products/operation";
 import { getUserRole } from "../../reducks/users/selectors";
 import { db } from "../../Firebase";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 //import { theme } from "../../assets/theme";
 
@@ -124,7 +117,7 @@ const ProductCards = (props) => {
           className={classes.media}
           image={props.images[0].path}
           title=""
-          onClick={() => dispatch(push('/product/'+props.id))}
+          onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id));}}
       />) : (<><NoImage /></>)
       }
     </Card>

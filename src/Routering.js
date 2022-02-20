@@ -65,8 +65,8 @@ function Routering() {
         <Route exact path="/contact" component={Contact} />
         
         <Auth>
-          <Route exact path={"(/users/)?"}>
-          <TopSwiper />
+          <Route exact path={"(/users)?"}>
+          <TopSwiper />7
           {
             (
               window.innerWidth > 760 ?
@@ -97,7 +97,7 @@ function Routering() {
             )
           }
           </Route>
-          <Route exact path="/product/:id" component={ProductDetail} />
+          <Route exact path="/users/product/:id" component={ProductDetail} />
           <Route path="/users/product/edit(/:id)?" component={ProdctEditRich} />
 
           <Route path="/users/editorapp" component={EditorApp} />

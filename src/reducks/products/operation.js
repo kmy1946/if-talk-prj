@@ -15,23 +15,26 @@
 import { db, FirebaseTimestamp } from "../../Firebase"
 import { format } from 'date-fns'
 import { push } from "connected-react-router"
+import {hideLoadingAction, showLoadingAction} from "../loading/actions";
 import { deleteProductAction, fetchProductsAction } from "./actions"
 
 const productsRef = db.collection('products')//.where("username", "==", username.uid)
 
 export const deleteProduct = (id) => {
   return async (dispatch, getState) => {
+    dispatch(showLoadingAction("Loading..."));
     productsRef.doc(id).delete()
         .then(() => {
           const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
           const nextProducts = prevProducts.filter(product => product.id !== id)
           dispatch(deleteProductAction(nextProducts))
-        }).catch((error) => {alert('権限がありません')})
+        }).catch(() => {alert('権限がありません')})
   }
 }
 
 export const fetchProducts = (clients, category, updated_at_month, page) => {
   return async (dispatch) => {
+    dispatch(showLoadingAction("Loading..."));
     let query = productsRef.orderBy('updated_at', 'desc')
 
     query = (clients !== "") ? query.where('clients', '==', clients) : query;
@@ -46,13 +49,19 @@ export const fetchProducts = (clients, category, updated_at_month, page) => {
             const product = snapshots.data();
             productList.push(product)
           })
+          dispatch(hideLoadingAction());
           dispatch(fetchProductsAction(productList))
-      }).catch((error) => console.log(error))
+      }).catch((error) => {
+        dispatch(hideLoadingAction());
+        console.log(error);
+        alert('エラーが発生しました。')
+      })
   }
 }
 
 export const saveProduct = (id, name, images,  description, category, clients, username, uid) => {
   return async (dispatch) => {
+    dispatch(showLoadingAction("処理中..."));
     if (images.length === 0 || description === "" || category === "" || clients === ""){
       alert("必須項目が未入力です。")
       return false//何も実行しない
@@ -89,15 +98,16 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       data.id = id
     }
     
-    return productsRef.doc(id).set(data, {merge: true})//where("uid", "==", data.uid).//〇set()は完全上書き ==>> × mergeによる更新部のみ反映=編集可能
-    
-        .then(() => {//データ処理成功時
-          //console.log('data.uid')
-          dispatch(push('/'))
-          //console.log('ok')
-        }).catch((error) => {
-          alert('権限がありません')
-          throw new Error(error)
-        })
+    return productsRef.doc(id).set(data, {merge: true})
+      .then((res) => {//データ処理成功時
+        console.log(data)
+        dispatch(hideLoadingAction());
+        dispatch(push('/'))
+        alert('記事を投稿しました。')
+      }).catch((error) => {
+        dispatch(hideLoadingAction());
+        alert('エラーが発生しました。')
+        throw new Error(error)
+      })
   }
 }
