@@ -10,8 +10,6 @@ import LogoText from './LogoText';
 import HeaderMenuGuest from '../Guest/HeaderMenuGuest';
 import '../Header.css'
 import LogoTextGuest from './LogoTextGuest';
-import { push } from "connected-react-router"
-import { showLoadingAction, hideLoadingAction } from '../../../reducks/loading/actions';
 
 const useStyles = makeStyles({
     if_logo: {
@@ -98,11 +96,11 @@ const Header = () => {
                           <small>
                             プログラミング情報サイト　
                           </small>
-                          <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/whensignin'));}} className='header__signin-link'>
+                          <a href='/whensignin' className='header__signin-link'>
                             <small>
                               ユーザー関連
                             </small>
-                          </div>
+                          </a>
                         </div>
                       </>
                       :

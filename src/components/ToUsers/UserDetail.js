@@ -1,9 +1,9 @@
+import { push } from "connected-react-router";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { hideLoadingAction } from "../../reducks/loading/actions";
 const UserDetail = () => {
   const dispatch = useDispatch()
-  dispatch(hideLoadingAction());
   return (
     <>
       <div className='center'>
