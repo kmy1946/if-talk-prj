@@ -1,0 +1,16 @@
+.pc-main-detail {
+  display: flex;
+}
+.c-section-wrapin_detail {
+  width: 75vw;
+  margin: 3px;
+  padding: 8px;
+}
+.child2-detail {
+  width: 20vw;
+  height: 100%;
+  margin: 3px;
+  margin-top: 40px;
+  padding: 8px;
+  background-color: rgb(255, 255, 255);
+}

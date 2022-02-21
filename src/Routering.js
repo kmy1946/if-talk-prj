@@ -73,7 +73,7 @@ function Routering() {
               <>
                 <div className="parent">
                   <div className="child1">
-                  <SideBarLeft/>
+                    <SideBarLeft/>
                   </div>
                   <div className="parent_child">
                     <ProductsList/>
