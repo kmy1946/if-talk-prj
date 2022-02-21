@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getIsSignedIn } from "../reducks/users/selectors";
 import { listenAuthState } from "../reducks/users/operations";
 import { push } from "connected-react-router";
+import { hideLoadingAction, showLoadingAction } from "../reducks/loading/actions";
 
 //ユーザーのサインイン状況を判定、さもなくばlistenAuthStateを呼ぶ
 const Auth = ({children}) => {
@@ -10,16 +11,23 @@ const Auth = ({children}) => {
   const selector = useSelector((state) => state);
   const isSignedIn = getIsSignedIn(selector);
 
-  useEffect( () => {//↓children ➝ useEffect (初回レンダリング時)
-    if (!isSignedIn) {//reduks/store:stateからログイン状態を判断
-      dispatch(push('/'));
-      //dispatch(listenAuthState())//operationであり、reduxの関数なのでuseDispatch使用
-    }
+  useEffect(() => {
+    const f = async() => {
+      if (!isSignedIn) {
+        dispatch(listenAuthState())
+        //dispatch(push('/'));
+      }
+    };
+    
+    f();
+    //dispatch(showLoadingAction("Loading..."));
+    
   }, []);
 
-  if (isSignedIn === false) {//SignInしてないなら空のJSX
+  if (!isSignedIn) {//SignInしてないなら空のJSX
+    dispatch(hideLoadingAction());
     return <>サインインしていません。</>
-  } else {//しているなら子要素を返す、子要素＝<Auth></Auth>に囲われてる in Routering.js
+  } else {//しているなら子要素を返す、<Auth>子</Auth> in Routering.js
     return children
   }
 };

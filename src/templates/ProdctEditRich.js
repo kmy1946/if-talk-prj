@@ -6,25 +6,32 @@ import { db, storage } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
 import './productedit.css';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, DefaultDraftBlockRenderMap, //convertFromRaw,
-          ContentState, convertToRaw, //AtomicBlockUtils, RichUtils,
-          //getDefaultKeyBinding, KeyBindingUtil
-        } from 'draft-js';//, getDefaultKeyBinding, RichUtils
+import { EditorState, DefaultDraftBlockRenderMap,
+          ContentState, convertToRaw
+        } from 'draft-js';
 import createImagePlugin from "@draft-js-plugins/image";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-//import "draft-js/dist/Draft.css";
-//import { convertToHTML, } from 'draft-convert';
 import DOMPurify from 'dompurify';
-//import { draftToHtml as draftToHtml_unused } from 'draftjs-to-html';
-//import CodeUtils from 'draft-js-code';
 import Immutable from 'immutable';
-//import { EditorComponent } from ".";
-//import htmlToDraft from "html-to-draftjs"
-//import TextEditor from "./Editor/TextEditor";
 import draftToHtml from "draftjs-to-html";
 import { hideLoadingAction,  } from "../reducks/loading/actions";
 
-//import draftToHtml from 'draftjs-to-html-fork';//code,highlight supported
+var backupOriginal = "";
+function replacer( str, word , att  ) {
+    var SearchString = '(' + word + ')';
+    var RegularExp = new RegExp( SearchString, "g" );
+    var ReplaceString = '<span class="' + att + '">$1</span>';
+    var ResString = str.replace( RegularExp , ReplaceString );
+    return ResString;
+}
+function addhighlight() {
+    backupOriginal = document.getElementById("targetspace").innerHTML;
+    var forShow = backupOriginal;
+    forShow = replacer( forShow, "ハイライト", "mark1" );
+    forShow = replacer( forShow, "文章", "mark2" );
+    forShow = replacer( forShow, "表示", "mark3" );
+    document.getElementById("targetspace").innerHTML = forShow;
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////draft.js
@@ -52,6 +59,9 @@ const ProdctEditRich = () => {
     'BOLD': {
       fontWeight: 'bold',
     },
+    'CODE': {
+      backgroundColor: '#447486',
+    }
   };
 
   const uploadDescription_Images = (props) => {
@@ -75,7 +85,6 @@ const ProdctEditRich = () => {
       }
     }
     if (block.getType() === "atomic") {
-      console.log(block.getType())
       return {
         component: uploadDescription_Images,
         editable: true,
@@ -90,7 +99,7 @@ const ProdctEditRich = () => {
   const myBlockStyleFn = (contentBlock) => {
     const type = contentBlock.getType();
     if (type === 'custom') {
-      console.log(type)
+      
       return {
         //component: Code_Component,
         editable: false,
@@ -100,29 +109,9 @@ const ProdctEditRich = () => {
       }
     }
   }
-
-  function uploadImageCallBack(file) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();//オブジェクト作成
-      xhr.open("POST", "https://api.imgur.com/3/image");
-      xhr.setRequestHeader("Authorization", "Client-ID 8d26ccd12712fca");
-      const data = new FormData();//
-      data.append("image", file);
-      xhr.send(data);
-      xhr.addEventListener("load", () => {
-        const response = JSON.parse(xhr.responseText);
-        resolve(response);
-      });
-      xhr.addEventListener("error", () => {
-        const error = JSON.parse(xhr.responseText);
-        reject(error);
-      });
-    });
-  }
-
   let _contentState = ContentState.createFromText('Sample Content');
   const raw = convertToRaw(_contentState)
-  const [contentState, setContentState] = useState(raw)
+  //const [contentState, setContentState] = useState(raw)
   const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),//htmlToEState(html)//
   );
@@ -148,7 +137,7 @@ const ProdctEditRich = () => {
   }
   if (id !== "") {
       id = id.split('/')[1]
-      console.log(id)
+      //console.log(id)
   }
 
   const [images, setImages] = useState([]),

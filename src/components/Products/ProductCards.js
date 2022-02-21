@@ -117,7 +117,7 @@ const ProductCards = (props) => {
           className={classes.media}
           image={props.images[0].path}
           title=""
-          onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id));}}
+          onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id));}}
       />) : (<><NoImage /></>)
       }
     </Card>

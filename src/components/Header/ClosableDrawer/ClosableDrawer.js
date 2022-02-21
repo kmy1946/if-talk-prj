@@ -7,9 +7,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {makeStyles} from '@material-ui/core/styles';
 import {push} from "connected-react-router";
 import {useDispatch} from "react-redux";
-import {TextInput} from "../../UIkit";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import { db } from '../../../Firebase';
 import { MapMenuList } from '..';
 

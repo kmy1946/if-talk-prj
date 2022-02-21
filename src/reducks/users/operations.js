@@ -27,19 +27,20 @@ export const fetchProductsInBookMark = (products) => {
 export const listenAuthState = () => {
   return async (dispatch) => {
     return auth.onAuthStateChanged(user => {
-      if (user) {//つまりユーザーが認証を完了して存在している状態
+      if (user) {//認証を完了して存在している状態
         const uid = user.uid
 
           db.collection("users").doc(uid).get()
             .then(snappshot => {
-              const data = snappshot.data()//ＤＢから取得したデータをdataに格納
-              //console.log(data)
+              const data = snappshot.data()
+
+              //if (!data) {throw new Error('ユーザーデータが存在しません。')}
 
               dispatch(signInAction({
                 isSignedIn: true,
-                role: data.role,//dataのroleを渡す
+                role: data.role,
                 uid: uid,
-                username: data.username//dataのusername
+                username: data.username
               }))
             }).catch((error) => console.log(error))
         } else {
@@ -170,12 +171,13 @@ export const signIn = (email, password) => {
 
 export const signOut = () => {
   return async (dispatch, getState) => {
-    dispatch(showLoadingAction("Sign out..."));
+    dispatch(showLoadingAction("Sign Out..."));
     const uid = getState().users.uid
 
     auth.signOut()
       .then(() => {
         dispatch(signOutAction());//reduxのstoreもSignOut
+        dispatch(hideLoadingAction());
         dispatch(push('/'))
         localStorage.removeItem('if_user_id')
         localStorage.removeItem('if_username')

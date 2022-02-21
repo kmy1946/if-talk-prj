@@ -97,7 +97,7 @@ function Routering() {
             )
           }
           </Route>
-          <Route exact path="/users/product/:id" component={ProductDetail} />
+          <Route exact path="/product/:id" component={ProductDetail} />
           <Route path="/users/product/edit(/:id)?" component={ProdctEditRich} />
 
           <Route path="/users/editorapp" component={EditorApp} />

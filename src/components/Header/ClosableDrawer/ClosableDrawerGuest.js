@@ -55,7 +55,7 @@ const ClosableDrawerGuest = (props) => {
     ])
 
     const [filters, setFilters] = useState([
-        {func: selectMenu, label: "全て", id: "all", value: "/"},
+        {func: selectMenu, label: "全て", id: "all", value: "/?clients=全て"},
         {func: selectMenu, label: "初心者", id: "beginner", value: "/?clients=初心者"},
         {func: selectMenu, label: "中級者", id: "intermediate", value: "/?clients=中級者"},
         {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}

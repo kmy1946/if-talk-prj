@@ -68,14 +68,14 @@ const TopSwiperCard = (props) => {
         {isSignedIn ? 
           (
             <>
-            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id))}}>
+            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
           {images ?
             (
           <CardMedia
               className={classes.media}
               image={props.images[0].path}
               title=""
-              onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/users/product/'+props.id))}}
+              onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}
           />)
           :
           (<><NoImage /></>)
