@@ -1,44 +1,51 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Children, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import ImageArea from "../components/Products/ImageArea";
 import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
-import { db, storage } from "../Firebase";
+import { db } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
 import './productedit.css';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, DefaultDraftBlockRenderMap,
-          ContentState, convertToRaw
+          ContentState, convertToRaw, convertFromRaw,
+          Modifier, SelectionState,
 } from 'draft-js';
 import createImagePlugin from "@draft-js-plugins/image";
+import createPrismPlugin from 'draft-js-prism-plugin';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import 'draft-js/dist/Draft.css'
 import DOMPurify from 'dompurify';
 import Immutable from 'immutable';
 import draftToHtml from "draftjs-to-html";
 import { hideLoadingAction,  } from "../reducks/loading/actions";
 import { CodeBlock } from ".";
+import PrismDecorator from "./Editor/PrismDecorator";
+import NewLineDecorator from "./Editor/PrismDecorator";
+import MultiDecorator from "./Editor/MultiDecorator";
+
+const CodeBlockOriginal = (contentBlock, props) => {
+  return (
+    <pre>
+      <code>
+        <p>
+          {props.contentText}
+        </p>
+      </code>
+    </pre>
+  )
+}
 
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()
-  console.log(type)
-  if (type === 'code-block') {
-    console.log(type)
-    return {
-      component: CodeBlock,
-      editable: true
-    }
-  }
+  const contentText = contentBlock.getText();
   if (type === 'code') {
     console.log(type)
     return {
       component: CodeBlock,
-      editable: true
-    }
-  }
-  if (type === 'Code') {
-    console.log(type)
-    return {
-      component: CodeBlock,
-      editable: true
+      editable: true,
+      props:{
+        contentText:contentText
+      }
     }
   }
 }
@@ -51,12 +58,14 @@ const blockRenderMap = Immutable.Map({//デフォルトのBlockRenderMapにタ�
     element: 'span',
     aliasedElements: ['div'],
   },
-  'code': {
+  //'code': {element: 'code',}
+  'code-block': {//
     element: 'code',
-  }
+    aliasedElements: ['pre'],
+    //nestingEnabled: false
+  },
 });
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
 
 const ProdctEditRich = () => {
   const dispatch = useDispatch()
@@ -67,7 +76,7 @@ const ProdctEditRich = () => {
     'BOLD': {
       fontWeight: 'bold',
     },
-    'CODE': {backgroundColor: '#grey',}
+    //'CODE': {backgroundColor: '#grey',}
   };
 
   const myBlockStyleFn = (contentBlock) => {
@@ -85,9 +94,14 @@ const ProdctEditRich = () => {
   let _contentState = ContentState.createFromText('Sample Content');
   const raw = convertToRaw(_contentState)
   //const [contentState, setContentState] = useState(raw)
+
   const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(),//htmlToEState(html)//
-  );
+
+    //() => EditorState.createWithContent( convertFromRaw(data),
+      //new MultiDecorator([ new PrismDecorator({ defaultSyntax: 'javascript' }),
+      //  new NewLineDecorator() ]))
+    );
   const  [description, setDescription] = useState();
   const handleEditorChange = (state, e) => {
     setEditorState(state);
@@ -180,6 +194,7 @@ const ProdctEditRich = () => {
   }
 
   const imagePlugin = createImagePlugin();
+  //const PrismPlugin = createPrismPlugin();
 
   const Image = (props) => {
     return <img src={props.src} alt="" />;
@@ -250,10 +265,71 @@ const ProdctEditRich = () => {
           blockStyleFn={myBlockStyleFn}
           blockRendererFn={myBlockRenderer}
           blockRenderMap={extendedBlockRenderMap}
-          
+          //plugins={PrismPlugin}
           //plugins={plugins}
           //plugins={[imagePlugin]}
           //readOnly={true}
+          handleReturn={(event, state) => {
+            //console.log(event, state)
+            const contentState = state.getCurrentContent()
+            const selection = state.getSelection()
+            const currentBlock = contentState.getBlockForKey(
+              selection.getStartKey()
+            )
+            if (
+              selection.isCollapsed() &&
+              currentBlock.getType() === 'code'
+            ) {
+              if (event.metaKey) {
+                const nextContentBlock = contentState.getBlockAfter(
+                  selection.getStartKey()
+                )
+                if (nextContentBlock) {
+                  const newEditorState = EditorState.forceSelection(
+                    editorState,
+                    new SelectionState().merge({
+                      anchorKey: nextContentBlock.getKey(),
+                      focusKey: nextContentBlock.getKey()
+                    })
+                  )
+                  setEditorState(newEditorState)
+                } else {
+                  // insert new block;
+                  console.log('else')
+                  let newContentState = Modifier.splitBlock(
+                    contentState,
+                    selection.merge({
+                      anchorOffset: currentBlock.getLength()
+                    })
+                  )
+                  newContentState = Modifier.setBlockType(
+                    newContentState,
+                    newContentState.getSelectionAfter(),
+                    'unstyled'
+                  )
+                  const newEditorState = EditorState.push(
+                    editorState,
+                    newContentState,
+                    'split-block'
+                  )
+                  setEditorState(newEditorState)
+                }
+              } else {
+                let newContentState = Modifier.insertText(
+                  contentState,
+                  selection,
+                  '\n'
+                )
+                const newEditorState = EditorState.push(
+                  editorState,
+                  newContentState,
+                  'insert-characters'
+                )
+                setEditorState(newEditorState)
+              }
+              return 'handled'
+            }
+          }}
         />
         {/*}
         <Editor //contenteditable="true"
@@ -273,8 +349,8 @@ const ProdctEditRich = () => {
 
         <p>Preview:</p>
         <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
-        <div className="module-spacer--medium" />
         {description}
+        <div className="module-spacer--medium" />
       </div>
 
     </section>

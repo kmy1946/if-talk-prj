@@ -15,7 +15,7 @@ const Auth = ({children}) => {
     const f = async() => {
       if (!isSignedIn) {
         dispatch(listenAuthState())
-        //dispatch(push('/'));
+        dispatch(push('/'));
       }
     };
     

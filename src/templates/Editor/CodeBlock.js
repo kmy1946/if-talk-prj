@@ -2,8 +2,6 @@ import React from 'react'
 import DraftEditorBlock from 'draft-js/lib/DraftEditorBlock.react'
 import DraftEditorLeaf from 'draft-js/lib/DraftEditorLeaf.react'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
-import 'draft-js/dist/Draft.css'
-console.log(DraftEditorBlock)
 
 const isBlockOnSelectionEdge = (selection, key) =>
   selection.getAnchorKey() === key || selection.getFocusKey() === key
@@ -14,7 +12,7 @@ export default class CodeBlock extends DraftEditorBlock {
     const blockKey = block.getKey()
     const text = block.getText()
     const lastLeafSet = this.props.tree.size - 1
-    const hasSelection = isBlockOnSelectionEdge(this.props.selection, blockKey)
+    const hasSelection = isBlockOnSelectionEdge(this.props.selection, blockKey)    
 
     const children = this.props.tree
       .map((leafSet, ii) => {
@@ -69,12 +67,7 @@ export default class CodeBlock extends DraftEditorBlock {
         const end = leavesForLeafSet.last().get('end')
         const decoratedText = text.slice(start, end)
         const entityKey = block.getEntityAt(leafSet.get('start'))
-        // Resetting dir to the same value on a child node makes Chrome/Firefox
-        // confused on cursor movement. See http://jsfiddle.net/d157kLck/3/
-        // const dir = UnicodeBidiDirection.getHTMLDirIfDifferent(
-        //   UnicodeBidi.getDirection(decoratedText),
-        //   this.props.direction
-        // )
+
         const dir = 'ltr'
 
         const commonProps = {
@@ -127,7 +120,7 @@ export default class CodeBlock extends DraftEditorBlock {
         {end}
       </span>
     )
-
+    
     return lines
   }
 }

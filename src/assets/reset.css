@@ -247,17 +247,44 @@ em, i {
 b, strong {
   font-weight: 700
 }
+
+
 pre {
 	display: block;
 	font-family: monospace;
 	white-space: pre;
 	margin: 1em 0px;
-  background-color: #7db4e6;
+  color: rgb(255, 38, 0);
+  background-color: #d4d4d4;
 }
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.public-DraftStyleDefault-pre {
+  counter-reset: code-line;
+  border-left: 5px solid rgba(205, 233, 244, 1);
+  padding: 4px 0 2px 10px;
+  margin: 10px 0 21px;
+  line-height: 22px;
+}
+
+.public-DraftStyleDefault-pre .line {
+  counter-increment: code-line;
+  display: list-item;
+  list-style: none;
+}
+
+.public-DraftStyleDefault-pre .line::before {
+  content: counter(code-line);
+  position: absolute;
+  margin-left: -30px;
+  margin-right: 25px;
+}
+.public-DraftStyleDefault-pre .line.is-empty::before {
+  margin-top: -22px;
+}
+
 /*
 pre {
   background: #f5f5f5;
