@@ -7,11 +7,11 @@ import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
 import { addProductToBookMark } from "../../reducks/users/operations";
 import { getIsSignedIn } from "../../reducks/users/selectors";
-import { ProductActionTableBookMark } from "..";
+import { ProductActionTableBookMark, ProductDetailSidebar, TableOfContents } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
-import DateRangeIcon from '@material-ui/icons/DateRange';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
+import SearchIcon from '@material-ui/icons/Search';
 import './ProductDetail.css'
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize:27,
     fontWeight:'bold',
     padding: '0.25em 0.5em',/*上下 左右の余白*/
-    marginTop:30,
+
     color: '#494949',/*\文字色*/
     background: 'transparent',/*背景透明に*/
     //borderLeft: 'solid 5px rgb(88, 230, 95)'
@@ -154,6 +154,9 @@ const ProductDetailPC = () => {
   return (
     <>
       {product && (
+        <>
+        <div className="pc-main-detail">
+      <section className="c-section-wrapin_detail">
         <div className={classes.detail_group}>
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
@@ -172,12 +175,12 @@ const ProductDetailPC = () => {
               <p className={classes.category_updated_at}>
                 <small onClick={() => dispatch(push(`/?category=${product.category}`))}>
                   　
-                  <ScheduleIcon className={classes.category_icon}/>
+                  <SearchIcon className={classes.category_icon}/>
                   {(product.category)}
                 </small>
                 　
                 <small onClick={() => dispatch(push(`/?updated_at_month=${product.updated_at.substr(0,4)}${product.updated_at.substr(4,2)}`))}>
-                  <DateRangeIcon className={classes.updated_at_icon}/>
+                  <ScheduleIcon className={classes.updated_at_icon}/>
                   {product.updated_at.substr(0,4)}/{product.updated_at.substr(4,2)}/
                   {product.updated_at.substr(6,2)}, 
                 </small>
@@ -196,12 +199,13 @@ const ProductDetailPC = () => {
               <div className={classes.sliderBox}>
                 <ImageSwiper images={product.images}/>
               </div>
+              <br/><br/>
             <div>
             <div>
               {returnCodeToBr(product.description)}
             </div>
           </div>
-          <p className={classes.username}><small>投稿者：</small>{(product.username)}<small>さん</small></p>
+          <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
         </div>
         <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
@@ -217,7 +221,15 @@ const ProductDetailPC = () => {
                   )
                 }
             </div>
+            
+            </section>
+            <div className="child2-detail">
+              <ProductDetailSidebar/>
+            </div>
+          </div>
+          </>
             )}
+  
     </>
   )
 

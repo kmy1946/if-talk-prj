@@ -12,6 +12,7 @@ import { hideLoadingAction } from "../../reducks/loading/actions";
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
@@ -35,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
           margin: '0 auto',
           height: 400,
           width: 400,
-          marginTop: '100px'
       },
-      marginTop: '100px'
+      marginTop: '30px',
   },
   username: {
     textAlign: 'right',
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     color:'#4666f7',
   },
   clients: {
-    fontSize: 12,
+    fontSize: 10,
     '&:hover': {
       fontWeight: 600,
       color:'rgb(70, 73, 247)'
@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight:5
   },
   category_updated_at: {
-    fontSize: 15,
+    fontSize: 10,
   },
 }))
 
@@ -173,12 +173,12 @@ const ProductDetailMobile = () => {
               <p className={classes.category_updated_at}>
                 <small onClick={() => dispatch(push(`/?category=${product.category}`))}>
                   　
-                  <ScheduleIcon className={classes.category_icon}/>
+                  <SearchIcon className={classes.category_icon}/>
                   {(product.category)}
                 </small>
                 　
                 <small onClick={() => dispatch(push(`/?updated_at_month=${product.updated_at.substr(0,4)}${product.updated_at.substr(4,2)}`))}>
-                  <DateRangeIcon className={classes.updated_at_icon}/>
+                  <ScheduleIcon className={classes.updated_at_icon}/>
                   {product.updated_at.substr(0,4)}/{product.updated_at.substr(4,2)}/
                   {product.updated_at.substr(6,2)}, 
                 </small>
@@ -193,16 +193,16 @@ const ProductDetailMobile = () => {
               {detail_clients()}
             </div>
 
-            <div className="module-spacer--small"/>
               <div className={classes.sliderBox}>
                 <ImageSwiper images={product.images}/>
               </div>
+              <br/><br/>
             <div>
             <div className="productdetail__description">
               {returnCodeToBr(product.description)}
             </div>
           </div>
-          <p className={classes.username}><small>投稿者：</small>{(product.username)}<small>さん</small></p>
+          <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
         </div>
         <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
@@ -217,8 +217,8 @@ const ProductDetailMobile = () => {
                     <></>
                   )
                 }
-            </div>
-            )}
+          </div>
+          )}
     </>
   )
 

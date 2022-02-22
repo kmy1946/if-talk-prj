@@ -2,7 +2,7 @@
   display: flex;
 }
 .c-section-wrapin_detail {
-  width: 75vw;
+  width: 78vw;
   margin: 3px;
   padding: 8px;
 }
@@ -10,7 +10,67 @@
   width: 20vw;
   height: 100%;
   margin: 3px;
-  margin-top: 40px;
+  margin-top: 80px;
   padding: 8px;
   background-color: rgb(255, 255, 255);
+}
+
+.sidebar__title__detail {
+  padding: .5em .5em .5em 1em;
+	background-color: #cee7ff;
+	border-bottom: solid .1em #87c5ff;
+	border-left: solid .5em #87c5ff;
+}
+
+.toc__ul {
+  padding: 10px;
+}
+.toc__li {
+  list-style: none;
+}
+.toc__li:hover {
+  text-decoration: none;
+  color: blue;
+}
+.toc__active-list {
+  list-style: none;
+}
+.toc__href {
+  color: black;
+}
+.toc__href:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(97, 97, 97);
+}
+.toc__href__child {
+  color: rgb(83, 83, 83);
+}
+.toc__href__child:hover {
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(97, 97, 97);
+}
+
+nav {
+  position: sticky;
+  position: -webkit-sticky; /* For Safari */
+  top: 24px; /* How far down the page you want your ToC to live */
+
+  /* Give table of contents a scrollbar */
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+}
+h2, h3 {
+  list-style: none;
+  scroll-margin-top: 16px;
+}
+
+/* Safari-only */
+@supports (-webkit-hyphens:none) {
+  h2, h3 {
+      list-style: none;
+      padding-top: 16px;
+      margin-top: -16px;
+  }
 }

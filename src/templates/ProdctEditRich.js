@@ -266,7 +266,7 @@ const ProdctEditRich = () => {
             textAlign: { inDropdown: true },
             link: { inDropdown: true },
             history: { inDropdown: true },
-            blockType: { options: ['Normal', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote'], },
+            blockType: { options: ['Normal', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote'], },
             //image: {urlEnabled: true, uploadEnabled: true,uploadCallback: (file) => uploadImage(file),//upload_DescriptionImages,
               //previewImage: true,alt: { present: true, mandatory: true },inputAccept: "image/*",}
             }}

@@ -15,6 +15,7 @@ export { default as ProductDetailSidebar } from './ProductDetail/ProductDetailSi
 export { default as ProductDetailPC } from './ProductDetail/ProductDetailPC';
 export { default as ProductDetailMobile } from './ProductDetail/ProductDetailMobile';
 export { default as ProductDetailBottm } from './ProductDetail/ProductDetailBottm';
+export { default as TableOfContents } from './ProductDetail/TableOfContents';
 export { default as ProductActionTableBookMark } from './ProductActionTableBookMark';
 export { default as BookMarkList } from './BookMarkList';
 export { default as GuestSignIn } from './Register/GuestSignIn';
