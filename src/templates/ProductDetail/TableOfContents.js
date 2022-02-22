@@ -77,8 +77,7 @@ const Headings = ({ headings, activeId }) => (
     {headings.map((heading) => (
       <li key={heading.id} className={heading.id === activeId ? "active" : ""} >
         <a
-          className="toc__href"
-          href={`#${heading.id}`}
+          className="toc__href" href={`#${heading.id}`}
           onClick={(e) => {
             e.preventDefault();
             document.querySelector(`#${heading.id}`).scrollIntoView({
@@ -92,9 +91,9 @@ const Headings = ({ headings, activeId }) => (
           <ul style={{listStyle:'none'}}>
             {heading.items.map((child) => (
               <li className="toc__li" key={child.id} className={child.id === activeId ? "active" : ""}>
-                ‣<a
-                  className="toc__href__child"
-                  href={`#${child.id}`}
+                ‣
+                <a
+                  className="toc__href__child" href={`#${child.id}`}
                   onClick={(e) => {
                     e.preventDefault();
                     document.querySelector(`#${child.id}`).scrollIntoView({

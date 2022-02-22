@@ -76,7 +76,7 @@ a:visited {
 	/* color: linear-gradient(to bottom, #6a11cb 0%, #2575fc 100%); */
 	color: radial-gradient(#16d9e3 0%, #30c7ec 47%, rgb(70, 73, 247) 100%);
 }
-
+/*
 pre {
 	white-space: pre-wrap;
 	white-space: -moz-pre-wrap;
@@ -84,16 +84,7 @@ pre {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
  }
-code {
-	margin: 1em 0;
-  padding: 1em;
-  border-radius: 2px;
-  background: #447486;
-  color: rgb(255, 255, 255);
-  white-space: pre-wrap;
-  max-width: 350px;
-	font-family: monospace;
-}
+ */
 
 blockquote {
 	color:#ff864e;

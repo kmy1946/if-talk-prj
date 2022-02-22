@@ -8,6 +8,7 @@ export { default as Reset } from './Register/Reset';
 export { default as ProductEdit } from './ProductEdit';
 export { default as ProdctEditRich } from './ProdctEditRich';
 export { default as EditorComponent } from './Editor/EditorComponent';
+export { default as CodeBlock } from './Editor/CodeBlock';
 export { default as ProductList } from './ProductList/ProductList';
 export { default as ProductsList } from './ProductList/ProductsList';
 export { default as ProductDetail } from './ProductDetail/ProductDetail';

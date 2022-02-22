@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize:'14px',
   },
   detail_group: {
-    textAlign:'center',
     marginTop:70
   },
   detail_group__group: {
@@ -100,7 +99,6 @@ const ProductDetailPC = () => {
   const isSignedIn = getIsSignedIn(selector);
   const [product, setProduct] = useState(null);
 
-
   useEffect(() => {
     dispatch(hideLoadingAction());
     db.collection('products').doc(id).get()
@@ -108,7 +106,10 @@ const ProductDetailPC = () => {
         const data = doc.data();
         setProduct(data)//productのstateを更新
       })
+      //setElement(document.querySelector('H2'));
   }, []);
+  //let attvalue = element.getAttribute('class');
+  //element.querySelectorAll('id', 'H2');
 
   const addProductToBookmark = useCallback(() => {
     const timestamp = FirebaseTimestamp.now();
@@ -208,11 +209,11 @@ const ProductDetailPC = () => {
           <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
         </div>
         <div className="module-spacer--small"/>
-          <div className="module-spacer--small"/>
+          <div className="detail__bookmark"/>
               {isSignedIn ? 
                   (
                     <>
-                      <ProductActionTableBookMark addProductBookMark={addProductToBookmark} productId={product.id}/>お気に入り
+                      <ProductActionTableBookMark addProductBookMark={addProductToBookmark} productId={product.id}/>お気に入り登録
                     </>
                   )
                   :
@@ -221,7 +222,6 @@ const ProductDetailPC = () => {
                   )
                 }
             </div>
-            
             </section>
             <div className="child2-detail">
               <ProductDetailSidebar/>

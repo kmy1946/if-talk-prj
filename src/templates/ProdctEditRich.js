@@ -8,33 +8,41 @@ import './productedit.css';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, DefaultDraftBlockRenderMap,
           ContentState, convertToRaw
-        } from 'draft-js';
+} from 'draft-js';
 import createImagePlugin from "@draft-js-plugins/image";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import DOMPurify from 'dompurify';
 import Immutable from 'immutable';
 import draftToHtml from "draftjs-to-html";
 import { hideLoadingAction,  } from "../reducks/loading/actions";
+import { CodeBlock } from ".";
 
-var backupOriginal = "";
-function replacer( str, word , att  ) {
-    var SearchString = '(' + word + ')';
-    var RegularExp = new RegExp( SearchString, "g" );
-    var ReplaceString = '<span class="' + att + '">$1</span>';
-    var ResString = str.replace( RegularExp , ReplaceString );
-    return ResString;
-}
-function addhighlight() {
-    backupOriginal = document.getElementById("targetspace").innerHTML;
-    var forShow = backupOriginal;
-    forShow = replacer( forShow, "ハイライト", "mark1" );
-    forShow = replacer( forShow, "文章", "mark2" );
-    forShow = replacer( forShow, "表示", "mark3" );
-    document.getElementById("targetspace").innerHTML = forShow;
+function myBlockRenderer(contentBlock) {
+  const type = contentBlock.getType()
+  console.log(type)
+  if (type === 'code-block') {
+    console.log(type)
+    return {
+      component: CodeBlock,
+      editable: true
+    }
+  }
+  if (type === 'code') {
+    console.log(type)
+    return {
+      component: CodeBlock,
+      editable: true
+    }
+  }
+  if (type === 'Code') {
+    console.log(type)
+    return {
+      component: CodeBlock,
+      editable: true
+    }
+  }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////draft.js
 const blockRenderMap = Immutable.Map({//デフォルトのBlockRenderMapにタグに対応するMapオブジェクト
   'section': {
     element: 'section',
@@ -59,47 +67,12 @@ const ProdctEditRich = () => {
     'BOLD': {
       fontWeight: 'bold',
     },
-    'CODE': {
-      backgroundColor: '#447486',
-    }
+    'CODE': {backgroundColor: '#grey',}
   };
-
-  const uploadDescription_Images = (props) => {
-    const {block, contentState} = props;
-    //const {foo} = props.blockProps;
-    const data = contentState.getEntity(block.getEntityAt(0)).getData();
-    //console.log({foo})
-    console.log('data:',data)
-    return <img src={props.data}/>
-  }
-  const myBlockRenderer = (block) => {
-    //console.log(block.getType())
-    if (block.getType() === "blockquote") {
-      return {
-        editable: true,
-      }
-    }
-    if (block.getType() === "unstyled") {
-      return {
-        editable: true,
-      }
-    }
-    if (block.getType() === "atomic") {
-      return {
-        component: uploadDescription_Images,
-        editable: true,
-        props: {
-          foo: 'foo',
-        },
-      }
-    }
-    return null
-  }
 
   const myBlockStyleFn = (contentBlock) => {
     const type = contentBlock.getType();
-    if (type === 'custom') {
-      
+    if (type === 'custom') {      
       return {
         //component: Code_Component,
         editable: false,
@@ -154,13 +127,6 @@ const ProdctEditRich = () => {
     //setDescription(event.target.value)
   //}, [setDescription])
 
-  const target_clients = [
-    {id:"all", name:"全て"},
-    {id:"beginner", name:"初心者"},
-    {id:"intermediate", name:"中級者"},
-    {id:"advanced", name:"上級者"}
-  ]
-
   useEffect(() => {
     if (id !== "") {//編集ページではない時
       db.collection('products').doc(id).get()
@@ -193,6 +159,13 @@ const ProdctEditRich = () => {
           setCategories(list)
         })
   }, [])
+
+  const target_clients = [
+    {id:"all", name:"全て"},
+    {id:"beginner", name:"初心者"},
+    {id:"intermediate", name:"中級者"},
+    {id:"advanced", name:"上級者"}
+  ]
 
   const edit_title = () => {
     if (id !== "") {
@@ -266,7 +239,7 @@ const ProdctEditRich = () => {
             textAlign: { inDropdown: true },
             link: { inDropdown: true },
             history: { inDropdown: true },
-            blockType: { options: ['Normal', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote'], },
+            blockType: { options: ['Normal', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'], },
             //image: {urlEnabled: true, uploadEnabled: true,uploadCallback: (file) => uploadImage(file),//upload_DescriptionImages,
               //previewImage: true,alt: { present: true, mandatory: true },inputAccept: "image/*",}
             }}
@@ -277,6 +250,7 @@ const ProdctEditRich = () => {
           blockStyleFn={myBlockStyleFn}
           blockRendererFn={myBlockRenderer}
           blockRenderMap={extendedBlockRenderMap}
+          
           //plugins={plugins}
           //plugins={[imagePlugin]}
           //readOnly={true}
@@ -299,13 +273,8 @@ const ProdctEditRich = () => {
 
         <p>Preview:</p>
         <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
-        <div className="preview">
-          <p>送信データ：</p>
-          <br/>
-          {description}
-        </div>
-      
         <div className="module-spacer--medium" />
+        {description}
       </div>
 
     </section>

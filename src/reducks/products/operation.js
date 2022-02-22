@@ -63,6 +63,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
   return async (dispatch) => {
     dispatch(showLoadingAction("処理中..."));
     if (images.length === 0 || description === "" || category === "" || clients === ""){
+      dispatch(hideLoadingAction());
       alert("必須項目が未入力です。")
       return false//何も実行しない
     }
