@@ -295,7 +295,6 @@ const ProdctEditRich = () => {
                   setEditorState(newEditorState)
                 } else {
                   // insert new block;
-                  console.log('else')
                   let newContentState = Modifier.splitBlock(
                     contentState,
                     selection.merge({
