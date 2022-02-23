@@ -66,7 +66,7 @@ function Routering() {
         
         <Auth>
           <Route exact path={"(/users)?"}>
-          <TopSwiper />7
+          <TopSwiper />
           {
             (
               window.innerWidth > 760 ?

@@ -12,20 +12,24 @@ import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   root:{
+    position:'relative',
     [theme.breakpoints.up('sm')]: {
       margin: 16,
       width: '16.5vw',//'180px'
     },
   },
     content: {
-      //position:"relative",
-      //bottom:'50px',
-      //display:'flex',
-      height: 'auto',//'50px',
-      listStyle: 'none',
-      padding: '16px 8px',
-      textAlign: 'left',
-      '&:last-child': {paddingBottom: 16},
+      backgroundColor:'rgb(75, 75, 75)',
+      width:'100%',
+      opacity:0.7,
+      position:"absolute",
+      bottom:0,
+      height:80,
+      '&:hover': {
+        backgroundColor:'rgb(55, 75, 75)',
+        paddingBottom:'90px',
+        transition: '0.25s',
+      },
   },
     list_iconbutton: {
       right:0
@@ -51,12 +55,6 @@ const TopSwiperCard = (props) => {
   const userRole = getUserRole(selector)
 
   const isSignedIn = getIsSignedIn(selector);
-  const guest_href = `/product/${props.id}`
-
-  const isAdministrator = (userRole === "customer");//customerのみ編集可能
-
-  const current_user_id = localStorage.getItem('if-uid')//
-
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
 
   return (
@@ -111,7 +109,7 @@ const TopSwiperCard = (props) => {
           :
           (<><NoImage /></>)
           }
-              <CardContent>
+              <CardContent className={classes.content}>
                 <Typography className='featured-content__lang'>
                   {props.category}
                 </Typography>

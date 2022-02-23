@@ -34,9 +34,9 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '100%',
       width:'100%',
   },
-    clients: {
-      color:theme.palette.info.main,
-      fontSize:16
+  clients: {
+    color:theme.palette.info.main,
+    fontSize:16
   },
   topswiper__horizontal_divider: {
     height:'2px'
@@ -50,7 +50,6 @@ const TopSwiperCardMobile = (props) => {
   const userRole = getUserRole(selector)
 
   const isSignedIn = getIsSignedIn(selector);
-  const guest_href = `/product/${props.id}`
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
 

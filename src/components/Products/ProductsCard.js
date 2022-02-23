@@ -105,18 +105,6 @@ const ProductsCard = (props) => {
   const selector = useSelector(state => state);
   const userRole = getUserRole(selector)
   const isSignedIn = getIsSignedIn(selector);
-  const isAdministrator = (userRole === "customer");//customerのみ編集可能
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//投稿者のみ編集削除可能にする
-//1.localstrageからユーザーid
-//2.productのuidを取得
-//3.1=2を検証（IF分岐）
-//4.合致すれば編集・削除を表示
-  const if_current_uid = localStorage.getItem('if-uid')//
-
-  //if_product_uid['uid'] = 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -129,8 +117,6 @@ const ProductsCard = (props) => {
   }
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
-
-  const if_user_name = localStorage.getItem('if-username')
 
   const guest_href = `/product/${props.id}`
 

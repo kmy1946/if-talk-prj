@@ -129,15 +129,10 @@
   height: 44px;
   position: relative;
   font-size: 30px;
-  color: #000000;
-  margin: 0;
-  margin-top: 20px;
+  color: white;
   left: 50%;
   transform: translate(-50%, -20%);
-  /*
-  color: white;
-  text-shadow:1px  1px 1px #000000,-1px  1px 1px #000000,1px -1px 1px #000000,-1px -1px 1px #000000,1px  0px 1px #000000,0px  1px 1px #000000,-1px  0px 1px #000000,0px -1px 1px #000000;
-  */
+
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -147,7 +142,6 @@
   position: relative;
   font-size: 30vw;
   margin: 0;
-  bottom: 100%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
@@ -170,7 +164,6 @@
 .featured-content__lang_mobile { 
   white-space: nowrap;
   position: relative;
-  padding-top: 1px;
   color: #3d88ce;
 }
 .featured-content__name_mobile {
@@ -180,6 +173,7 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
 .toswipercard_mobile {
   width: 100vw;
 }

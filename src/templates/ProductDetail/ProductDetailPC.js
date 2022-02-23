@@ -7,7 +7,7 @@ import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
 import { addProductToBookMark } from "../../reducks/users/operations";
 import { getIsSignedIn } from "../../reducks/users/selectors";
-import { ProductActionTableBookMark, ProductDetailSidebar, TableOfContents } from "..";
+import { ProductActionTableBookMark, ProductDetailSidebar, TopSwiperDetail } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 15,
     display: 'flex',
     textAlign:'left',
+    boxShadow: '0 2px 5px #ccc',
+    padding:6,
     '& li': {
       fontSize:12,
       listStyle:'none',
@@ -27,8 +29,14 @@ const useStyles = makeStyles((theme) => ({
     },
     '& li:hover': {
       fontWeight: 600,
-      color:'rgb(70, 73, 247)'
+      color:'rgb(70, 73, 247)',
     },
+  },
+  detail__topswiper: {
+    marginTop:100,
+    marginBottom:70,
+    zoom:0.7,
+    width:'140vw'
   },
   sliderBox: {
     [theme.breakpoints.up('sm')]: {
@@ -104,12 +112,9 @@ const ProductDetailPC = () => {
     db.collection('products').doc(id).get()
       .then(doc => {
         const data = doc.data();
-        setProduct(data)//productのstateを更新
+        setProduct(data)
       })
-      //setElement(document.querySelector('H2'));
   }, []);
-  //let attvalue = element.getAttribute('class');
-  //element.querySelectorAll('id', 'H2');
 
   const addProductToBookmark = useCallback(() => {
     const timestamp = FirebaseTimestamp.now();
@@ -124,7 +129,6 @@ const ProductDetailPC = () => {
       //created_at:product.created_at,
       //updated_at:product.updated_at
     }))
-    //console.log(product.id)
   }, [product]);
 
   const detail_clients = () => {
@@ -156,6 +160,9 @@ const ProductDetailPC = () => {
     <>
       {product && (
         <>
+        <div className={classes.detail__topswiper}>
+          <TopSwiperDetail/>
+        </div>
         <div className="pc-main-detail">
       <section className="c-section-wrapin_detail">
         <div className={classes.detail_group}>

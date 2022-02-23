@@ -90,7 +90,6 @@ const TopSwiper = () => {
         .catch((error) => console.log(error))
       })()
     },[])
-  //console.log(featuredproducts.length)
 
   return (
     <div>

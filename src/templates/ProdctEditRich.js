@@ -200,18 +200,6 @@ const ProdctEditRich = () => {
     return <img src={props.src} alt="" />;
   };
 
-  const Media = (props) => {
-    const entity = props.contentState.getEntity(props.block.getEntityAt(0)).getData();
-    const { src } = entity.getData();
-    const type = entity.getType();
-
-    let media;
-    if (type === "image") {
-      media = <Image src={src} />;
-    }
-
-    return media;
-  };
 
   return (
     <section>
@@ -270,7 +258,6 @@ const ProdctEditRich = () => {
           //plugins={[imagePlugin]}
           //readOnly={true}
           handleReturn={(event, state) => {
-            //console.log(event, state)
             const contentState = state.getCurrentContent()
             const selection = state.getSelection()
             const currentBlock = contentState.getBlockForKey(

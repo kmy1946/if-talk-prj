@@ -34,6 +34,16 @@ const useIntersectionObserver = (setActiveId) => {
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     headingElements.forEach((element) => observer.observe(element));
 
+    for(let i in headingElements){
+      if (headingElements.hasOwnProperty(i)) {
+
+        const head_id = headingElements[i].textContent
+        var tmp = document.getElementsByClassName("h2") ;
+        console.log(head_id)
+        console.log(tmp)
+      }
+    }
+
     return () => observer.disconnect();
   }, []);
 };
@@ -63,10 +73,14 @@ const useHeadingsData = () => {
   useEffect(() => {
     const headingElements = Array.from(
       document.querySelectorAll("h2, h3")
+      
     );
 
     const newNestedHeadings = getNestedHeadings(headingElements);
     setNestedHeadings(newNestedHeadings);
+
+    const doc = document.querySelectorAll("h2, h3")
+
   }, []);
 
   return { nestedHeadings };

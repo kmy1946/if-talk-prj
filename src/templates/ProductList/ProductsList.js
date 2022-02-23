@@ -57,7 +57,7 @@ const ProductsList = () => {
   //console.log(products);
 
   const list__title__clients = () => {
-    if (query.slice( 0, 9 ) == '?clients=') {
+    if (query.slice( 0, 9 ) === '?clients=') {
       const list__title__clients = query.slice(9, 30)
       return (
         <p className={classes.list__title}>
@@ -80,7 +80,7 @@ const ProductsList = () => {
   }
 
   const list__title_updated_at_month = () => {
-    if (query.slice( 0, 18 ) == '?updated_at_month=') {
+    if (query.slice( 0, 18 ) === '?updated_at_month=') {
       const list__title__all = query.slice(18, 30)//202202
       const list__title__sliced = list__title__all.slice(0, 4)//2022
       const year_text = '年'

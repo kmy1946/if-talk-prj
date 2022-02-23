@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
       right:0
     },
     media: {
-      width:'9vh',
-      height:'9vh',
+      width:'19vh',
+      height:'19vh',
       borderRadius:'2px'
   },
     product_image:{
@@ -55,11 +55,12 @@ const useStyles = makeStyles((theme) => ({
     },
     name: {
       width:'65vw',
+      fontSize:'19px',
       whiteSpace:'noWrap'
     },
     category: {
       color:theme.palette.info.main,
-      fontSize:'12px',
+      fontSize:'16px',
       whiteSpace: 'noWrap',
       marginLeft:'auto'
     },
@@ -209,7 +210,7 @@ const ProductCard = (props) => {
               onClick={() => dispatch(push('/product/'+props.id))}
               title=""
             />
-            </Box>
+          </Box>
             <CardContent className={classes.content}>
               <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
                   <Typography color="textSecondary" className={classes.name}>

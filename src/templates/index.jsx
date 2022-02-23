@@ -22,3 +22,5 @@ export { default as BookMarkList } from './BookMarkList';
 export { default as GuestSignIn } from './Register/GuestSignIn';
 export { default as TopSwiper } from './TopSwiper/TopSwiper';
 export { default as TopSwiperCardMobile } from './TopSwiper/TopSwiperCardMobile';
+export { default as TopSwiperDetail } from './ProductDetail/TopSwiperDetail';
+export { default as TopSwiperCardDetail } from './ProductDetail/TopSwiperCardDetail';

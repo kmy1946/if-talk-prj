@@ -39,12 +39,8 @@ const useStyles = makeStyles((theme) => ({
     },
     media: {
       height: 0,
-      //objectFit: 'cover',
-      //overflow: 'hidden',
-      //margin:0,
       paddingTop: '100%',
       width:'100%'
-      //width:'400px'
   },
     clients: {
       color:theme.palette.info.main,
@@ -58,15 +54,6 @@ const ProductCards = (props) => {
 
   const selector = useSelector(state => state);
   const userRole = getUserRole(selector)
-  const isAdministrator = (userRole === "customer");//customerのみ編集可能
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//投稿者のみ編集削除可能にする
-//1.localstrageからユーザーid
-//2.dbのproductのユーザーidをリストで拾う
-//3.1=2を検証（IF分岐）
-//4.合致すれば編集・削除を表示
-  const current_user_id = localStorage.getItem('if-uid')//
 
   let products_list = []
   useEffect(() => {
@@ -82,19 +69,6 @@ const ProductCards = (props) => {
           })
       })
 }, [])
-
-  //if_product_uid['uid'] = 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
 

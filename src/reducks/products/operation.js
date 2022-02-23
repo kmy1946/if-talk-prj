@@ -28,7 +28,9 @@ export const deleteProduct = (id) => {
           const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
           const nextProducts = prevProducts.filter(product => product.id !== id)
           dispatch(deleteProductAction(nextProducts))
+          dispatch(hideLoadingAction());
         }).catch(() => {alert('権限がありません')})
+      dispatch(hideLoadingAction());
   }
 }
 
@@ -53,9 +55,10 @@ export const fetchProducts = (clients, category, updated_at_month, page) => {
           dispatch(fetchProductsAction(productList))
       }).catch((error) => {
         dispatch(hideLoadingAction());
-        console.log(error);
+        //console.log(error);
         alert('エラーが発生しました。')
       })
+      dispatch(hideLoadingAction());
   }
 }
 
