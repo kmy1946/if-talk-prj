@@ -10,8 +10,6 @@ import { EditorState, DefaultDraftBlockRenderMap,
           ContentState, convertToRaw, convertFromRaw,
           Modifier, SelectionState,
 } from 'draft-js';
-import createImagePlugin from "@draft-js-plugins/image";
-import createPrismPlugin from 'draft-js-prism-plugin';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import 'draft-js/dist/Draft.css'
 import DOMPurify from 'dompurify';
@@ -22,18 +20,6 @@ import { CodeBlock } from ".";
 import PrismDecorator from "./Editor/PrismDecorator";
 import NewLineDecorator from "./Editor/PrismDecorator";
 import MultiDecorator from "./Editor/MultiDecorator";
-
-const CodeBlockOriginal = (contentBlock, props) => {
-  return (
-    <pre>
-      <code>
-        <p>
-          {props.contentText}
-        </p>
-      </code>
-    </pre>
-  )
-}
 
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()
@@ -110,6 +96,18 @@ const ProdctEditRich = () => {
   //console.log(editorState)
   const convertContentToHTML = () => {
     let currentContentAsHTML = draftToHtml(convertToRaw(editorState.getCurrentContent()))//convertToHTML(editorState.getCurrentContent());
+
+    const heading = document.getElementsByClassName('H2')
+    //console.log(heading)
+    if (heading.nodeName === "H2") {
+      ///let element = document.getElementById('shopinfo');
+      ///const x = element.setAttribute('class', 'H2');
+      
+    } else if (heading.nodeName === "H3") {
+    }
+
+/////////////////////////////////////////////////////////////
+
     setDescription(currentContentAsHTML);
   }
   const createMarkup = (html) => {
@@ -184,22 +182,14 @@ const ProdctEditRich = () => {
   const edit_title = () => {
     if (id !== "") {
       return (
-        <h2 className="u-text__headline_post u-text-center_post">記事の編集</h2>
+        <h1 className="u-text__headline_post u-text-center_post">記事の編集</h1>
       )
     } else {
       return (
-        <h2 className="u-text__headline_post u-text-center_post">記事の登録</h2>
+        <h1 className="u-text__headline_post u-text-center_post">記事の登録</h1>
         )
     }
   }
-
-  const imagePlugin = createImagePlugin();
-  //const PrismPlugin = createPrismPlugin();
-
-  const Image = (props) => {
-    return <img src={props.src} alt="" />;
-  };
-
 
   return (
     <section>
