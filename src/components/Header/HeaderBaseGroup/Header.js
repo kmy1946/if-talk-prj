@@ -10,10 +10,10 @@ import LogoText from './LogoText';
 import HeaderMenuGuest from '../Guest/HeaderMenuGuest';
 import '../Header.css'
 import LogoTextGuest from './LogoTextGuest';
+import { TopMenu } from '../../TopMenu';
 
 const useStyles = makeStyles({
     if_logo: {
-      marginBottom:'10px'
     },
     root: {
       flexGrow: 1,
@@ -21,8 +21,8 @@ const useStyles = makeStyles({
     menuBar: {
       backgroundColor: "#fff",
       color: '#444',
-      height:'40px',
-      backgroundColor:'#eeeeee'
+      height:'55px',
+      backgroundColor:'#eeeeee',
     },
     toolbar: {
       margin: '0 auto',
@@ -31,11 +31,9 @@ const useStyles = makeStyles({
     },
     iconButtons: {
       margin: '0 0 0 auto',
-      marginBottom:'15px'
     },
     header__right_guest: {
       margin: '0 0 0 auto',
-      marginBottom:'20px',
       color:'green'
     },
   }
@@ -92,15 +90,19 @@ const Header = () => {
                     window.innerWidth > 760 ?
                       <>
                       <LogoTextGuest/>
+                      <div>
+                      </div>
                         <div className={classes.header__right_guest}>
                           <small>
                             プログラミング情報サイト　
                           </small>
+                          
                           <a href='/whensignin' className='header__signin-link'>
                             <small>
                               ユーザー関連
                             </small>
                           </a>
+                          
                         </div>
                       </>
                       :

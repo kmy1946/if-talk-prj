@@ -9,7 +9,6 @@ import { addProductToBookMark } from "../../reducks/users/operations";
 import { getIsSignedIn } from "../../reducks/users/selectors";
 import { ProductActionTableBookMark, TopSwiper, TopSwiperDetailMobile } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
-import DateRangeIcon from '@material-ui/icons/DateRange';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
 import SearchIcon from '@material-ui/icons/Search';

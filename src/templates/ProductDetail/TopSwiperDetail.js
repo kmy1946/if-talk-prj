@@ -7,11 +7,14 @@ import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
+  topswiper_group: {
+    backgroundColor:'white',
+    marginTop:'30px',
+  },
   topswiper__paginationbutton: {
     textAlign:"center",
     marginTop:'0.3vw',
-    opacity:0
-    /*backgroundColor:'grey',*/
+    opacity:0,
   },
   topswiper__paginationIconButton: {
     borderRadius:'50px'
@@ -37,11 +40,11 @@ const useStyles = makeStyles({
   topswiper: {
     display: 'flex',
     //flexGrow: 1,
-    height:'14vw',
+    height:'18vw',
     width:'100%',
   },
   featured_p: {
-    marginTop:'65px',
+    marginTop:'5px',
     marginLeft:'10vw',
     fontFamily:'cursive',
   },
@@ -90,7 +93,9 @@ const TopSwiperDetail = () => {
 
   return (
     <div>
+      {/*
       <p className={classes.featured_p}>Featured</p>
+      */}
       
       <div className={classes.topswiper}>
         
@@ -98,7 +103,7 @@ const TopSwiperDetail = () => {
 
               {
                   <>                        
-                  <Carousel breakPoints={breakPoints} renderArrow={myArrow}
+                  <Carousel breakPoints={breakPoints} renderArrow={myArrow} className={classes.topswiper_group}
                     renderPagination={({ pages, onClick }) => {
                       return (
                         <Container direction="row" className={classes.topswiper__paginationbutton}>

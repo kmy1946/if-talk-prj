@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
       margin: 6,
       width: 'calc(33.3333% - 32px)'
     },
+    '&:hover': {
+      transition: 'boxShadow 0.3s',
+      boxShadow: '0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)'
+    }
   },
     content: {
       display:'flex',

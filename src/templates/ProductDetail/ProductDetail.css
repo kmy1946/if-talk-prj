@@ -1,5 +1,6 @@
 .pc-main-detail {
   display: flex;
+  background-color: white;
 }
 .c-section-wrapin_detail {
   width: 78vw;
@@ -7,12 +8,12 @@
   padding: 8px;
 }
 .child2-detail {
+  background-color: white;
   width: 20vw;
   height: 100%;
   margin: 3px;
   margin-top: 130px;
   padding: 8px;
-  background-color: rgb(255, 255, 255);
 }
 .detailadv__group {
   width: 20vw;
@@ -22,7 +23,7 @@
   margin-top: -10px;
   overflow: hidden;
   padding: .5em .5em .5em 1em;
-	background-color: #ebf3ff;
+	background-color: white;
 	border-bottom: solid .1em #c1daff;
 	border-left: solid .5em #c1daff;
 }
@@ -35,7 +36,7 @@ nav {
   overflow: auto;
 }
 .toc__group {
-  background: #fff;
+  background-color: white;
   box-shadow: 0 2px 5px rgb(75, 75, 75);
 }
 .toc__ul {
@@ -89,7 +90,6 @@ h2, h3 {
 
 .featured-content__name__detail{
   position: relative;
-  font-size: 30px;
   color: #ffffff;
   left: 50%;
   transform: translate(-50%, 60%);
@@ -97,13 +97,24 @@ h2, h3 {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  text-shadow:
+    1px  1px 1px #000000,
+    -1px  1px 1px #000000,
+    1px -1px 1px #000000,
+    -1px -1px 1px #000000,
+    1px  0px 1px #000000,
+    0px  1px 1px #000000,
+    -1px  0px 1px #000000,
+    0px -1px 1px #000000;
 }
 .featured-content__lang__detail {
   position: relative;
-  font-size: 30vw;
-  bottom: 100%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  background-color: rgb(144, 172, 199);
+  max-width: 130px;
+  text-align: center;
+  padding: 4px;
+  transform: translate(-50%, 15%);
   color: white;
   text-shadow:
     1px  1px 1px #000000,

@@ -13,13 +13,13 @@ const useStyles = makeStyles({
   list__card: {
     width:'100vw',
     padding:'1px',
-    //backgroundColor:'rgb(210, 255, 234)',
+    backgroundColor: 'rgb(247, 250, 255)',
     borderRadius:2,
   },
   list__card_mobile: {
     width:'130%',
     padding:'1px',
-    backgroundColor:'rgb(210, 255, 234)',
+    //backgroundColor:'rgb(210, 255, 234)',
     borderRadius:2,
     marginTop:'130px',
     position:'relative'
@@ -132,8 +132,11 @@ const ProductList = () => {
             (
               window.innerWidth > 760 ?
         <>
+        {/*
           <Card className={classes.list__card}>
+        */}
             {list__title()}
+            
             {products.length > 0 && (
               products.map(product => (
                 <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
@@ -142,20 +145,20 @@ const ProductList = () => {
             <div>
               <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
             </div>
-          </Card>
         </>
         :
         <>
+        {/*
           <Card className={classes.list__card_mobile}>
+        */} 
             {list__title()}
+            
             {products.length > 0 && (
               products.map(product => (
                 <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
               )
             ))}
             <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
-          </Card>
-          
         </>
             )
           }

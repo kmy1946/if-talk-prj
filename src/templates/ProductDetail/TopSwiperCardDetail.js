@@ -21,12 +21,13 @@ const useStyles = makeStyles((theme) => ({
   detail__swiper__cardcontent:{
     backgroundColor:'rgb(75, 75, 75)',
     width:'100%',
+    height: '120px',
     opacity:0.7,
     position:"absolute",
     bottom:0,
     '&:hover': {
       backgroundColor:'rgb(55, 75, 75)',
-      paddingBottom:'50px',
+      paddingBottom:'150px',
       transition: '0.25s'
     }
   },
@@ -58,7 +59,9 @@ const TopSwiperCardDetail = (props) => {
   return (
     
     <div>
+      {/*
       <Divider className={classes.topswiper__horizontal_divider}/>
+      */}
       <Container>
         <Card className={classes.root} >
         {isSignedIn ? 
@@ -79,7 +82,7 @@ const TopSwiperCardDetail = (props) => {
             <NoImage />
           )
           }
-          <CardContent className={classes.content}>
+          <CardContent className={classes.detail__swiper__cardcontent}>
                 <Typography className='featured-content__lang__detail'>
                   {props.category}
                 </Typography>
@@ -122,7 +125,9 @@ const TopSwiperCardDetail = (props) => {
           )
         }
         </Card>
+        {/*
         <Divider className={classes.topswiper__horizontal_divider}/>
+        */}
       </Container>
   
     </div>

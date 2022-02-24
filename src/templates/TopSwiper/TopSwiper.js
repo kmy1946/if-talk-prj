@@ -9,7 +9,7 @@ import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 const useStyles = makeStyles({
   topswiper__paginationbutton: {
     textAlign:"center",
-    marginTop:'0.3vw',
+    marginTop:'0.3w',
     opacity:0
     /*backgroundColor:'grey',*/
   },
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     width:'100%',
   },
   featured_p: {
-    marginTop:'65px',
+    marginTop:'35px',//'75px',
     marginLeft:'10vw',
     fontFamily:'cursive',
   },
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     height:'8vh',
     width:'1vw',
     fontSize:'2.5vw',
-    marginTop:'11vw',
+    marginTop:'8vw',
     borderRadius:'40px',
   },
 })

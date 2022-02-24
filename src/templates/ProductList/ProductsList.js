@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   list__card: {
     width:'auto',
     padding:'1px',
-    backgroundColor:'rgb(225, 255, 215)',
+    backgroundColor: 'rgb(247, 250, 255)',
     borderRadius:2,
   },
   list__card_mobile: {
@@ -127,8 +127,11 @@ const ProductsList = () => {
           (
             window.innerWidth > 760 ?
               <>
-                <Card className={classes.list__card}>
-                  {list__title()}
+              {/*
+              <Card className={classes.list__card}>
+              */}
+                {list__title()}
+              
                   {products.length > 0 && (
                     products.map(product => (
                       <ProductCard key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
@@ -137,13 +140,15 @@ const ProductsList = () => {
                   <div className={classes.loadbutton_div}>
                     <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
                   </div>
-                </Card>
               </>
               :
               <>
-                <Card className={classes.list__card_mobile}>
+              {/*
+              <Card className={classes.list__card_mobile}>
+              */}
                   {list__title()}
                   <p className={classes.list__title}>記事一覧</p>
+              
                   {products.length > 0 && (
                     products.map(product => (
                       <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
@@ -152,7 +157,6 @@ const ProductsList = () => {
                   <div>
                     <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
                   </div>
-                </Card>
               </>
           )
         }

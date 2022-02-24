@@ -1,0 +1,110 @@
+/*
+.header-inner {
+  display: flex;
+  align-items: center;
+  max-width: 1024px;
+  height: 60px;
+  padding: 0 0.8em;
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.header-nav-list {
+  display: inline-block;
+  padding-left: 2vw;
+}
+
+.header-nav-item {
+  float: left;
+  color: rgb(77, 107, 134);
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 3px;
+  font-weight: bold;
+  text-align: center;
+  list-style: none;
+}
+
+.header-nav-item a {
+  text-decoration: none;
+}
+
+.header-ham {
+  display: none;
+}
+
+.menu2 {
+  width: 20px;
+  height: 3px;
+  margin: 4px 0;
+}
+
+
+.header-nav-item:hover {
+  color: rgb(162, 182, 199);
+  font-weight: 700;
+}
+
+.logo img {
+  width: 70px;
+}
+*/
+
+.logotext_wrap {
+  text-align: center;
+}
+.logotext {
+  font-family: 'Times New Roman', Times, serif;
+}
+.navigation{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.navigation ul {
+  width: 100%;
+}
+.button{
+  display: block;
+  padding:10px;
+  width:20%;
+  float:left;
+  /* 上下にボーダーを指定 */
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  /* カーソルを離した際のアニメーションの速度調整 */
+  transition:.2s all;
+}
+.button p {
+  height: 10px;
+  font-weight: 300;
+}
+.button a {
+  cursor: pointer;
+  color:#333333;
+  /* リンク指定した要素のスタイルを削除 */
+  text-decoration:none;
+  white-space: nowrap;
+}
+.navigation:hover .button{
+  filter:blur(0.3px);
+  /* 全てのボタンがぼやける */
+  opacity:.8;
+  /* 全てのボタンを通常サイズに指定 */
+  transform: scale(1);
+}
+.navigation:hover .button:hover{
+  transition: .6s;
+  /* hoverしたボタンを少し拡大するように指定 */
+  transform:scale(1.1);
+  /* hoverしている要素のみぼやけない指定 */
+  filter:blur(0px);
+  opacity:1;
+  border-top: 1px solid #888888;
+  border-bottom: 1px solid #888888;
+}
+.navigation:hover .button:hover > p {
+  font-weight: bold;
+}

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
           flexShrink: 0,
           width: 256
-      }
+      },
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
@@ -77,6 +77,8 @@ const SideBar = () => {
                                 </ListItemText>
                             </ListItem>
                         ))}
+                    </List>
+                    <List>
                         <Divider variant="middle" />
                         <Divider variant="middle" />
                         <p className="sidebar__title">対象者</p>

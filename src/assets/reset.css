@@ -4,9 +4,11 @@ html {
   font-size: 16px;
   font-family:  '游ゴシック', YuGothic, 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3','ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%;
 }
-
+#root {
+  background-color: rgb(247, 250, 255);
+}
 *,
 *::before,
 *::after {
@@ -416,14 +418,15 @@ h2 {
   padding: 0.25em 0.5em;/*上下 左右の余白*/
   color: #494949;/*文字色*/
   background: transparent;/*背景透明に*/
-  border-left: solid 5px #7db4e6;/*左線*/
+  border-left: solid 5px #4396e4;/*左線*/
 }
 h3 {
   font-size: 25px;
   position: relative;
-  padding-left: 25px;
+  padding-left: 15px;
+  margin-left: 5px;
 }
-
+/*
 h3:before {
   position: absolute;
   content: '';
@@ -433,13 +436,14 @@ h3:before {
   height: 0;
   border: none;
   border-left: solid 15px transparent;
-  border-bottom: solid 15px rgb(119, 195, 223);
+  border-bottom: solid 15px rgb(153, 209, 229);
 }
+*/
 h3:after {
   position: absolute;
   content: '';
   bottom: -3px;
   left: 10px;
   width: 100%;
-  border-bottom: solid 3px rgb(119, 195, 223);
+  border-bottom: solid 3px #4396e4;
 }

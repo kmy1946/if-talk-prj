@@ -5,16 +5,12 @@ import Auth from "./templates/Auth";
 import './App.css'
 import EditorApp from "./templates/EditorApp";
 import { Contact } from "./components/Footer";
-//import RichEditor from "./templates/RichEditor";
-import TextEditor from "./templates/Editor/TextEditor";
 import TextEdition from "./templates/Editor/TextEdition";
-import NewArticle from "./templates/Editor/NewArticle";
 import { WhenUserDetail } from "./components/ToUsers";
 function Routering() {
   return (
       <Switch>
         <Route exact path='/textedition' component={TextEdition}/>
-        <Route exact path='/newarticle' component={NewArticle}/>
         <Route exact path='/signup' component={SignUp}></Route>
         <Route exact path='/signin' component={SignIn}></Route>
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>

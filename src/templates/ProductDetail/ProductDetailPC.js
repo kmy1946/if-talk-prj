@@ -16,10 +16,11 @@ import './ProductDetail.css'
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
     fontSize:13,
-    marginBottom: 15,
+    marginTop:100,
+    marginBottom: 5,
     display: 'flex',
     textAlign:'left',
-    boxShadow: '0 2px 5px #ccc',
+    //boxShadow: '0 2px 5px #ccc',
     padding:6,
     '& li': {
       fontSize:12,
@@ -33,10 +34,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   detail__topswiper: {
-    marginTop:100,
+    marginTop:80,
     marginBottom:90,
     zoom:0.7,
-    width:'140vw'
+    width:'100%',
+    backgroundColor:'white'
   },
   sliderBox: {
     [theme.breakpoints.up('sm')]: {
@@ -49,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   username: {
     textAlign: 'right',
     fontSize:'14px',
+    marginTop:'60px'
   },
   detail_group: {
     marginTop:70

@@ -28,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       margin: 6,
       width: 'calc(100% - 12px)'//'calc(100% - 32px)',
-      
     },
-    borderRadius:2
+    borderRadius:2,
+    '&:hover': {
+      transition: 'boxShadow 0.3s',
+      boxShadow: '0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)'
+    }
   },
     content: {
       height:'3vw',
