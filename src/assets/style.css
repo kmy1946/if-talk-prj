@@ -156,7 +156,7 @@
     0px  1px 1px #003366,
     -1px  0px 1px #003366,
     0px -1px 1px #003366;
-    white-space: nowrap;
+  white-space: nowrap;
 }
 .featured-content__href {
   text-decoration: none;

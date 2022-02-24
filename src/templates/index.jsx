@@ -24,3 +24,5 @@ export { default as TopSwiper } from './TopSwiper/TopSwiper';
 export { default as TopSwiperCardMobile } from './TopSwiper/TopSwiperCardMobile';
 export { default as TopSwiperDetail } from './ProductDetail/TopSwiperDetail';
 export { default as TopSwiperCardDetail } from './ProductDetail/TopSwiperCardDetail';
+export { default as TopSwiperCardDetailMobile } from './ProductDetail/TopSwiperCardDetailMobile';
+export { default as TopSwiperDetailMobile } from './ProductDetail/TopSwiperDetailMobile';

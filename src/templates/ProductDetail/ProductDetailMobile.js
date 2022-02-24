@@ -7,7 +7,7 @@ import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
 import { addProductToBookMark } from "../../reducks/users/operations";
 import { getIsSignedIn } from "../../reducks/users/selectors";
-import { ProductActionTableBookMark } from "..";
+import { ProductActionTableBookMark, TopSwiper, TopSwiperDetailMobile } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -30,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       color:'rgb(70, 73, 247)'
     },
+  },
+  detail__topswiper: {
+    marginTop:'-50px',
+    marginBottom:'250px',
+    zoom:0.9,
   },
   sliderBox: {
       [theme.breakpoints.up('sm')]: {
@@ -61,11 +66,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     fontSize:27,
     fontWeight:'bold',
-    padding: '0.25em 0.5em',/*上下 左右の余白*/
+    padding: '0.25em 0.5em',
     marginTop:30,
-    color: '#494949',/*\文字色*/
-    background: 'transparent',/*背景透明に*/
-    //borderLeft: 'solid 5px rgb(88, 230, 95)'
+    color: '#494949',
+    background: 'transparent',
   },
   clients_icon: {
     color:'#4666f7',
@@ -89,6 +93,10 @@ const useStyles = makeStyles((theme) => ({
   },
   category_updated_at: {
     fontSize: 10,
+  },
+  featured_p: {
+    left:0,
+    fontFamily:'cursive',
   },
 }))
 
@@ -155,6 +163,7 @@ const ProductDetailMobile = () => {
   return (
     <>
       {product && (
+        <>
         <div className={classes.detail_group}>
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
@@ -202,9 +211,13 @@ const ProductDetailMobile = () => {
               {returnCodeToBr(product.description)}
             </div>
           </div>
+          <div className="module-spacer--small"/>
+          <div className="module-spacer--small"/>
           <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
+          <div className="module-spacer--small"/>
+          <div className="module-spacer--small"/>
         </div>
-        <div className="module-spacer--small"/>
+          <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
               {isSignedIn ? 
                   (
@@ -218,6 +231,11 @@ const ProductDetailMobile = () => {
                   )
                 }
           </div>
+          <div className={classes.detail__topswiper}>
+            <p className={classes.featured_p}>注目の記事</p>
+            <TopSwiperDetailMobile/>
+          </div>
+          </>
           )}
     </>
   )
