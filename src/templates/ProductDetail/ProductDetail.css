@@ -31,6 +31,10 @@
   width: 20vw;
   height: 100%;
 }
+.sidebar__adv-group {
+  width: 20vw;
+  height: 100%;
+}
 .sidebar__title__detail {
   margin-top: -10px;
   overflow: hidden;
