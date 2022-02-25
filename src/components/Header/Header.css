@@ -9,6 +9,7 @@
   justify-content: space-around;
 }
 .logotext {
+  cursor: pointer;
   font-family: 'Times New Roman', Times, serif;
 }
 .header__signin-link {

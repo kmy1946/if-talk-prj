@@ -6,6 +6,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
+    <>
     <div className='footer_group'>
       <Container>
         <div className="footer-centering">
@@ -27,6 +28,7 @@ const Footer = () => {
           </Typography>
           </Container>
     </div>
+    </>
   );
 }
 

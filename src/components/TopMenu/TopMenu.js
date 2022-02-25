@@ -18,7 +18,7 @@ const TopMenu = () => {
               <p><a onClick={() => dispatch(push('/'))}>Home</a></p>
             </li>
             <li className="button">
-              <p><a onClick={() => dispatch(push('/whensignin'))}>About</a></p>
+              <p><a onClick={() => dispatch(push('/about'))}>About</a></p>
             </li>
             <li className="button">
               <p><a onClick={() => dispatch(push('/contact'))}>Contact</a></p>

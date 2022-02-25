@@ -7,6 +7,8 @@ import EditorApp from "./templates/EditorApp";
 import { Contact } from "./components/Footer";
 import TextEdition from "./templates/Editor/TextEdition";
 import { WhenUserDetail } from "./components/ToUsers";
+import { About } from "./templates/About";
+
 function Routering() {
   return (
       <Switch>
@@ -16,6 +18,7 @@ function Routering() {
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>
         <Route exact path='/signin/reset' component={Reset}></Route>
         <Route exact path='/whensignin' component={WhenUserDetail} />
+        <Route exact path='/about' component={About} />
 
         <Route exact path={"/"}>
           <>

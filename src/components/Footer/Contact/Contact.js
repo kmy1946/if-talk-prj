@@ -4,7 +4,6 @@ import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Input } from "@material-ui/core";
 import emailjs from '@emailjs/browser';
-import { TextInput } from "../../UIkit";
 
 function Contact() {
   const [nameing, setNameing] = useState();
@@ -51,7 +50,10 @@ function Contact() {
   };
 
   return (
-    <Box w={'full'} boxShadow={'2xl'} rounded={'lg'} p={6} textAlign={'center'} className="card contact-box text-center mx-auto rounded" id="contact">
+    <Box w={'full'} boxShadow={'2xl'} rounded={'lg'} p={6} textAlign={'center'}
+      className="card contact-box text-center mx-auto rounded" id="contact"
+      style={{backgroundColor:'rgb(247, 250, 255)'}}
+    >
 
       <div className="card-body contact_group">
         <p className="contact_me">
