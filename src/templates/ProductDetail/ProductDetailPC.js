@@ -16,7 +16,6 @@ import './ProductDetail.css'
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
     fontSize:13,
-    marginTop:100,
     marginBottom: 5,
     display: 'flex',
     textAlign:'left',
@@ -35,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
   },
   detail__topswiper: {
     marginTop:80,
-    marginBottom:90,
+    marginBottom:120,
     zoom:0.7,
     width:'100%',
-    backgroundColor:'white'
+    //backgroundColor:'white'
   },
   sliderBox: {
     [theme.breakpoints.up('sm')]: {
@@ -52,9 +51,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'right',
     fontSize:'14px',
     marginTop:'60px'
-  },
-  detail_group: {
-    marginTop:70
   },
   detail_group__group: {
     display:'flex',
@@ -168,7 +164,7 @@ const ProductDetailPC = () => {
         </div>
         <div className="pc-main-detail">
       <section className="c-section-wrapin_detail">
-        <div className={classes.detail_group}>
+        <div>
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
               <li onClick={() => dispatch(push('/'))}>Home</li>

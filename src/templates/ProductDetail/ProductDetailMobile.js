@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   detail__topswiper: {
-    marginTop:'-50px',
-    marginBottom:'250px',
+    //marginTop:'-50px',
+    //marginBottom:'250px',
     zoom:0.9,
   },
   sliderBox: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   detail_group: {
     textAlign:'center',
-    marginTop:70
+    //marginTop:70
   },
   detail_group__group: {
     display:'flex',

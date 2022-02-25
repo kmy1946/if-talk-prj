@@ -1,19 +1,23 @@
 .pc-main-detail {
   display: flex;
-  background-color: white;
+  background-color: rgb(247, 250, 255);
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 .c-section-wrapin_detail {
-  width: 78vw;
+  width: 73vw;
   margin: 3px;
-  padding: 8px;
+  margin-left: 3.3vw;
+  padding: 2px;
+  background-color: white;
+  border: 1px solid silver;
 }
 .child2-detail {
-  background-color: white;
   width: 20vw;
   height: 100%;
-  margin: 3px;
-  margin-top: 130px;
   padding: 8px;
+  position: fixed;
+  right: 0;
 }
 .detailadv__group {
   width: 20vw;
@@ -70,23 +74,6 @@ nav {
   font-weight: 600;
   color: rgb(97, 97, 97);
 }
-
-/*
-h2, h3 {
-  list-style: none;
-  scroll-margin-top: 16px;
-}
-
-/* Safari-only */
-/*
-@supports (-webkit-hyphens:none) {
-  h2, h3 {
-      list-style: none;
-      padding-top: 16px;
-      margin-top: -16px;
-  }
-}
-*/
 
 .featured-content__name__detail{
   position: relative;

@@ -8,8 +8,7 @@ import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
   topswiper_group: {
-    backgroundColor:'white',
-    marginTop:'30px',
+    //marginTop:'30px',
   },
   topswiper__paginationbutton: {
     textAlign:"center",
