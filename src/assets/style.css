@@ -256,6 +256,7 @@
   padding: 1rem;
   height: auto;
   width: calc(100% - 2rem);
+  background-color: white;
 }
 
 .c-section-wrapin {

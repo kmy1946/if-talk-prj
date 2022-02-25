@@ -1,4 +1,3 @@
-export { default as Home } from './Home';
 export { default as SideBar } from './SideBar';
 export { default as SideBarGuest } from './SideBarGuest';
 export { default as SideBarLeft } from './SideBarLeft';

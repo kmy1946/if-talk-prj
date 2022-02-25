@@ -1,9 +1,5 @@
-import React, { Children, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import ImageArea from "../components/Products/ImageArea";
-import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
-import { db } from "../Firebase";
-import { saveProduct } from "../reducks/products/operation";
 import './productedit.css';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, DefaultDraftBlockRenderMap,
@@ -15,11 +11,12 @@ import 'draft-js/dist/Draft.css'
 import DOMPurify from 'dompurify';
 import Immutable from 'immutable';
 import draftToHtml from "draftjs-to-html";
-import { hideLoadingAction,  } from "../reducks/loading/actions";
 import { CodeBlock } from ".";
-import PrismDecorator from "./Editor/PrismDecorator";
-import NewLineDecorator from "./Editor/PrismDecorator";
-import MultiDecorator from "./Editor/MultiDecorator";
+import { db } from "../Firebase";
+import { hideLoadingAction,  } from "../reducks/loading/actions";
+import ImageArea from "../components/Products/ImageArea";
+import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
+import { saveProduct } from "../reducks/products/operation";
 
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()
@@ -62,7 +59,6 @@ const ProdctEditRich = () => {
     'BOLD': {
       fontWeight: 'bold',
     },
-    //'CODE': {backgroundColor: '#grey',}
   };
 
   const myBlockStyleFn = (contentBlock) => {
@@ -106,8 +102,6 @@ const ProdctEditRich = () => {
     } else if (heading.nodeName === "H3") {
     }
 
-/////////////////////////////////////////////////////////////
-
     setDescription(currentContentAsHTML);
   }
   const createMarkup = (html) => {
@@ -122,7 +116,6 @@ const ProdctEditRich = () => {
   }
   if (id !== "") {
       id = id.split('/')[1]
-      //console.log(id)
   }
 
   const [images, setImages] = useState([]),
@@ -135,9 +128,6 @@ const ProdctEditRich = () => {
   const inputName = useCallback((event) => {
     setName(event.target.value)
   }, [setName])
-  //const inputDescription = useCallback((event) => {
-    //setDescription(event.target.value)
-  //}, [setDescription])
 
   useEffect(() => {
     if (id !== "") {//編集ページではない時
@@ -209,15 +199,6 @@ const ProdctEditRich = () => {
           label={"対象者"} required={true} fullWidth={true} options={target_clients} select={setClients} value={clients}
         />
         <div className="module-spacer--medium" />
-        {/*
-        <EditorComponent wrapperClassName="wrapper-class" editorClassName="editor-class" toolbarClassName="toolbar-class"
-          description={description}
-          editorState={editorState} handleEditorChange={handleEditorChange} 
-        />
-        */}{/*
-        <TextEditor description={description}/>
-        {description}
-        */}
         <Editor //contenteditable="true"
           editorState={editorState}
           onEditorStateChange={handleEditorChange} 
@@ -244,9 +225,6 @@ const ProdctEditRich = () => {
           blockRendererFn={myBlockRenderer}
           blockRenderMap={extendedBlockRenderMap}
           //plugins={PrismPlugin}
-          //plugins={plugins}
-          //plugins={[imagePlugin]}
-          //readOnly={true}
           handleReturn={(event, state) => {
             const contentState = state.getCurrentContent()
             const selection = state.getSelection()
@@ -307,14 +285,6 @@ const ProdctEditRich = () => {
             }
           }}
         />
-        {/*}
-        <Editor //contenteditable="true"
-          editorState={editorState} onEditorStateChange={handleEditorChange} 
-          wrapperClassName="wrapper-class" editorClassName="editor-class" toolbarClassName="toolbar-class"
-          value={description}
-          //blockRendererFn={myBlockRenderer}
-        />
-        */}
         <div className="center">
           <PrimaryButton
             label={"記事を投稿する"}
@@ -325,7 +295,6 @@ const ProdctEditRich = () => {
 
         <p>Preview:</p>
         <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
-        {description}
         <div className="module-spacer--medium" />
       </div>
 

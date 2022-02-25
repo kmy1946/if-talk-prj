@@ -1,11 +1,17 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
+import IconButton from "@material-ui/core/IconButton";
+import BorderColorIcon from '@material-ui/icons/BorderColor';
 import './TopMenu.css'
 import { LogoText } from ".";
-import { getIsSignedIn } from "../../reducks/users/selectors";
+import { getIsSignedIn, getProductsInBookMark } from "../../reducks/users/selectors";
 import { makeStyles } from "@material-ui/core";
 import { HeaderMenu, handleDrawerToggle, HeaderMenuGuest } from "../Header";
+import {Badge} from "@material-ui/core";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { signOut } from "../../reducks/users/operations";
 
 const useStyles = makeStyles({
   if_logo: {
@@ -27,6 +33,8 @@ const TopMenu = () => {
   const id = path.split('/product/')[1];//２つ目=id
   const isSignedIn = getIsSignedIn(selector);
 
+  let productsInBookMark = getProductsInBookMark(selector);
+
   const [open, setOpen] = useState(false);
 
   const handleDrawerToggle = useCallback((event) => {
@@ -45,11 +53,27 @@ const TopMenu = () => {
           {isSignedIn ?
             (//サインイン状態
                 window.innerWidth > 760 ?
-                  <></>
+                  <>
+                  <div className='topmenu__icon-group'>
+                    <IconButton onClick={() => dispatch(push('/users/product/edit'))}>
+                      <BorderColorIcon className='header__bordercoloricon'/>
+                    </IconButton>
+                    <IconButton onClick={() => dispatch(push('/users/bookmark'))}>
+                      <Badge badgeContent={productsInBookMark.length} color="secondary">
+                        <FavoriteBorderIcon />
+                      </Badge>
+                    </IconButton>
+                    <IconButton onClick={() => dispatch(signOut())}>
+                      <Badge color="secondary">
+                        <ExitToAppIcon/>
+                      </Badge>
+                    </IconButton><small>ログアウト</small>
+                  </div>
+                  </>
                   :
                   (
                   <>
-                    <div className={classes.iconButtons}>
+                    <div className={classes.iconButtons} style={{textAlign:'right'}}>
                       <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
                     </div>
                   </>
@@ -86,15 +110,6 @@ const TopMenu = () => {
             </li>
             </div>
           </ul>
-        
-    {/*
-        <nav className="header-nav">
-          <ul className="header-nav-list">
-            <a onClick={() => dispatch(push('/'))}><li className="header-nav-item">List</li></a>
-            <a onClick={() => dispatch(push('/contact'))}><li className="header-nav-item">Contact</li></a>
-          </ul>
-        </nav>
-    */}
     </>
   )
 }

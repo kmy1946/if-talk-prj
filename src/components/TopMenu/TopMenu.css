@@ -49,11 +49,15 @@
   width: 70px;
 }
 */
+.topmenu__icon-group {
+  text-align: right;
+}
 .logotext_wrap {
   text-align: center;
 }
 .logotext {
   font-family: 'Times New Roman', Times, serif;
+  padding: 30px;
 }
 .navigation{
   display: flex;

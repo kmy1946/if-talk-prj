@@ -164,7 +164,9 @@ const ProductDetailMobile = () => {
       {product && (
         <>
         <div className={classes.detail_group}>
+          <section className="c-section-wrapin_detail__mobile">
           <div className={classes.detail}>
+          
           <ul className={classes.router_from_home}>
               <li onClick={() => dispatch(push('/'))}>Home</li>
               >
@@ -213,9 +215,11 @@ const ProductDetailMobile = () => {
           <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
           <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
+          
           <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
         </div>
+        </section>
           <div className="module-spacer--small"/>
           <div className="module-spacer--small"/>
               {isSignedIn ? 

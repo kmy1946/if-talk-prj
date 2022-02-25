@@ -3,7 +3,6 @@ import { Button, Container, Grid, makeStyles } from "@material-ui/core";
 import Carousel, { consts } from 'react-elastic-carousel'
 import { db } from "../../Firebase";
 import { TopSwiperCardDetailMobile, TopSwiperCardMobile } from "..";
-import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
 const useStyles = makeStyles({
   topswiper__paginationbutton: {
@@ -38,6 +37,7 @@ const useStyles = makeStyles({
     //flexGrow: 1,
     height:'14vw',
     width:'100%',
+    marginBottom:'50vw'
   },
   prev_button: {
     height:'8vh',

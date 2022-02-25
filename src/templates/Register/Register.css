@@ -44,6 +44,7 @@
 }
 .c-section-container_register {
   position: relative;
+  background-color: white;
   margin: 0 auto;
   margin-top: 60px;
   max-width: 500px;

@@ -13,13 +13,13 @@ const useStyles = makeStyles({
   list__card: {
     width:'auto',
     padding:'1px',
-    backgroundColor: 'rgb(247, 250, 255)',
+    //backgroundColor: 'rgb(247, 250, 255)',
     borderRadius:2,
   },
   list__card_mobile: {
     width:'130%',
     padding:'1px',
-    backgroundColor:'rgb(210, 255, 234)',
+    //backgroundColor:'rgb(210, 255, 234)',
     borderRadius:2,
     marginTop:'130px',
   },
@@ -127,9 +127,9 @@ const ProductsList = () => {
           (
             window.innerWidth > 760 ?
               <>
-              {/*
+              
               <Card className={classes.list__card}>
-              */}
+              
                 {list__title()}
               
                   {products.length > 0 && (
@@ -140,12 +140,13 @@ const ProductsList = () => {
                   <div className={classes.loadbutton_div}>
                     <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
                   </div>
+                  </Card>
               </>
               :
               <>
-              {/*
+              
               <Card className={classes.list__card_mobile}>
-              */}
+              
                   {list__title()}
                   <p className={classes.list__title}>記事一覧</p>
               
@@ -157,6 +158,7 @@ const ProductsList = () => {
                   <div>
                     <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
                   </div>
+                </Card>
               </>
           )
         }

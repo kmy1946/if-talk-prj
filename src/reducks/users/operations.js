@@ -11,7 +11,7 @@ export const addProductToBookMark = (addedProduct) => {
     addedProduct['bookmarkId'] = bookmarkRef.id;//bookmarkIdをフィールドとして渡す
 
     await bookmarkRef.set(addedProduct)
-    dispatch(push('/users/bookmark/'))
+    console.log(addedProduct)
 
     //await bookmarkRef.set(addedProduct)
     //dispatch(push('/'))

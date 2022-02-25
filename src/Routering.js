@@ -3,16 +3,13 @@ import Page404 from "./components/Error/Page404";
 import { ProductDetail, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
 import Auth from "./templates/Auth";
 import './App.css'
-import EditorApp from "./templates/EditorApp";
 import { Contact } from "./components/Footer";
-import TextEdition from "./templates/Editor/TextEdition";
 import { WhenUserDetail } from "./components/ToUsers";
 import { About } from "./templates/About";
 
 function Routering() {
   return (
       <Switch>
-        <Route exact path='/textedition' component={TextEdition}/>
         <Route exact path='/signup' component={SignUp}></Route>
         <Route exact path='/signin' component={SignIn}></Route>
         <Route exact path='/signin_asguest' component={GuestSignIn}></Route>
@@ -98,8 +95,6 @@ function Routering() {
           </Route>
           <Route exact path="/product/:id" component={ProductDetail} />
           <Route path="/users/product/edit(/:id)?" component={ProdctEditRich} />
-
-          <Route path="/users/editorapp" component={EditorApp} />
 
           <Route exact path='/users/bookmark' component={BookMarkList} />
         </Auth>
