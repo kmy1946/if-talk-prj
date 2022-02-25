@@ -170,6 +170,10 @@ table {
   border-spacing: 0
 }
 
+.form-control {
+  background-color: rgb(247, 250, 255);
+}
+
 td, th {
   padding: 0
 }

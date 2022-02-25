@@ -2,10 +2,9 @@ import React, { useRef, useState } from "react";
 import { Box } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { Input } from "@material-ui/core";
 import emailjs from '@emailjs/browser';
 
-function Contact() {
+const Contact = () => {
   const [nameing, setNameing] = useState();
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();
@@ -63,20 +62,30 @@ function Contact() {
         <form ref={form} onSubmit={sendEmail}>
           
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-          <div className="mb-3">
-            <Input type="text" className="form-control" onChange={(event) => setNameing(event.target.value)}    placeholder="Your Name" name="name" id="name" required data-validation-required-message="Please enter your name" required/>
-          </div>
-          <div className="mb-3">
-            <Input type="email" className="form-control" onChange={(event) => setEmail(event.target.value)}
-              placeholder="Your Email Address" name="email" id="email" required data-validation-required-message="Please enter your Email Address" required/>
-          </div>
-          <div className="mb-3">
-            <TextField type="text" className="form-control" onChange={(event) => setMessage(event.target.value)} placeholder="Message" name="message" id="message" rows="5" required></TextField>
-            <p className="help-block text-danger"></p>
-          </div>
-          <div className="mb-3" id="success">
-            <Button className="btn" type="submit" value="Send" id="sendMessageButton"><i className="fas fa-paper-plane"></i>Send!!!</Button>
-          </div>
+
+            <TextField
+              type="text" className="form-control contact-your-name" onChange={(event) => setNameing(event.target.value)} label={'Your Name'} name="name" id="name" required data-validation-required-message="Please enter your name" required
+              style={{marginTop:20}}
+            />
+            <TextField
+              type="email" className="form-control contact-your-email" onChange={(event) => setEmail(event.target.value)}
+              label={'Your Email Address'} name="email" id="email" required data-validation-required-message="Please enter your Email Address"
+              required
+              style={{marginTop:20}}
+            />
+            <TextField
+              type="text" className="form-control contact-your-message" onChange={(event) => setMessage(event.target.value)} label={'Message'} name="message" rows="5"
+              required 
+              style={{marginTop:20}}
+            />
+              <p className="help-block text-danger" />
+
+            <Button label={'Send'} className="contact__submit-button" type="submit"
+              value="Send" id="sendMessageButton" style={{marginTop:40, width:250, height:40, backgroundColor:'#4dd0e1'}}
+            >
+              <i className="fas fa-paper-plane"/>
+              Send !!!
+            </Button>
         </form>
 
       </div>

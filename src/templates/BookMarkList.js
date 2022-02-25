@@ -3,7 +3,7 @@ import { push } from "connected-react-router";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BookMarkListItem } from "../components/Products";
-import { GreyButton, PrimaryButton } from "../components/UIkit";
+import { PrimaryButton } from "../components/UIkit";
 import { getIsSignedIn, getProductsInBookMark } from "../reducks/users/selectors";
 
 const BookMarkList = () => {

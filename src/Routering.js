@@ -3,7 +3,7 @@ import Page404 from "./components/Error/Page404";
 import { ProductDetail, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
 import Auth from "./templates/Auth";
 import './App.css'
-import { Contact } from "./components/Footer";
+import { Contact } from "./templates/Contact";
 import { WhenUserDetail } from "./components/ToUsers";
 import { About } from "./templates/About";
 
