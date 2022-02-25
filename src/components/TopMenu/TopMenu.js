@@ -1,15 +1,76 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import './TopMenu.css'
 import { LogoText } from ".";
+import { getIsSignedIn } from "../../reducks/users/selectors";
+import { makeStyles } from "@material-ui/core";
+import { HeaderMenu, handleDrawerToggle, HeaderMenuGuest } from "../Header";
+
+const useStyles = makeStyles({
+  if_logo: {
+  },
+  root: {
+    flexGrow: 1,
+  },
+  iconButtons: {
+    margin: '0 0 0 auto',
+  },
+}
+);
 
 const TopMenu = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
+  const selector = useSelector(state => state)
+  const path = selector.router.location.pathname//domein以降
+  const id = path.split('/product/')[1];//２つ目=id
+  const isSignedIn = getIsSignedIn(selector);
+
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerToggle = useCallback((event) => {
+    if (event.type === 'keydown' &&
+        (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+    }
+    setOpen(!open)
+    //console.log(open)
+  }, [setOpen, open]);
+
   return (
     <>
       
         <ul>
+          {isSignedIn ?
+            (//サインイン状態
+                window.innerWidth > 760 ?
+                  <></>
+                  :
+                  (
+                  <>
+                    <div className={classes.iconButtons}>
+                      <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
+                    </div>
+                  </>
+                )
+              )
+              :
+              (//非サインイン状態
+                (
+                  window.innerWidth > 760 ?
+                    <></>
+                  :
+                  (
+                  <>
+                    <div className={classes.iconButtons}>
+                      <HeaderMenuGuest />
+                    </div>
+                  </>
+                )
+              )
+            )
+          }
           <div className="logotext_wrap">
             <LogoText/>
           </div>

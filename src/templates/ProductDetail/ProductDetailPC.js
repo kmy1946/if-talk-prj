@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   detail__topswiper: {
-    marginTop:80,
+    marginTop:25,
     marginBottom:120,
     zoom:0.7,
     width:'100%',
