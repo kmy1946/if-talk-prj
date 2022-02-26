@@ -227,6 +227,7 @@
 .u-text-center_post {
   text-align: center;
   width: 100%;
+  padding-top: 20px;
   border-radius: 15px;
 }
 

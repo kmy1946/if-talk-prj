@@ -73,18 +73,18 @@ const ProdctEditRich = () => {
       }
     }
   }
-  let _contentState = ContentState.createFromText('Sample Content');
-  const raw = convertToRaw(_contentState)
-  //const [contentState, setContentState] = useState(raw)
 
   const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),//htmlToEState(html)//
+    EditorState.createWithContent(
+      ContentState.createFromText('')
+      )
+    //() => EditorState.createEmpty(),//htmlToEState(html)//
 
     //() => EditorState.createWithContent( convertFromRaw(data),
       //new MultiDecorator([ new PrismDecorator({ defaultSyntax: 'javascript' }),
       //  new NewLineDecorator() ]))
     );
-  const  [description, setDescription] = useState();
+  const  [description, setDescription] = useState('');
   const handleEditorChange = (state, e) => {
     setEditorState(state);
     convertContentToHTML();
@@ -200,6 +200,7 @@ const ProdctEditRich = () => {
         />
         <div className="module-spacer--medium" />
         <Editor //contenteditable="true"
+          initialEditorState={description}
           editorState={editorState}
           onEditorStateChange={handleEditorChange} 
           wrapperClassName="wrapper-class"
@@ -207,11 +208,18 @@ const ProdctEditRich = () => {
           toolbarClassName="toolbar-class"
           value={description}
           toolbar={{
-            options: ['inline', 'blockType','fontFamily', 'textAlign', 'list', 'colorPicker', 'link', 'image', 'remove', 'history'],//, 'emoji'
+            options: ['inline', 'blockType','fontFamily', 'textAlign', 'list', 'colorPicker', 'link', "embedded", 'image', 'remove', 'history', 'emoji'],
             inline: { inDropdown: true, options: ['bold', 'italic', 'underline', 'monospace','strikethrough', 'superscript', 'subscript'] },//
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
             link: { inDropdown: true },
+
+            embedded: {
+              defaultSize: {
+                height: "auto",
+                width: "auto"
+              }
+            },
             history: { inDropdown: true },
             blockType: { options: ['Normal', 'H2', 'H3', 'H4', 'H5', 'H6', 'Blockquote', 'Code'], },
             //image: {urlEnabled: true, uploadEnabled: true,uploadCallback: (file) => uploadImage(file),//upload_DescriptionImages,
