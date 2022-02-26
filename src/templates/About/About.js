@@ -7,6 +7,9 @@ const useStyles = makeStyles({
   gridContainer: {
     padding: '16px 20px',
     textAlign:'center'
+  },
+  about_grid: {
+    marginTop:'2vw'
   }
 })
 
@@ -16,18 +19,29 @@ const About = () => {
     <>
     <div className="about__background">
       <div className="about__box">
-        <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6}>
-            <OutlinedCard1 />
+        <Grid container>
+          <Grid item xs={6} className={classes.about_grid} >
+            <item>
+              <OutlinedCard1 />
+            </item>
           </Grid>
-          <Grid item xs={6}>
-            <OutlinedCard2 />
+          <Grid item xs={6} className={classes.about_grid}>
+            <item>
+              <OutlinedCard2 />
+            </item>
+            
           </Grid>
-          <Grid item xs={6}>
-            <OutlinedCard3 />
+          <Grid item xs={6} className={classes.about_grid}>
+            <item>
+              <OutlinedCard3 />
+            </item>
+            
           </Grid>
-          <Grid item xs={6}>
-            <OutlinedCard4 />
+          <Grid item xs={6} className={classes.about_grid}>
+            <item>
+              <OutlinedCard4 />
+            </item>
+            
           </Grid>
         </Grid>
       </div>

@@ -18,13 +18,6 @@ const ProductDetailSidebar = () => {
         </List>
         */}
       </div>
-      {/*
-      <div>
-        <List className="detailadv__group">
-          <DetailAdv />
-        </List>
-      </div>
-      */}
     </div>
   )
 }

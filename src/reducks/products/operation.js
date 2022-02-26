@@ -29,6 +29,7 @@ export const deleteProduct = (id) => {
           const nextProducts = prevProducts.filter(product => product.id !== id)
           dispatch(deleteProductAction(nextProducts))
           dispatch(hideLoadingAction());
+          alert(`削除しました。`)
         }).catch(() => {alert('権限がありません')})
       dispatch(hideLoadingAction());
   }

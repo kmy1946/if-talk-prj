@@ -26,9 +26,11 @@ const DetailAdv = () => {
 
   return (
     <>
+    {/*
       <div>
         <iframe src={link} width='100vw' height='100%'></iframe>
       </div>
+    */}
       <div>
         <input type="text" ref={refBook}></input>
         <input type="text" ref={refPage}></input>

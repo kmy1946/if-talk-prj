@@ -401,14 +401,6 @@ blockquote {
   }
 }
 
-img {
-  -ms-interpolation-mode: bicubic;
-  display: inline-block;
-  height: auto;
-  max-width: auto;
-  vertical-align: middle
-}
-
 button, dd, div, dl, dt, form, li, ol, p, td, th, ul {/*blockquote, pre,*/ 
   font-size: 1rem;
   font-weight: 400;
