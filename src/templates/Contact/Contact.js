@@ -56,7 +56,7 @@ const Contact = () => {
 
       <div className="card-body contact_group">
         <p className="contact_me">
-          Contact To Manager
+          Contact
         </p>
         <br/>
         <form ref={form} onSubmit={sendEmail}>
