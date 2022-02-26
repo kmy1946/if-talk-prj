@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
   detail__swiper__cardcontent:{
     backgroundColor:'rgb(75, 75, 75)',
     width:'100%',
-    height: '120px',
-    opacity:0.7,
+    height: '130px',
+    opacity:0.85,
     position:"absolute",
     bottom:0,
     '&:hover': {

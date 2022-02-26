@@ -5,6 +5,7 @@ import { CardActions } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import LiveHelpSharpIcon from '@material-ui/icons/LiveHelpSharp';
 
 const useStyles = makeStyles({
   root: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
+    color:'rgba(48, 192, 43, 0.5)'
   },
   pos: {
     marginBottom: 32,
@@ -33,7 +35,7 @@ const OutlinedCard1 = () => {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          About
+          <LiveHelpSharpIcon/>
         </Typography>
         <Typography variant="h5" component="h2">
           当サイトについて

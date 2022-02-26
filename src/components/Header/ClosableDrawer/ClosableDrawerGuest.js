@@ -120,12 +120,6 @@ const ClosableDrawerGuest = (props) => {
                     <br/>
                     <Divider variant="middle" />
                     */}
-                    <p className="sidebar__title"></p>
-                    {filters_user.map(filter_user => (
-                            <ListItem button key={filter_user.id} onClick={(e) => filter_user.func(e, filter_user.value)}>
-                                <ListItemText primary={filter_user.label} />
-                            </ListItem>
-                    ))}
                     {/*
                     <MapMenuListGuest/>
                     */}
@@ -155,6 +149,14 @@ const ClosableDrawerGuest = (props) => {
                         ))}
                     </List>
                     <Divider variant="middle" />
+                    
+                    <p className="sidebar__title"></p>
+                    {filters_user.map(filter_user => (
+                            <ListItem button key={filter_user.id} onClick={(e) => filter_user.func(e, filter_user.value)}>
+                                <ListItemText primary={filter_user.label} />
+                            </ListItem>
+                    ))}
+                    
                 </div>
             </Drawer>
         </nav>

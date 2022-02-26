@@ -138,7 +138,7 @@ const ProductsList = () => {
                     )
                   ))}
                   <div className={classes.loadbutton_div}>
-                    <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
+                    <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()} />
                   </div>
                   </Card>
               </>

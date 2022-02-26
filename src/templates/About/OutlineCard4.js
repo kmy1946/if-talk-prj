@@ -7,6 +7,8 @@ import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
+import FunctionsSharpIcon from '@material-ui/icons/FunctionsSharp';
+import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 
 const useStyles = makeStyles({
   root: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
+    color:'rgba(121, 184, 39, 0.5)'
   },
   pos: {
     marginBottom: 32,
@@ -36,7 +39,7 @@ const OutlinedCard4 = () => {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          About
+          <FunctionsSharpIcon/>
         </Typography>
         <Typography variant="h5" component="h2">
           機能
@@ -45,13 +48,18 @@ const OutlinedCard4 = () => {
           Features
         </Typography>
         <Typography variant="body2" component="p">
-          ユーザー登録（記事投稿、編集、削除）
+          プログラミング言語、アーカイブでの絞り込み機能
+          {/*ユーザー登録（記事投稿、編集、削除）*/}
           <br />
+          詳細ページでの画像スワイプ
           {'　'}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => dispatch(push('/whensignin'))}>Learn More</Button>
+        <Button size="small" onClick={() => dispatch(push('/whensignin'))}>
+          <UnfoldMoreSharpIcon/>
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );

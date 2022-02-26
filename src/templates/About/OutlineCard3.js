@@ -7,6 +7,8 @@ import { CardActions } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import PlaylistAddCheckSharpIcon from '@material-ui/icons/PlaylistAddCheckSharp';
+import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 
 const useStyles = makeStyles({
   root: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 14,
+    color:'rgb(151, 98, 172)'
   },
   pos: {
     marginBottom: 32,
@@ -36,7 +39,7 @@ const OutlinedCard3 = () => {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          About
+          <PlaylistAddCheckSharpIcon/>
         </Typography>
         <Typography variant="h5" component="h2">
           やってる事
@@ -51,7 +54,10 @@ const OutlinedCard3 = () => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => dispatch(push('/'))}>To Home</Button>
+        <Button size="small" onClick={() => dispatch(push('/'))}>
+          <UnfoldMoreSharpIcon/>
+          To Home
+        </Button>
       </CardActions>
     </Card>
   );

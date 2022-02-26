@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       bottom:0,
       width: '400px',
       height: '80px',
-      opacity:0.7,
+      opacity:0.85,
       backgroundColor:'rgb(88, 88, 88)',
       listStyle: 'none',
       padding: '2px 1px',

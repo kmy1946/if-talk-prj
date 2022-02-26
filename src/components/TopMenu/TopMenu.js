@@ -21,6 +21,10 @@ const useStyles = makeStyles({
   },
   iconButtons: {
     margin: '0 0 0 auto',
+    position:"fixed",
+    top:0,
+    right:0,
+    zIndex:99
   },
 }
 );
@@ -83,9 +87,9 @@ const TopMenu = () => {
               (//非サインイン状態
                 (
                   window.innerWidth > 760 ?
-                    <></>
-                  :
-                  (
+                  <></>
+                :
+                (
                   <>
                     <div className={classes.iconButtons}>
                       <HeaderMenuGuest />
