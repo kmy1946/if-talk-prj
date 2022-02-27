@@ -25,9 +25,12 @@ const useStyles = makeStyles({
   },
   list__title: {
     textAlign:'left',
-    margin:'4px',
+    margin:'2px',
     fontSize:'17px',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color: '#fff',
+    textShadow: '1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 5px 5px #9ccc65',
+    transform: 'rotate(-1deg)',
   },
   loadbutton_div: {
     margin:'-75px'
