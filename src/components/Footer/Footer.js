@@ -21,15 +21,16 @@ const Footer = () => {
           <a onClick={() => dispatch(push('/about'))} className="footer__whensignin-link">当サイトについて</a>
         </div>
         <br/>
-        <div className='footer__contact_link_box'>
-          <a href='/contact' className="footer__contact_link">Contact to Manager</a>
+        <div className='footer__contact-link_box'>
+          <a onClick={() => dispatch(push('/contact'))} className="footer__contact-link">Contact to Manager</a>
         </div>
+        <br/>
         <br/>
         <Typography>
         </Typography>
             <Typography className="footer__title">
               {"Copyright © "}
-                IF-Programmer
+                ITのタネ
               {" "}
               {new Date().getFullYear()}
               {"."}
