@@ -72,7 +72,6 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       return false//何も実行しない
     }
   
-    //const timestamp = FirebaseTimestamp.now()
     const myShapedDate = format(new Date(), 'yyyyMMddHHmmss');
     const myShapedDate_month = format(new Date(), 'yyyyMM');
     const myShapedDate_date = format(new Date(), 'yyyyMMdd');
@@ -84,7 +83,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       description: description,
       images: images,
       username: username,
-      //price: parseInt(price, 10),//10進数
+      
       uid:localStorage.getItem('if-uid'),
       featured:false,
       updated_at: myShapedDate,
@@ -92,7 +91,6 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       updated_at_month: myShapedDate_month,
       updated_at_date: myShapedDate_date,
     }
-    //console.log(data.updated_at)
 
     if (id === ""){//新規作成時
       const ref = productsRef.doc();

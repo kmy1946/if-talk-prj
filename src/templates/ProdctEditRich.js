@@ -21,13 +21,13 @@ import { saveProduct } from "../reducks/products/operation";
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()
   const contentText = contentBlock.getText();
+
   if (type === 'code') {
-    console.log(type)
     return {
       component: CodeBlock,
       editable: true,
       props:{
-        contentText:contentText
+        contentText:'contentText'
       }
     }
   }
@@ -92,18 +92,9 @@ const ProdctEditRich = () => {
   //console.log(editorState)
   const convertContentToHTML = () => {
     let currentContentAsHTML = draftToHtml(convertToRaw(editorState.getCurrentContent()))//convertToHTML(editorState.getCurrentContent());
-
-    const heading = document.getElementsByClassName('H2')
-    //console.log(heading)
-    if (heading.nodeName === "H2") {
-      ///let element = document.getElementById('shopinfo');
-      ///const x = element.setAttribute('class', 'H2');
-      
-    } else if (heading.nodeName === "H3") {
-    }
-
     setDescription(currentContentAsHTML);
   }
+
   const createMarkup = (html) => {
     return  {
       __html: DOMPurify.sanitize(html)
@@ -304,6 +295,7 @@ const ProdctEditRich = () => {
         <p>Preview:</p>
         <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
         <div className="module-spacer--medium" />
+        {description}
       </div>
 
     </section>

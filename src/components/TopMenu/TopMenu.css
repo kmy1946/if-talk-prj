@@ -1,54 +1,3 @@
-/*
-.header-inner {
-  display: flex;
-  align-items: center;
-  max-width: 1024px;
-  height: 60px;
-  padding: 0 0.8em;
-  margin: 0 auto;
-  font-size: 1.2em;
-}
-
-.header-nav-list {
-  display: inline-block;
-  padding-left: 2vw;
-}
-
-.header-nav-item {
-  float: left;
-  color: rgb(77, 107, 134);
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 3px;
-  font-weight: bold;
-  text-align: center;
-  list-style: none;
-}
-
-.header-nav-item a {
-  text-decoration: none;
-}
-
-.header-ham {
-  display: none;
-}
-
-.menu2 {
-  width: 20px;
-  height: 3px;
-  margin: 4px 0;
-}
-
-
-.header-nav-item:hover {
-  color: rgb(162, 182, 199);
-  font-weight: 700;
-}
-
-.logo img {
-  width: 70px;
-}
-*/
 .topmenu__icon-group {
   text-align: right;
 }
@@ -65,6 +14,21 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  height: 60px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(210, 235, 243);
+}
+.topmenu-label {
+  text-shadow:
+    1px  1px 1px #003366,
+    -1px  1px 1px #003366,
+    1px -1px 1px #003366,
+    -1px -1px 1px #003366,
+    1px  0px 1px #003366,
+    0px  1px 1px #003366,
+    -1px  0px 1px #003366,
+    0px -1px 1px #003366;
+  font-weight: 600;
 }
 .navigation ul {
   width: 100%;
@@ -74,10 +38,10 @@
   padding:10px;
   width:20%;
   float:left;
-  /* 上下にボーダーを指定 */
-  border-top: 1px solid #d6d6d6;
-  border-bottom: 1px solid #d6d6d6;
-  /* カーソルを離した際のアニメーションの速度調整 */
+  
+  border-right: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+  
   transition:.2s all;
 }
 .button p {
@@ -87,27 +51,19 @@
 .button a {
   cursor: pointer;
   color:#333333;
-  /* リンク指定した要素のスタイルを削除 */
   text-decoration:none;
   white-space: nowrap;
 }
 .navigation:hover .button{
-  filter:blur(0.3px);
-  /* 全てのボタンがぼやける */
+  filter:blur(0.5px);
   opacity:.8;
-  /* 全てのボタンを通常サイズに指定 */
   transform: scale(1);
 }
 .navigation:hover .button:hover{
-  transition: .6s;
-  /* hoverしたボタンを少し拡大するように指定 */
+  transition: .5s;
   transform:scale(1.1);
-  /* hoverしている要素のみぼやけない指定 */
   filter:blur(0px);
   opacity:1;
-  border-top: 1px solid #888888;
-  border-bottom: 1px solid #888888;
-}
-.navigation:hover .button:hover > p {
-  font-weight: bold;
+  border-right: 1px solid #888888;
+  border-left: 1px solid #888888;
 }

@@ -21,27 +21,16 @@ const About = () => {
       <div className="about__box">
         <Grid container>
           <Grid item xs={6} className={classes.about_grid} >
-            <item>
               <OutlinedCard1 />
-            </item>
           </Grid>
           <Grid item xs={6} className={classes.about_grid}>
-            <item>
               <OutlinedCard2 />
-            </item>
-            
           </Grid>
           <Grid item xs={6} className={classes.about_grid}>
-            <item>
-              <OutlinedCard3 />
-            </item>
-            
+              <OutlinedCard3 />            
           </Grid>
           <Grid item xs={6} className={classes.about_grid}>
-            <item>
-              <OutlinedCard4 />
-            </item>
-            
+              <OutlinedCard4 />            
           </Grid>
         </Grid>
       </div>

@@ -50,10 +50,22 @@ const TopMenu = () => {
     //console.log(open)
   }, [setOpen, open]);
 
+  const selectMenu = (event, path) => {
+    dispatch(push(path));//pathはvalueで指定
+    //props.onClose(event, false);//menu選択時に閉じる
+};
+
+  const [filters, setFilters] = useState([
+    {func: selectMenu, label: "Home", id: "home", value: "/"},
+    {func: selectMenu, label: "About", id: "about", value: "/about"},
+    {func: selectMenu, label: "Contact", id: "contact", value: "/contact"},
+  ])
+
   return (
     <>
       
         <ul>
+          
           {isSignedIn ?
             (//サインイン状態
                 window.innerWidth > 760 ?
@@ -103,17 +115,19 @@ const TopMenu = () => {
             <LogoText/>
           </div>
           <div className="navigation">
-            <li className="button">
-              <p><a onClick={() => dispatch(push('/'))}>Home</a></p>
-            </li>
-            <li className="button">
-              <p><a onClick={() => dispatch(push('/about'))}>About</a></p>
-            </li>
-            <li className="button">
-              <p><a onClick={() => dispatch(push('/contact'))}>Contact</a></p>
-            </li>
-            </div>
-          </ul>
+            {filters.map(filter => (
+              <li className="button" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                <p>
+                  <a
+                    className="topmenu-label" 
+                    onClick={() => dispatch(push('/'))}>
+                  {filter.label}
+                  </a>
+                </p>
+              </li>
+            ))}
+          </div>
+        </ul>
     </>
   )
 }

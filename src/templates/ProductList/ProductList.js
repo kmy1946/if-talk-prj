@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     padding:'1px',
     //backgroundColor:'rgb(210, 255, 234)',
     borderRadius:2,
-    marginTop:'130px',
+    marginTop:'50px',
     position:'relative'
   },
   list__query: {
@@ -64,7 +64,7 @@ const ProductList = () => {
   //console.log(products);
 
   const list__title__clients = () => {
-    if (query.slice( 0, 9 ) == '?clients=') {
+    if (query.slice( 0, 9 ) === '?clients=') {
       const list__title__clients = query.slice(9, 30)
       return (
         <p className={classes.list__title}>
@@ -86,7 +86,7 @@ const ProductList = () => {
     }
   }
   const list__title_updated_at_month = () => {
-    if (query.slice( 0, 18 ) == '?updated_at_month=') {
+    if (query.slice( 0, 18 ) === '?updated_at_month=') {
       const list__title__all = query.slice(18, 30)//202202
       const list__title__sliced = list__title__all.slice(0, 4)//2022
       const year_text = '年'
@@ -149,7 +149,6 @@ const ProductList = () => {
         </>
         :
         <>
-        
           <Card className={classes.list__card_mobile}>
       
             {list__title()}

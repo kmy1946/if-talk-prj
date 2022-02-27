@@ -6,16 +6,22 @@
   margin: 0 auto;
   margin-top: 10px;
   text-align: center;
+  color: #69a844;
+  cursor: pointer;
+  font-weight: 700;
+}
+.footer-centering:hover {
+  color: #9edd38;
 }
 .footer__title {
   text-align: center;
 }
 .footer__whensignin-link {
-  color: rgb(0, 160, 40);
+  cursor: pointer
 }
 .footer__whensignin-link:hover {
-  color: rgb(0, 226, 57);
   text-decoration: none;
+  cursor: pointer
 }
 .footer__contact_link_box {
   text-align: center;
