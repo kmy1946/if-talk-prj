@@ -8,7 +8,7 @@ import NoImage from "../../assets/img/src/no_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
-import { hideLoadingAction, showLoadingAction } from "../../reducks/loading/actions";
+import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -74,7 +74,10 @@ const TopSwiperCardDetail = (props) => {
               className={classes.media}
               image={props.images[0].path}
               title=""
-              onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}
+              onClick={() => {
+                dispatch(showLoadingAction("Loading..."));
+                dispatch(push('/product/'+props.id));
+              }}
           />
           )
           :
@@ -100,18 +103,19 @@ const TopSwiperCardDetail = (props) => {
             <a href={`/product/${props.id}`} className='featured-content__href'>
             {images ?
             (
-          <CardMedia
-              className={classes.media}
-              image={props.images[0].path}
-              title=""
-              onClick={() => {
-                dispatch(showLoadingAction("Loading..."));
-                dispatch(push('/product/'+props.id))}
-              }
-          />)
-          :
-          (<><NoImage /></>)
-          }
+              <CardMedia
+                  className={classes.media}
+                  image={props.images[0].path}
+                  title=""
+                  onClick={() => {
+                    dispatch(showLoadingAction("Loading..."));
+                    dispatch(push('/product/'+props.id))}
+                  }
+              />
+              )
+              :
+              (<><NoImage /></>)
+            }
               <CardContent className={classes.detail__swiper__cardcontent}>
                 <Typography className='featured-content__lang__detail'>
                   {props.category}

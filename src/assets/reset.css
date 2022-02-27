@@ -77,25 +77,6 @@ hr {
   box-sizing: content-box;
   height: 0
 }
-/*
-pre {
-  background-color: #ff0;
-}
-
-code {
-  background-color: black;
-}
-
-pre {
-  overflow: auto
-}
-*/
-/*
-code, kbd, pre, samp {
-  font-family: monospace, monospace;
-  font-size: 1em
-}
-*/
 button, input, optgroup, select, textarea {
   color: inherit;
   font: inherit;

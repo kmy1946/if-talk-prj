@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divider, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { push } from "connected-react-router";
 import { ImageSwiper } from "../../components/Products";
 import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
 import { addProductToBookMark } from "../../reducks/users/operations";
 import { getIsSignedIn } from "../../reducks/users/selectors";
-import { ProductActionTableBookMark, TopSwiper, TopSwiperDetailMobile } from "..";
+import { ProductActionTableBookMark, ProductDetailTOCMobile, TopSwiperDetailMobile } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
@@ -166,7 +166,6 @@ const ProductDetailMobile = () => {
         <div className={classes.detail_group}>
           <section className="c-section-wrapin_detail__mobile">
           <div className={classes.detail}>
-          
           <ul className={classes.router_from_home}>
               <li onClick={() => dispatch(push('/'))}>Home</li>
               >
@@ -202,11 +201,14 @@ const ProductDetailMobile = () => {
             <div className={classes.detail_group__clients}>
               {detail_clients()}
             </div>
-
+            <br/>
+            <br/>
+            <ProductDetailTOCMobile/>
               <div className={classes.sliderBox}>
                 <ImageSwiper images={product.images}/>
               </div>
-              <br/><br/>
+              <br/>
+              <br/>
             <div>
             <div className="productdetail__description">
               {returnCodeToBr(product.description)}

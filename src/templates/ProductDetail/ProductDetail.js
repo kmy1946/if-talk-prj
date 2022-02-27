@@ -2,7 +2,6 @@ import React from "react";
 import './ProductDetail.css'
 import { ProductDetailMobile } from '../../templates';
 import { ProductDetailPC } from '../../templates';
-import { TopMenu } from "../../components/TopMenu";
 
 const ProductDetail = () => {
   return (

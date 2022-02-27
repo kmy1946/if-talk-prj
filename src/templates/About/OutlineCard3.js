@@ -48,7 +48,7 @@ const OutlinedCard3 = () => {
           What's doing?
         </Typography>
         <Typography variant="body2" component="p">
-          Web系のプログラミングに関する事を掲載していきます。
+          主に、Web系のプログラミングに関する事を掲載していきます。
           <br />
           {'　'}
         </Typography>

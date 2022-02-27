@@ -58,6 +58,7 @@
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "semantic-ui-react": "^2.1.2",
     "swiper": "^5.4.5",
     "web-vitals": "^2.1.4"
   },

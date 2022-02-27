@@ -7,7 +7,7 @@ import { Typography } from "@material-ui/core";
 import NoImage from "../../assets/img/src/no_image.png";
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
-import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
+import { getIsSignedIn } from "../../reducks/users/selectors";
 import { showLoadingAction } from "../../reducks/loading/actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +52,6 @@ const TopSwiperCardDetailMobile = (props) => {
   const dispatch = useDispatch();
 
   const selector = useSelector(state => state);
-
   const isSignedIn = getIsSignedIn(selector);
 
   const images = (props.images.length > 0) ? props.images : [(NoImage)];
@@ -62,8 +61,18 @@ const TopSwiperCardDetailMobile = (props) => {
       <Divider className={classes.topswiper__horizontal_divider}/>
       <Container className={classes.featured_mobile__container}>
         <Card className={classes.root_mobile} >
-          <>
-            <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className='featured-content__href_mobile'>
+        {isSignedIn ? 
+          (
+            <>
+          <a href={`/product/${props.id}`}>
+          {/*
+            <div onClick={() => {
+              dispatch(showLoadingAction("Loading..."));
+              dispatch(push('/product/'+props.id));
+              }}
+              className='featured-content__href_mobile'
+            >
+            */}
               {images ? (
                 <CardMedia
                     className={classes.media_mobile}
@@ -71,8 +80,8 @@ const TopSwiperCardDetailMobile = (props) => {
                     title=""
                     onClick={() => {
                       dispatch(showLoadingAction("Loading..."));
-                      dispatch(push('/product/'+props.id))}
-                    }
+                      dispatch(push('/product/'+props.id));
+                    }}
                 />
                 )
                 : 
@@ -86,8 +95,47 @@ const TopSwiperCardDetailMobile = (props) => {
                     {props.name}
                   </Typography>
                 </CardContent>
-              </div>
+              </a>
+              </>
+          )
+          :
+          (
+            <>
+            <a href={`/product/${props.id}`}>
+            {/*
+            <div onClick={() => {
+              dispatch(showLoadingAction("Loading..."));
+              dispatch(push('/product/'+props.id));
+              }}
+              className='featured-content__href_mobile'
+            >
+            */}
+              {images ? (
+                <CardMedia
+                    className={classes.media_mobile}
+                    image={props.images[0].path}
+                    title=""
+                    onClick={() => {
+                      dispatch(showLoadingAction("Loading..."));
+                      dispatch(push('/product/'+props.id));
+                    }}
+                />
+                )
+                : 
+                (<><NoImage /></>)
+                }
+                <CardContent className={classes.content_mobile}>
+                  <Typography className='featured-content__lang__mobile'>
+                    {props.category}
+                  </Typography>
+                  <Typography className='featured-content__name__mobile'>
+                    {props.name}
+                  </Typography>
+                </CardContent>
+            </a>
             </>
+          )
+        }
         </Card>
     </Container>
     </div>

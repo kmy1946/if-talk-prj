@@ -16,6 +16,8 @@ function Routering() {
         <Route exact path='/signin/reset' component={Reset}></Route>
         <Route exact path='/whensignin' component={WhenUserDetail} />
         <Route exact path='/about' component={About} />
+        <Route exact path="/product/:id" component={ProductDetail} />
+        <Route exact path="/contact" component={Contact} />
 
         <Route exact path={"/"}>
           <>
@@ -56,9 +58,6 @@ function Routering() {
           }
           </>
         </Route>
-
-        <Route exact path="/product/:id" component={ProductDetail} />
-        <Route exact path="/contact" component={Contact} />
         
         <Auth>
           <Route exact path={"(/users)?"}>
