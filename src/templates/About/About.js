@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
   about_grid: {
     marginTop:'2vw'
-  }
+  },
 })
 
 const About = () => {

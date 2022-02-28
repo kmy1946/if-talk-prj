@@ -12,6 +12,7 @@ const AdvDetail = () => {
   
   return (
     <div className="adv-detail__group">
+      {/*
         <Iframe id = 'adv-detail'
           url = 'https://codeforfun.jp/demo/html/references/tag-iframe.html'
           //position='absolute'
@@ -22,6 +23,10 @@ const AdvDetail = () => {
           allowFullScreen
           //onLoad={loaded}
         />
+      */}
+      <a href={link} target='_blank'>
+        <img src={link} width='95%' height='95%'/>
+      </a>
     </div>
   )
 }

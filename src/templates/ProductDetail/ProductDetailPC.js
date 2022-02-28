@@ -12,7 +12,8 @@ import { hideLoadingAction } from "../../reducks/loading/actions";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
 import SearchIcon from '@material-ui/icons/Search';
-import './ProductDetail.css'
+import HomeIcon from '@material-ui/icons/Home';
+import './ProductDetail.css';
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
     fontSize:13,
@@ -31,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 600,
       color:'rgb(70, 73, 247)',
     },
+  },
+  router__homeicon: {
+    zoom:0.85
   },
   detail__topswiper: {
     marginTop:25,
@@ -167,7 +171,7 @@ const ProductDetailPC = () => {
         <div>
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
-              <li onClick={() => dispatch(push('/'))}>Home</li>
+              <li onClick={() => dispatch(push('/'))} className={classes.router__homeicon}><HomeIcon/></li>
               <li>></li>
               <li onClick={() => dispatch(push(`/?category=${product.category}`))}>
                 {product.category}
