@@ -243,6 +243,7 @@ pre {
 	white-space: pre;
   padding: 6px;
   background-color: rgb(62, 59, 68);
+  color: white;
 	margin: 1em 0px;
   /*border-left: 5px solid rgb(206, 229, 255);*/
 }

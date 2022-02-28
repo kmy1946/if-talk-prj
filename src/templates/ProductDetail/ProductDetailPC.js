@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divider, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { push } from "connected-react-router";
 import { ImageSwiper } from "../../components/Products";
 import { db, FirebaseTimestamp } from "../../Firebase";
@@ -14,6 +14,8 @@ import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounde
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import './ProductDetail.css';
+import { AdvDetailBottom } from "../Adv";
+
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
     fontSize:13,
@@ -135,7 +137,7 @@ const ProductDetailPC = () => {
   }, [product]);
 
   const detail_clients = () => {
-    if (product.clients == '全て') {
+    if (product.clients === '全て') {
       return (
         <p>
           <small onClick={() => dispatch(push(`/?clients=${product.clients}`))} className={classes.clients}>
@@ -238,8 +240,7 @@ const ProductDetailPC = () => {
             </div>
           </div>
           </>
-            )}
-  
+          )}
     </>
   )
 
