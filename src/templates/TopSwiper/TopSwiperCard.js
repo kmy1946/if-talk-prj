@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
       margin: 16,
       width: '16.5vw',//'180px'
     },
+    '&:hover': {
+      cursor: 'pointer',
+    }
   },
     content: {
       backgroundColor:'rgb(75, 75, 75)',

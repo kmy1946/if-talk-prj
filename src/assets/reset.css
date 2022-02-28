@@ -93,7 +93,7 @@ button, select {
 
 button, html input[type=button], input[type=reset], input[type=submit] {
   -webkit-appearance: button;
-  cursor: pointer
+  cursor: pointer;
 }
 
 button[disabled], html input[disabled] {
@@ -359,7 +359,8 @@ dd, dt, li {
   display: inline-block;
   height: auto;
   max-width: calc(100%);
-  vertical-align: middle
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 img {

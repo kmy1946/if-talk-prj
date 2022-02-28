@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     '& li:hover': {
       fontWeight: 600,
       color:'rgb(70, 73, 247)',
+      cursor: 'pointer',
     },
   },
   router__homeicon: {
@@ -98,9 +99,20 @@ const useStyles = makeStyles((theme) => ({
     color:'#4666f7',
     marginRight:5
   },
-  category_updated_at: {
-    fontSize: 15,
+  detail__category: {
+    '&:hover':{
+      cursor: 'pointer',
+      fontWeight: 600,
+      color:'rgb(70, 73, 247)',
+    }
   },
+  detail__updated_at: {
+    '&:hover':{
+      cursor: 'pointer',
+      fontWeight: 600,
+      color:'rgb(70, 73, 247)',
+    }
+  }
 }))
 
 const ProductDetailPC = () => {
@@ -186,13 +198,13 @@ const ProductDetailPC = () => {
               <ul className={classes.detail_group__group_ul}>
               
               <p className={classes.category_updated_at}>
-                <small onClick={() => dispatch(push(`/?category=${product.category}`))}>
+                <small onClick={() => dispatch(push(`/?category=${product.category}`))} className={classes.detail__category}>
                   　
                   <SearchIcon className={classes.category_icon}/>
                   {(product.category)}
                 </small>
                 　
-                <small onClick={() => dispatch(push(`/?updated_at_month=${product.updated_at.substr(0,4)}${product.updated_at.substr(4,2)}`))}>
+                <small onClick={() => dispatch(push(`/?updated_at_month=${product.updated_at.substr(0,4)}${product.updated_at.substr(4,2)}`))} className={classes.detail__updated_at}>
                   <ScheduleIcon className={classes.updated_at_icon}/>
                   {product.updated_at.substr(0,4)}/{product.updated_at.substr(4,2)}/
                   {product.updated_at.substr(6,2)}, 

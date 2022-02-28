@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
     '&:hover': {
       transition: 'boxShadow 0.3s',
-      boxShadow: '0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)'
+      boxShadow: '0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)',
+      cursor: 'pointer',
     }
   },
     content: {

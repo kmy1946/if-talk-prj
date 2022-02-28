@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
     '& li:hover': {
       fontWeight: 600,
-      color:'rgb(70, 73, 247)'
+      color:'rgb(70, 73, 247)',
+      cursor: 'pointer',
     },
   },
   router__homeicon: {
@@ -92,10 +93,13 @@ const useStyles = makeStyles((theme) => ({
   updated_at_icon: {
     fontSize: 20,
     color:'#4666f7',
-    marginRight:5
+    marginRight:5,
   },
   category_updated_at: {
     fontSize: 10,
+    '&:hover':{
+      cursor: 'pointer',
+    }
   },
   featured_p: {
     left:0,

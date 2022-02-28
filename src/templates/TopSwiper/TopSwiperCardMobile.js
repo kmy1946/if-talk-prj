@@ -17,7 +17,10 @@ const useStyles = makeStyles((theme) => ({
     margin: 16,
     padding: 6,
     width: '30.5vw',//'180px'
-    height:'100%'
+    height:'100%',
+    '&:hover': {
+      cursor: 'pointer',
+    }
   },
     content_mobile: {
       width: '400px',
