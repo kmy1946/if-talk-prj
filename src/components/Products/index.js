@@ -5,5 +5,4 @@ export { default as ProductCard } from './ProductCard';
 export { default as ProductsCard } from './ProductsCard';
 export { default as ProductCardMobile } from './ProductCardMobile';
 export { default as BookMarkListItem } from './BookMarkListItem';
-export { default as LikedButton } from './LikedButton';
 export { default as ProductCards } from './ProductCards';

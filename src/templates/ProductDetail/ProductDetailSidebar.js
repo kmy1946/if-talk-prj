@@ -12,9 +12,11 @@ const ProductDetailSidebar = () => {
           <p className="sidebar__title__detail">目次</p>
           <TableOfContents />
         </List>
+        {/*
         <List className="sidebar__adv-group">
           <AdvDetail/>
         </List>
+        */}
       </div>
     </div>
   )

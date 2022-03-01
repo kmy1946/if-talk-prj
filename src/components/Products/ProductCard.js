@@ -110,6 +110,7 @@ const ProductCard = (props) => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
+
   const selector = useSelector(state => state);
   const userRole = getUserRole(selector)
   const isSignedIn = getIsSignedIn(selector);
