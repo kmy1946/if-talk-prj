@@ -235,14 +235,13 @@ b, strong {
   font-weight: 700
 }
 
-
 pre {
 	display: block;
 	font-family: monospace;
   font-weight: 600;
 	white-space: pre;
   padding: 6px;
-  background-color: rgb(62, 59, 68);
+  background-color: #364549;
   color: white;
 	margin: 1em 0px;
   /*border-left: 5px solid rgb(206, 229, 255);*/
