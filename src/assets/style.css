@@ -124,8 +124,8 @@
 }
 .toplist__menu__pc {
   position: absolute;
-  
   background-color: rgb(31, 31, 31);
+  z-index: -1;
 }
 .card_iconbutton {
   position: absolute;

@@ -159,8 +159,7 @@ const ProductCard = (props) => {
                       </Typography>
                     </div>
                     <Menu
-                      anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose} className={classes.admin_menu}
-                    >
+                      anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                       <MenuItem onClick={() => {
                         dispatch(showLoadingAction("Loading..."));
                         dispatch(push('/users/product/edit/'+props.id))
