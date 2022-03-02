@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
           width: 256
       }
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
       width: 256,
@@ -47,6 +46,9 @@ const SideBarGuest = () => {
 };
 
   const [searchKeyword, setSearchKeyword] = useState("")
+  const inputSearchKeyword = useCallback((event) => {
+    setSearchKeyword(event.target.value)
+  }, [setSearchKeyword])
 
   const [filters, setFilters] = useState([
     {func: selectMenu, label: "全て", id: "all", value: "/?clients=全て"},
@@ -69,11 +71,6 @@ const SideBarGuest = () => {
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
           })
   }, [])
-
-  const inputSearchKeyword = useCallback((event) => {
-      setSearchKeyword(event.target.value)
-  }, [setSearchKeyword])
-
 
   return(
     <div>
