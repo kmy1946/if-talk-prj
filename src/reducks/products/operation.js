@@ -21,18 +21,22 @@ import { deleteProductAction, fetchProductsAction } from "./actions"
 const productsRef = db.collection('products')//.where("username", "==", username.uid)
 
 export const deleteProduct = (id) => {
-  return async (dispatch, getState) => {
-    dispatch(showLoadingAction("Loading..."));
-    productsRef.doc(id).delete()
-        .then(() => {
-          const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
-          const nextProducts = prevProducts.filter(product => product.id !== id)
-          dispatch(deleteProductAction(nextProducts))
-          dispatch(hideLoadingAction());
-          alert(`削除しました。`)
-        }).catch(() => {alert('権限がありません')})
-      dispatch(hideLoadingAction());
-  }
+  const confirm = window.confirm('本当に削除しますか？')
+  if (confirm) {
+
+    return async (dispatch, getState) => {
+      dispatch(showLoadingAction("Loading..."));
+      productsRef.doc(id).delete()
+          .then(() => {
+            const prevProducts = getState().products.list;//getState() ==> 現在のstoreの情報
+            const nextProducts = prevProducts.filter(product => product.id !== id)
+            dispatch(deleteProductAction(nextProducts))
+            dispatch(hideLoadingAction());
+            alert(`削除しました。`)
+          }).catch(() => {alert('権限がありません')})
+        dispatch(hideLoadingAction());
+    }
+ } else if(confirm === undefined) console.log('You did not delete product.')
 }
 
 export const fetchProducts = (clients, category, updated_at_month, page) => {

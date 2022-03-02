@@ -7,12 +7,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import {makeStyles} from '@material-ui/core/styles';
 import {push} from "connected-react-router";
 import {useDispatch} from "react-redux";
-import {TextInput} from "../../UIkit";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import { db } from '../../../Firebase';
-import { MapMenuListGuest } from '..';
-
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import NearMeIcon from '@material-ui/icons/NearMe';
+import ArchiveIcon from '@material-ui/icons/Archive';
 const useStyles = makeStyles((theme) => ({
         drawer: {
             [theme.breakpoints.up('sm')]: {
@@ -123,14 +121,14 @@ const ClosableDrawerGuest = (props) => {
                     {/*
                     <MapMenuListGuest/>
                     */}
-                    <Divider variant="middle" /><p className="sidebar__title">対象者</p>
+                    <Divider variant="middle" /><p className="sidebar__title"><PersonPinIcon/>対象者</p>
                     <List>
                         {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
                             </ListItem>
                         ))}
-                        <Divider variant="middle" /><p className="sidebar__title">カテゴリー</p>
+                        <Divider variant="middle" /><p className="sidebar__title"><NearMeIcon/>カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
@@ -139,7 +137,7 @@ const ClosableDrawerGuest = (props) => {
                     </List>
                     <Divider variant="middle" />
                     <List>
-                        <p className="sidebar__title">　アーカイブ</p>
+                        <p className="sidebar__title"><ArchiveIcon/>アーカイブ</p>
                         {filters_updated_month.map(pd_filter => (
                             <ListItem button key={pd_filter.id} onClick={(e) => pd_filter.func(e, pd_filter.value)}>
                                 <ListItemText className={classes.sidebarleft__text}>
@@ -149,13 +147,14 @@ const ClosableDrawerGuest = (props) => {
                         ))}
                     </List>
                     <Divider variant="middle" />
-                    
+                    {/*
                     <p className="sidebar__title"></p>
                     {filters_user.map(filter_user => (
                             <ListItem button key={filter_user.id} onClick={(e) => filter_user.func(e, filter_user.value)}>
                                 <ListItemText primary={filter_user.label} />
                             </ListItem>
                     ))}
+                    */}
                     
                 </div>
             </Drawer>

@@ -46,7 +46,10 @@ const OutlinedCard1 = () => {
         <Typography variant="body2" component="p">
           使用技術
           <br />
-          {'"Javascript React.js Python Firebase ,_etc. "'}
+          Javascript, React.js, Python, Firebase 
+          <br/>
+          material-ui, bootstrap,Inkscape
+          ,_etc.
         </Typography>
       </CardContent>
       <CardActions>

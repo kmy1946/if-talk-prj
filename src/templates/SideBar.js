@@ -26,7 +26,13 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       marginLeft: 32,
       whiteSpace:'noWrap'
-  }
+  },
+  category__text: {
+    fontSize:'1vw'
+},
+clients__text: {
+  fontSize:'1vw'
+}
 }
 ));
 
@@ -71,7 +77,7 @@ const SideBar = () => {
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText >
-                                    <small>
+                                    <small className={classes.category__text}>
                                         {filter.label}
                                     </small>
                                 </ListItemText>
@@ -84,8 +90,8 @@ const SideBar = () => {
                         <p className="sidebar__title">対象者</p>
                         {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
-                                <ListItemText >
-                                    <small>{filter.label}</small>
+                                <ListItemText>
+                                    <small className={classes.clients__text}>{filter.label}</small>
                                 </ListItemText>
                             </ListItem>
                         ))}

@@ -9,7 +9,9 @@ import {push} from "connected-react-router";
 import {useDispatch} from "react-redux";
 import { db } from '../../../Firebase';
 import { MapMenuList } from '..';
-
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import NearMeIcon from '@material-ui/icons/NearMe';
+import ArchiveIcon from '@material-ui/icons/Archive';
 const useStyles = makeStyles((theme) => ({
         drawer: {
             [theme.breakpoints.up('sm')]: {
@@ -109,14 +111,14 @@ const ClosableDrawer = (props) => {
                     */}
                     <Divider />
                     <MapMenuList/>
-                    <Divider variant="middle" /><p className="sidebar__title">対象者</p>
+                    <Divider variant="middle" /><p className="sidebar__title"><PersonPinIcon/>対象者</p>
                     <List>
                         {filters.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
                             </ListItem>
                         ))}
-                        <Divider variant="middle" /><p className="sidebar__title">カテゴリー</p>
+                        <Divider variant="middle" /><p className="sidebar__title"><NearMeIcon/>カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
@@ -125,7 +127,7 @@ const ClosableDrawer = (props) => {
                     </List>
                     <Divider variant="middle" />
                     <List>
-                        <p className="sidebar__title">　アーカイブ</p>
+                        <p className="sidebar__title"><ArchiveIcon/>アーカイブ</p>
                         {filters_updated_month.map(pd_filter => (
                             <ListItem button key={pd_filter.id} onClick={(e) => pd_filter.func(e, pd_filter.value)}>
                                 <ListItemText className={classes.sidebarleft__text}>

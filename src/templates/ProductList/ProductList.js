@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   list__title: {
     textAlign:'left',
     margin:'4px',
-    fontSize:'17px',
+    fontSize:'5vw',
     fontWeight:'bold',
     color: '#fff',
     textShadow: '1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 5px 5px #9ccc65',
@@ -50,7 +50,7 @@ const ProductList = () => {
 
   const isSignedIn = getIsSignedIn(selector);
 
-  const [page, setPage] = useState(10);
+  const [page, setPage] = useState(7);
   const updatePost = async () => {
     setPage(page + 5);
   };

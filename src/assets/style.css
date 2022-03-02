@@ -76,6 +76,30 @@
 .product_card__box {
   position: relative;
 }
+.product_card__category {
+  position: absolute;
+  top: 0vw;
+  left: 0vw;/*-11px;*/
+  white-space: nowrap;
+  opacity: 0.9;
+  padding: 0.4em;
+  background: #a6bfd3;
+  color: rgb(255, 255, 255);
+  text-shadow: 0.08vw 0.1vw 0.1vw rgb(22, 22, 22);
+}
+/*
+.product_card__category::before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  padding: 0.9;
+  border: none;
+  border-bottom: solid 10px transparent;
+  border-right: solid 15px rgb(177, 185, 183);
+}
+*/
+
 /* 編集削除メニュー */
 .toplist__menu {
   position: absolute;
@@ -161,13 +185,28 @@
 .featured-content__href {
   text-decoration: none;
 }
-.featured-content__lang_mobile { 
+.featured-content__lang_mobile {
   white-space: nowrap;
-  position: relative;
-  color: #3d88ce;
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+  text-shadow:
+    1px  1px 1px #003366,
+    -1px  1px 1px #003366,
+    1px -1px 1px #003366,
+    -1px -1px 1px #003366,
+    1px  0px 1px #003366,
+    0px  1px 1px #003366,
+    -1px  0px 1px #003366,
+    0px -1px 1px #003366;
+  white-space: nowrap;
+  left: 0;
 }
 .featured-content__name_mobile {
-  width: 27vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 3px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -308,12 +347,7 @@
 .p-grid__row__mobile {
   display: flex;
   flex-flow: row wrap;
-}
-
-.p-grid__row__mobile {
-  display: flex;
-  flex-flow: row wrap;
-  margin-top: 205px;
+  margin-top: 55vw;
 }
 
 .p-grid__list-images {

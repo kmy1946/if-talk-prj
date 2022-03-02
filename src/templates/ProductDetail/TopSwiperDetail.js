@@ -4,7 +4,6 @@ import Carousel, { consts } from 'react-elastic-carousel'
 import { TopSwiperCardDetail } from "..";
 import { db } from "../../Firebase";
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
-import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
   topswiper_group: {

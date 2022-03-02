@@ -52,6 +52,12 @@ const useStyles = makeStyles({
     marginTop:'8vw',
     borderRadius:'40px',
   },
+  prev_button__mobile: {
+    //height:'4vh',
+    //width:'1vw',
+    fontSize:'2.5vw',
+    borderRadius:'20px',
+  }
 })
 
 const TopSwiper = () => {
@@ -62,12 +68,22 @@ const TopSwiper = () => {
     { width: 1000, itemsToShow: 5 }
   ];
   const breakPoints_mobile = [
-    { width: 1, itemsToShow: 2 },
+    { width: 1, itemsToShow: 1.31 },
   ];
   const myArrow = ({ type, onClick, isEdge }) => {
     const pointer = type === consts.PREV ? '〈' : '〉'
     return (
       <Button onClick={onClick} className={classes.prev_button}>{/* disabled={isEdge}  */}
+        <div>
+          {pointer}
+        </div>
+      </Button>
+    )
+  }
+  const myArrowMobile = ({ type, onClick, isEdge }) => {
+    const pointer = type === consts.PREV ? '〈' : '〉'
+    return (
+      <Button onClick={onClick} className={classes.prev_button__mobile}>{/* disabled={isEdge}  */}
         <div>
           {pointer}
         </div>
@@ -136,7 +152,7 @@ const TopSwiper = () => {
                 </>
                 :
                 <>
-                  <Carousel breakPoints={breakPoints_mobile}>
+                  <Carousel breakPoints={breakPoints_mobile} renderArrow={myArrowMobile} >
                     {featuredproducts.length > 0 && (
                       featuredproducts.map(product => (
                           <TopSwiperCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} />

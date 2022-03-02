@@ -56,12 +56,16 @@ const Contact = () => {
 
       <div className="card-body contact_group">
         <p className="contact_me">
-          Contact
+          お問い合わせ
+        </p>
+        <p>
+          ※管理人のメールに届くようになっています。
+        </p>
+        <p>
+          ※ご要望やアドバイスがありましたら、よろしくお願いします。
         </p>
         <br/>
         <form ref={form} onSubmit={sendEmail}>
-          
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
             <TextField
               type="text" className="form-control contact-your-name" onChange={(event) => setNameing(event.target.value)} label={'Your Name'} name="name" id="name" required data-validation-required-message="Please enter your name" required

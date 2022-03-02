@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center',
   },
   sidebarleft__text__text: {
-    whiteSpace:"nowrap"
+    whiteSpace:"nowrap",
+    fontSize:'1vw',
   },
 }
 ));

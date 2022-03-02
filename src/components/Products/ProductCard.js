@@ -12,7 +12,7 @@ import { IconButton } from "@material-ui/core";
 import { Menu } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import ListIcon from '@material-ui/icons/List';
-import { useTheme } from "@material-ui/styles";
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import { deleteProduct } from "../../reducks/products/operation";
 import { getIsSignedIn, getUserRole } from "../../reducks/users/selectors";
 import { showLoadingAction } from "../../reducks/loading/actions";
@@ -34,23 +34,24 @@ const useStyles = makeStyles((theme) => ({
       transition: 'boxShadow 0.3s',
       boxShadow: '0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)',
       cursor: 'pointer',
-    }
+    },
+    position:'relative',
   },
-    content: {
-      height:'3vw',
-      display:'flex',
-      padding: '16px 8px',
-      textAlign: 'left',
-      '&:last-child': {
-        paddingBottom: 16
-      }
+  content: {
+    height:'3vw',
+    display:'flex',
+    padding: '16px 8px',
+    textAlign: 'left',
+    '&:last-child': {
+      paddingBottom: 16
+    },
   },
     list_iconbutton: {
       right:0
     },
     media: {
-      width:'19vh',
-      height:'19vh',
+      width:'12vw',
+      height:'12vw',
       borderRadius:'2px'
   },
     product_image:{
@@ -58,19 +59,16 @@ const useStyles = makeStyles((theme) => ({
       position:'relative'
     },
     name: {
+      position:'absolute',
+      
       width:'65vw',
-      fontSize:'19px',
+      fontSize:'1.3vw',
+      fontWeight:550,
       whiteSpace:'noWrap'
-    },
-    category: {
-      color:theme.palette.info.main,
-      fontSize:'16px',
-      whiteSpace: 'noWrap',
-      marginLeft:'auto'
     },
     updated_at: {
       position:'absolute',
-      fontSize:'10px',
+      fontSize:'0.8vw',
       right:'1vw',
       bottom:'1vw',
     },
@@ -107,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductCard = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
   const dispatch = useDispatch();
 
 
@@ -190,10 +187,11 @@ const ProductCard = (props) => {
                 <Typography color="textSecondary" className={classes.name}>
                   {props.name}
                 </Typography>
-                <Typography className={classes.category}>
-                  {props.category}
+                <Typography className='product_card__category'>
+                    {props.category}
                 </Typography>
                 <Typography className={classes.updated_at}>
+                  <ScheduleIcon style={{fontSize:14, marginRight:5, color:'blue'}}/>
                   {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
                   {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
                   {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
@@ -221,10 +219,11 @@ const ProductCard = (props) => {
                   <Typography color="textSecondary" className={classes.name}>
                     {props.name}
                   </Typography>
-                  <Typography className={classes.category}>
+                  <Typography className='product_card__category'>
                     {props.category}
                   </Typography>
                   <Typography className={classes.updated_at}>
+                    <ScheduleIcon style={{fontSize:14, marginRight:5, color:'blue'}}/>
                     {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
                     {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
                     {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}

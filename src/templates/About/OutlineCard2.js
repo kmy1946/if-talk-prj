@@ -45,11 +45,27 @@ const OutlinedCard2 = () => {
           管理人について
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          The Manager
+          Manager
         </Typography>
         <Typography variant="body2" component="p">
           普通の大学生です。
           <br/>
+        </Typography>
+        <Typography variant="body2" component="p">
+          <br/>
+          <div style={{textAlign:'center'}}>
+            できる事：
+          </div>
+          <div style={{textAlign:'left', marginLeft:'2vw'}}>
+            ・言語：Python, Javascript
+            <br/>
+            ・フレームワーク：Django, Flask, React.js, Next.js(勉強中)
+            <br/>
+            ・ソフトウェア：Inkscape
+            <br/>
+            ・その他：material-ui, bootstrap, HTML, CSS
+          </div>
+          
         </Typography>
       </CardContent>
       <CardActions>

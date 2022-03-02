@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
     content: {
       backgroundColor:'rgb(75, 75, 75)',
       width:'100%',
-      opacity:0.7,
+      opacity:0.8,
       position:"absolute",
       bottom:0,
-      height:80,
+      height:90,
       '&:hover': {
         backgroundColor:'rgb(55, 75, 75)',
         paddingBottom:'90px',

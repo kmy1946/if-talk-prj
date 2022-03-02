@@ -99,7 +99,9 @@ const TopMenu = () => {
               (//非サインイン状態
                 (
                   window.innerWidth > 760 ?
-                  <></>
+                  <>
+                  
+                  </>
                 :
                 (
                   <>
@@ -114,19 +116,43 @@ const TopMenu = () => {
           <div className="logotext_wrap">
             <LogoText/>
           </div>
-          <div className="navigation">
-            {filters.map(filter => (
-              <li className="button" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
-                <p>
-                  <a
-                    className="topmenu-label" 
-                    onClick={() => dispatch(push('/'))}>
-                  {filter.label}
-                  </a>
-                </p>
-              </li>
-            ))}
-          </div>
+
+          {(
+                  window.innerWidth > 760 ?
+                  <>
+                  <div className="navigation__pc">
+                      {filters.map(filter => (
+                        <li className="button__pc" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                          <p>
+                            <a
+                              className="topmenu-label__pc" 
+                              onClick={() => dispatch(push('/'))}>
+                            {filter.label}
+                            </a>
+                          </p>
+                        </li>
+                      ))}
+                    </div>
+                  </>
+                :
+                (
+                  <>
+                    <div className="navigation__mobile">
+                      {filters.map(filter => (
+                        <li className="button__mobile" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                          <p>
+                            <a
+                              className="topmenu-label__mobile" 
+                              onClick={() => dispatch(push('/'))}>
+                            {filter.label}
+                            </a>
+                          </p>
+                        </li>
+                      ))}
+                    </div>
+                  </>
+                )
+              )}
         </ul>
     </>
   )

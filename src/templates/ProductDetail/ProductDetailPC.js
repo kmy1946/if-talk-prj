@@ -10,8 +10,8 @@ import { getIsSignedIn } from "../../reducks/users/selectors";
 import { ProductActionTableBookMark, ProductDetailSidebar, TopSwiperDetail } from "..";
 import { hideLoadingAction } from "../../reducks/loading/actions";
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import PersonPinCircleRoundedIcon from '@material-ui/icons/PersonPinCircleRounded';
-import SearchIcon from '@material-ui/icons/Search';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import NearMeIcon from '@material-ui/icons/NearMe';
 import HomeIcon from '@material-ui/icons/Home';
 import './ProductDetail.css';
 import { AdvDetailBottom } from "../Adv";
@@ -153,7 +153,7 @@ const ProductDetailPC = () => {
       return (
         <p>
           <small onClick={() => dispatch(push(`/?clients=${product.clients}`))} className={classes.clients}>
-            <PersonPinCircleRoundedIcon className={classes.clients_icon}/>
+            <PersonPinIcon className={classes.clients_icon}/>
             {(product.clients)}の人
           </small>
           <small>
@@ -165,7 +165,7 @@ const ProductDetailPC = () => {
       return (
         <p>
           <small onClick={() => dispatch(push(`/?clients=${product.clients}`))} className={classes.clients}>
-            <PersonPinCircleRoundedIcon className={classes.clients_icon}/>
+            <PersonPinIcon className={classes.clients_icon}/>
             {(product.clients)} 向け
           </small>
         </p>
@@ -200,7 +200,7 @@ const ProductDetailPC = () => {
               <p className={classes.category_updated_at}>
                 <small onClick={() => dispatch(push(`/?category=${product.category}`))} className={classes.detail__category}>
                   　
-                  <SearchIcon className={classes.category_icon}/>
+                  <NearMeIcon className={classes.category_icon}/>
                   {(product.category)}
                 </small>
                 　

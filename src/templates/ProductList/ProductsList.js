@@ -1,10 +1,9 @@
-import { Card, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TopSwiper } from "..";
-import { ProductCardMobile, ProductCards, ProductsCard } from "../../components/Products";
+import { ProductCardMobile } from "../../components/Products";
 import ProductCard from "../../components/Products/ProductCard";
-import { GreenButton, PrimaryButton } from "../../components/UIkit";
+import { PrimaryButton } from "../../components/UIkit";
 import { fetchProducts } from "../../reducks/products/operation";
 import { getProducts } from "../../reducks/products/selectors";
 import { getIsSignedIn } from "../../reducks/users/selectors";
@@ -26,7 +25,7 @@ const useStyles = makeStyles({
   list__title: {
     textAlign:'left',
     margin:'2px',
-    fontSize:'17px',
+    fontSize:'1.7vw',
     fontWeight:'bold',
     color: '#fff',
     textShadow: '1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 1px 1px 1px #555, -1px 1px 1px #555, 1px -1px 1px #555, -1px -1px 1px #555, 5px 5px #9ccc65',
@@ -44,7 +43,7 @@ const ProductsList = () => {
 
   const isSignedIn = getIsSignedIn(selector);
 
-  const [page, setPage] = useState(10);
+  const [page, setPage] = useState(7);
   const updatePost = async () => {
     setPage(page + 5);
   };

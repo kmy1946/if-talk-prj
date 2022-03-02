@@ -8,17 +8,18 @@
   font-family: 'Times New Roman', Times, serif;
   padding: 30px;
 }
-.navigation{
+/* mobile */
+.navigation__mobile{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 40px;
+  height: 12vw;
   color: rgb(255, 255, 255);
   background-color: rgb(214, 233, 240);
 }
-.topmenu-label {
+.topmenu-label__mobile {
   text-shadow:
     1px  1px 1px #003366,
     -1px  1px 1px #003366,
@@ -29,14 +30,15 @@
     -1px  0px 1px #003366,
     0px -1px 1px #003366;
   font-weight: 600;
+  font-size: 5vw;
 }
-.navigation ul {
+.navigation__mobile ul {
   width: 100%;
 }
-.button{
+.button__mobile{
   display: block;
   padding:10px;
-  width:20%;
+  width:30vw;
   float:left;
   
   border-right: 1px solid #d6d6d6;
@@ -44,22 +46,84 @@
   
   transition:.2s all;
 }
-.button p {
-  height: 10px;
+.button__mobile p {
+  height: 4vw;
   font-weight: 300;
 }
-.button a {
+.button__mobile a {
   cursor: pointer;
   color:#333333;
   text-decoration:none;
   white-space: nowrap;
 }
-.navigation:hover .button{
+.navigation__mobile:hover .button__mobile{
   filter:blur(0.5px);
   opacity:.8;
   transform: scale(1);
 }
-.navigation:hover .button:hover{
+.navigation__mobile:hover .button__mobile:hover{
+  transition: .5s;
+  transform:scale(1.1);
+  filter:blur(0px);
+  opacity:1;
+  border-right: 1px solid #888888;
+  border-left: 1px solid #888888;
+}
+
+/* pc */
+.navigation__pc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(214, 233, 240);
+}
+.topmenu-label__pc {
+  text-shadow:
+    1px  1px 1px #003366,
+    -1px  1px 1px #003366,
+    1px -1px 1px #003366,
+    -1px -1px 1px #003366,
+    1px  0px 1px #003366,
+    0px  1px 1px #003366,
+    -1px  0px 1px #003366,
+    0px -1px 1px #003366;
+  font-weight: 600;
+  font-size: 20px;
+}
+.navigation__pc ul {
+  width: 100%;
+}
+.button__pc{
+  display: block;
+  padding:10px;
+  width:25vw;
+  float:left;
+  
+  border-right: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
+  
+  transition:.2s all;
+}
+.button__pc p {
+  height: 10px;
+  font-weight: 300;
+}
+.button__pc a {
+  cursor: pointer;
+  color:#333333;
+  text-decoration:none;
+  white-space: nowrap;
+}
+.navigation__pc:hover .button__pc{
+  filter:blur(0.5px);
+  opacity:.8;
+  transform: scale(1);
+}
+.navigation__pc:hover .button__pc:hover{
   transition: .5s;
   transform:scale(1.1);
   filter:blur(0px);

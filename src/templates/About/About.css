@@ -1,13 +1,15 @@
 .about__background {
   margin-top: 15px;
-  background: url(../../../public/paragraph_sample.jpg) no-repeat center;
-  background-size: cover;
+  /*background: url(../../../public/paragraph_sample.jpg) no-repeat center;
+  background-size: cover;*/
   position: relative;
   height:800px;
 }
 
 .about__background::before {
+  /*
   background-color: rgba(114, 114, 114, 0.5);
+  */
   position: absolute;
   top: 0;
   right: 0;

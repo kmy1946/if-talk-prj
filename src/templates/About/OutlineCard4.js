@@ -48,11 +48,11 @@ const OutlinedCard4 = () => {
           Features
         </Typography>
         <Typography variant="body2" component="p">
-          プログラミング言語、アーカイブでの絞り込み機能
-          {/*ユーザー登録（記事投稿、編集、削除）*/}
-          <br />
-          詳細ページでの画像スワイプ
-          {'　'}
+          <div style={{textAlign:'left', marginLeft:'2vw'}}>
+            ・プログラミング言語、アーカイブ _etc.の絞り込み機能
+            <br/>
+            ・問い合わせページ
+          </div>
         </Typography>
       </CardContent>
       <CardActions>
