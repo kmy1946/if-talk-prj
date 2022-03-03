@@ -186,3 +186,12 @@ nav {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+/* 投稿者：管理人 */
+.detail__postman {
+  color: black;
+}
+.detail__postman:hover {
+  text-decoration: none;
+  color: #519eec;
+  font-weight: 600;
+}

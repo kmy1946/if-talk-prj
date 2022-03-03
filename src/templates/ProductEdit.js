@@ -4,7 +4,7 @@ import ImageArea from "../components/Products/ImageArea";
 import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
 import { db } from "../Firebase";
 import { saveProduct } from "../reducks/products/operation";
-import './productedit.css';
+import './Editor/productedit.css';
 
 const ProductEdit = () => {
   const dispatch = useDispatch()

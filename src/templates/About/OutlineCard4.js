@@ -47,12 +47,10 @@ const OutlinedCard4 = () => {
         <Typography className={classes.pos} color="textSecondary">
           Features
         </Typography>
-        <Typography variant="body2" component="p">
-          <div style={{textAlign:'left', marginLeft:'2vw'}}>
+        <Typography variant="body2" component="p" style={{textAlign:'left', marginLeft:'2vw'}}>
             ・プログラミング言語、アーカイブ _etc.の絞り込み機能
             <br/>
             ・問い合わせページ
-          </div>
         </Typography>
       </CardContent>
       <CardActions>

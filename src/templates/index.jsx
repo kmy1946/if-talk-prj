@@ -5,7 +5,7 @@ export { default as SignUp } from './Register/SignUp';
 export { default as SignIn } from './Register/SignIn';
 export { default as Reset } from './Register/Reset';
 export { default as ProductEdit } from './ProductEdit';
-export { default as ProdctEditRich } from './ProdctEditRich';
+export { default as ProdctEditRich } from './Editor/ProdctEditRich';
 export { default as EditorComponent } from './Editor/EditorComponent';
 export { default as CodeBlock } from './Editor/CodeBlock';
 export { default as ProductList } from './ProductList/ProductList';

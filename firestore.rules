@@ -32,6 +32,12 @@ service cloud.firestore {
       allow read: if true;
       allow write: if request.auth.uid != null;
     }
+    match /adv_detail_bottom/{adv_detail_bottomId} {
+      allow read: if true;
+      allow write: if request.auth.uid != null;
+    }
+
+
     match /adv_top/{adv_topId} {
       allow read: if true;
       allow write: if request.auth.uid != null;

@@ -18,7 +18,7 @@ import { push } from "connected-react-router"
 import {hideLoadingAction, showLoadingAction} from "../loading/actions";
 import { deleteProductAction, fetchProductsAction } from "./actions"
 
-const productsRef = db.collection('products')//.where("username", "==", username.uid)
+const productsRef = db.collection('products')
 
 export const deleteProduct = (id) => {
   const confirm = window.confirm('本当に削除しますか？')

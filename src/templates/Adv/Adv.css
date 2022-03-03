@@ -1,7 +1,15 @@
+/* under sidebar */
+.adv-detail__group {
+  margin-top: 40px;
+}
 .advdetail__img {
   padding-top: 10px;
 }
+/* bottom */
+.adv-detail_bottom__group {
+  text-align: center;
+}
 .advdetail__bottom-img {
-  padding-top: 10px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
+  margin-left: 30px;
 }

@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
   category__text: {
       fontSize:'1vw'
   },
+  category__counted: {
+      backgroundColor:'#e7e7e7',
+  },
   clients__text: {
     fontSize:'1vw'
   }
@@ -43,7 +46,7 @@ const SideBarGuest = () => {
 
   const selectMenu = (event, path) => {
     dispatch(push(path));//pathはvalueで指定
-};
+  };
 
   const [searchKeyword, setSearchKeyword] = useState("")
   const inputSearchKeyword = useCallback((event) => {
@@ -55,22 +58,37 @@ const SideBarGuest = () => {
     {func: selectMenu, label: "初心者", id: "beginner", value: "/?clients=初心者"},
     {func: selectMenu, label: "中級者", id: "intermediate", value: "/?clients=中級者"},
     {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}
-])
+  ])
 
-  const [filters_cat, setFilters_cat] = useState([])
+  const [filters_cat, setFilters_cat] = useState([]);
+
   useEffect(() => {
       db.collection('categories')
           .orderBy('order', 'asc')
           .get()
           .then((snapshot) => {
-              const list = []
-              snapshot.forEach(snapshot => {
-                  const category = snapshot.data()
-                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
+                const list = [];
+                
+
+              snapshot.forEach(snap => {
+                  const category = snap.data();
+                  const category_sizes = [];
+
+                  db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get()
+                    .then(snap => {
+                        const category_size = snap.size
+                        category_sizes.push(category_size)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                  });
+                  
+                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category_sizes});
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
+              //console.log(list)
           })
-  }, [])
+  }, []);
 
   return(
     <div>
@@ -101,6 +119,9 @@ const SideBarGuest = () => {
                                 <ListItemText>
                                     <small className={classes.category__text}>
                                         {filter.label}
+                                    </small>
+                                    <small className={classes.category__counted}>
+                                        {filter.size}{/*{console.log(filters_cat)}*/}
                                     </small>
                                 </ListItemText>
                             </ListItem>

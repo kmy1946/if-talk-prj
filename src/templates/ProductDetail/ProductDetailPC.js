@@ -230,9 +230,17 @@ const ProductDetailPC = () => {
               {returnCodeToBr(product.description)}
             </div>
           </div>
-          <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
+          {
+            (
+              product.username === '管理人' ?
+                <p className={classes.username}><small>投稿者：</small><a href="/about" className="detail__postman">{(product.username)}</a></p>
+              :
+                <p className={classes.username}><small>投稿者：</small>{(product.username)}</p>
+            )
+          }
         </div>
         <div className="module-spacer--small"/>
+        
           <div className="detail__bookmark"/>
               {isSignedIn ? 
                   (
@@ -247,10 +255,12 @@ const ProductDetailPC = () => {
                 }
             </div>
             </section>
+            
             <div className="child2-detail">
               <ProductDetailSidebar/>
             </div>
           </div>
+          <AdvDetailBottom/>
           </>
           )}
     </>

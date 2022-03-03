@@ -27,7 +27,7 @@ const Footer = () => {
         <br/>
         <br/>
         <div className='footer__description_box'>
-          <p className="footer__description_text">プログラミングの話を分かりやすく解説していきます！</p>
+          <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
         </div>
         <br/>
         <br/>

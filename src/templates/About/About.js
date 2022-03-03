@@ -17,24 +17,44 @@ const About = () => {
   const classes = useStyles();
   return (
     <>
-    <div className="about__background">
-      <div className="about__box">
-        <Grid container>
-          <Grid item xs={6} className={classes.about_grid} >
-              <OutlinedCard1 />
+    {
+      (
+      window.innerWidth > 760 ?
+        <div className="about__background">
+          <div className="about__box">
+            <Grid container>
+              <Grid item xs={6} className={classes.about_grid} >
+                  <OutlinedCard1 />
+              </Grid>
+              <Grid item xs={6} className={classes.about_grid}>
+                  <OutlinedCard2 />
+              </Grid>
+              <Grid item xs={6} className={classes.about_grid}>
+                  <OutlinedCard3 />            
+              </Grid>
+              <Grid item xs={6} className={classes.about_grid}>
+                  <OutlinedCard4 />            
+              </Grid>
+            </Grid>
+          </div>
+        </div>
+        :
+        <Grid container style={{ marginTop:10 ,marginBottom:30, }}>
+          <Grid item xs={12} className={classes.about_grid} >
+            <OutlinedCard1 />
           </Grid>
-          <Grid item xs={6} className={classes.about_grid}>
-              <OutlinedCard2 />
+          <Grid item xs={12} className={classes.about_grid}>
+            <OutlinedCard2 />
           </Grid>
-          <Grid item xs={6} className={classes.about_grid}>
-              <OutlinedCard3 />            
+          <Grid item xs={12} className={classes.about_grid}>
+            <OutlinedCard3 />            
           </Grid>
-          <Grid item xs={6} className={classes.about_grid}>
-              <OutlinedCard4 />            
+          <Grid item xs={12} className={classes.about_grid}>
+            <OutlinedCard4 />            
           </Grid>
         </Grid>
-      </div>
-    </div>
+        )
+      }
     </>
   )
 }

@@ -51,21 +51,18 @@ const OutlinedCard2 = () => {
           普通の大学生です。
           <br/>
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" component="p" style={{textAlign:'center'}}>
           <br/>
-          <div style={{textAlign:'center'}}>
-            できる事：
-          </div>
-          <div style={{textAlign:'left', marginLeft:'2vw'}}>
-            ・言語：Python, Javascript
-            <br/>
-            ・フレームワーク：Django, Flask, React.js, Next.js(勉強中)
-            <br/>
-            ・ソフトウェア：Inkscape
-            <br/>
-            ・その他：material-ui, bootstrap, HTML, CSS
-          </div>
-          
+            できる事：          
+        </Typography>
+        <Typography style={{textAlign:'left', marginLeft:'2vw'}}>
+          ・言語：Python, Javascript
+          <br/>
+          ・フレームワーク：Django, Flask, React.js, Next.js(勉強中)
+          <br/>
+          ・ソフトウェア：Inkscape
+          <br/>
+          ・その他：material-ui, bootstrap, HTML, CSS
         </Typography>
       </CardContent>
       <CardActions>

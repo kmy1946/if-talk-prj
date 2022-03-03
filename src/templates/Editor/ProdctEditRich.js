@@ -11,12 +11,14 @@ import 'draft-js/dist/Draft.css'
 import DOMPurify from 'dompurify';
 import Immutable from 'immutable';
 import draftToHtml from "draftjs-to-html";
-import { CodeBlock } from ".";
-import { db } from "../Firebase";
-import { hideLoadingAction,  } from "../reducks/loading/actions";
-import ImageArea from "../components/Products/ImageArea";
-import { PrimaryButton, SelectBox, TextInput } from "../components/UIkit";
-import { saveProduct } from "../reducks/products/operation";
+import { CodeBlock } from "..";
+import { db } from "../../Firebase";
+import { hideLoadingAction,  } from "../../reducks/loading/actions";
+import ImageArea from "../../components/Products/ImageArea";
+import { PrimaryButton, SelectBox, TextInput } from "../../components/UIkit";
+import { saveProduct } from "../../reducks/products/operation";
+//import Prism from "prismjs";
+//import "prismjs/themes/prism-tomorrow.css";
 
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()

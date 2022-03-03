@@ -120,7 +120,6 @@ export default class CodeBlock extends DraftEditorBlock {
         {end}
       </span>
     )
-    
     return lines
   }
 }
