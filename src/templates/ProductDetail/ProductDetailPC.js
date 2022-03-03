@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'right'
   },
   detail: {
-    margin:'3vw',
+    margin:'1.5vw',
     maxWidth:'auto'
   },
   detail_name: {
@@ -182,7 +182,6 @@ const ProductDetailPC = () => {
         </div>
         <div className="pc-main-detail">
       <section className="c-section-wrapin_detail">
-        <div>
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
               <li onClick={() => dispatch(push('/'))} className={classes.router__homeicon}><HomeIcon/></li>
@@ -229,7 +228,6 @@ const ProductDetailPC = () => {
             <div>
               {returnCodeToBr(product.description)}
             </div>
-          </div>
           {
             (
               product.username === '管理人' ?
@@ -254,15 +252,15 @@ const ProductDetailPC = () => {
                   )
                 }
             </div>
-            </section>
+      </section>
             
-            <div className="child2-detail">
-              <ProductDetailSidebar/>
-            </div>
-          </div>
-          <AdvDetailBottom/>
-          </>
-          )}
+        <div className="child2-detail">
+          <ProductDetailSidebar/>
+        </div>
+      </div>
+      <AdvDetailBottom/>
+      </>
+      )}
     </>
   )
 

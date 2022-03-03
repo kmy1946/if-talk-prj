@@ -1,19 +1,25 @@
-import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../Firebase";
 import '../Adv.css';
-const useStyles = makeStyles({
-});
+
 const AdvDetail = () => {
-  const [advDetailData, setAdvDetailData] = useState([])
-  const productsRef = db.collection('adv_detail')
+  const [advDetailData, setAdvDetailData] = useState([]);
+  let id = window.location.pathname.split('/product')[1];
+
   useEffect(() => {
+    if (id === undefined) {//新規作成時UncaughtError回避
+      id = ""
+    }
+    if (id !== "") {
+        id = id.split('/')[1]//productのidを取得
+    }
     (async () => {
-      await productsRef.orderBy('order', 'desc').limit(2).get()
+      await db.collection('adv_detail').doc(id).collection('advertizement').orderBy('order', 'desc').get()
         .then(snapshots => {
           let results = []
           snapshots.forEach(snapshots => {
             results.push({ ...snapshots.data()})
+            
           })
           setAdvDetailData(results)
         })

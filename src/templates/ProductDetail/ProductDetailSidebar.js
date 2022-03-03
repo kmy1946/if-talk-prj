@@ -16,7 +16,6 @@ const ProductDetailSidebar = () => {
         <List className="sidebar__adv-group">
           <AdvDetail/>
         </List>
-        <List></List>
       </div>
     </div>
   )

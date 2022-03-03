@@ -74,14 +74,17 @@ const SideBarGuest = () => {
                   const category = snap.data();
                   const category_sizes = [];
 
-                  db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get()
-                    .then(snap => {
-                        const category_size = snap.size
-                        category_sizes.push(category_size)
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                  });
+                  (async() => {
+                      await db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get()
+                      .then(snap => {
+                          const category_size = snap.size
+                          category_sizes.push(category_size)
+                      })
+                      .catch((error) => {
+                          console.log(error);
+                    });
+                  })()
+                  
                   
                   list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category_sizes});
               })
