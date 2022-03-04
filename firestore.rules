@@ -37,6 +37,7 @@ service cloud.firestore {
         allow read; allow write;
       }
     }
+
     match /adv_detail_bottom/{adv_detail_bottomId} {
       allow read: if true;
       allow write: if request.auth.uid != null;

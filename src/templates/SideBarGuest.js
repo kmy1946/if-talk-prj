@@ -67,9 +67,7 @@ const SideBarGuest = () => {
           .orderBy('order', 'asc')
           .get()
           .then((snapshot) => {
-                const list = [];
-                
-
+                const list = [];            
               snapshot.forEach(snap => {
                   const category = snap.data();
                   const category_sizes = [];
@@ -85,11 +83,9 @@ const SideBarGuest = () => {
                     });
                   })()
                   
-                  
                   list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category_sizes});
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
-              //console.log(list)
           })
   }, []);
 

@@ -1,0 +1,22 @@
+.twitter__background {
+  /*
+  position: relative;
+  */
+  height:200px;
+}
+
+.twitter__box {
+  /*
+  position: absolute;
+  */
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.twitter-text {
+  text-align: center;
+  color: rgb(112, 112, 112);
+  font-weight: 800;
+  font-size: 22px;
+}

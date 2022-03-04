@@ -15,13 +15,13 @@ const AdvDetailBottom = () => {
     }
     
     (async () => {
-      await db.collection('adv_detail_bottom').doc(id).collection('advertizement').orderBy('order', 'desc').get()
+      await db.collection("adv_detail_bottom").doc(id).collection('advertizement').orderBy('order', 'desc').get()
         .then(snapshots => {
           let results = []
           snapshots.forEach(snapshots => {
             results.push({ ...snapshots.data()})
           })
-          console.log(results)
+          //console.log(results)
           setAdvDetailBottomData(results)
         })
         .catch((error) => console.log(error))

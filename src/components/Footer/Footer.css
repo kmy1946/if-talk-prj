@@ -4,7 +4,6 @@
 }
 .footer-centering {
   margin: 0 auto;
-  margin-top: 10px;
   text-align: center;
   color: #69a844;
   cursor: pointer;
@@ -14,7 +13,21 @@
   color: #9edd38;
 }
 .footer__title {
+}
+.footer__totop_box {
+  margin-bottom: 30px;
+}
+.footer__totop-link_box {
+  margin: 0 auto;
+  padding-bottom: 15px;
   text-align: center;
+  color: rgb(80, 80, 80);
+  font-weight: 700;
+}
+.footer__totop-link_box:hover {
+  color: rgb(181, 207, 63);
+  text-decoration: none;
+  cursor: pointer;
 }
 .footer__whensignin-link {
   cursor: pointer
@@ -41,7 +54,55 @@
 .footer__description_box {
   text-align: center;
   color: rgb(72, 75, 77);
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 .footer__description_text {
   font-weight: 600;
+}
+
+/* archive list */
+.menu {
+  text-align: center;
+}
+.menu ul {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  padding: 5px;
+}
+
+input[type="checkbox"].on-off + ul{
+  height: 0;
+  overflow: hidden;
+}
+
+input[type="checkbox"].on-off:checked + ul{
+  height: auto;
+  color: #226ac9;
+  cursor: pointer;
+}
+ul li{
+  font-weight: 600;
+}
+.menu ul li:hover{
+  color: #3db8ff;
+  font-weight: 700;
+}
+
+/* FooterLeft2 */
+.footer__twitter {
+  text-align: center;
+  color: rgb(44, 113, 216);
+}
+.footer__twitter:hover {
+  color: rgb(91, 136, 204);
 }

@@ -26,3 +26,4 @@ export { default as TopSwiperCardDetail } from './ProductDetail/TopSwiperCardDet
 export { default as TopSwiperCardDetailMobile } from './ProductDetail/TopSwiperCardDetailMobile';
 export { default as TopSwiperDetailMobile } from './ProductDetail/TopSwiperDetailMobile';
 export { default as ProductDetailTOCMobile } from './ProductDetail/ProductDetailTOCMobile';
+export { default as Twitter } from './Twitter/Twitter';

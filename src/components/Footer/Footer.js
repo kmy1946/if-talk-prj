@@ -5,30 +5,30 @@ import {makeStyles} from '@material-ui/core/styles';
 import './Footer.css'
 import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
+import { Grid, Paper } from "@material-ui/core";
+import { FooterArchive, FooterCategory, FooterLeft, FooterLeft2 } from ".";
 
 const Footer = () => {
   const dispatch = useDispatch();
   return (
     <>
     <div className='footer_group'>
-      <Container>
-        {/*
-        <div className="footer-centering">
-          <a href="/whensignin" className="footer__whensignin-link">ユーザー登録について</a>
-        </div>
-        */}
-        <div className="footer-centering">
-          <a onClick={() => dispatch(push('/about'))} className="footer__whensignin-link">当サイトについて</a>
-        </div>
+    <div className='footer__description_box'>
+      <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
+    </div>
+    <FooterLeft/>
+    <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <FooterArchive/>
+        </Grid>
+        <Grid item xs={6}>
+          <FooterCategory/>
+        </Grid>
+      </Grid>
+      <Container> 
         <br/>
-        <div className='footer__contact-link_box'>
-          <a onClick={() => dispatch(push('/contact'))} className="footer__contact-link">Contact to Manager</a>
-        </div>
         <br/>
-        <br/>
-        <div className='footer__description_box'>
-          <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
-        </div>
+        <FooterLeft2/>
         <br/>
         <br/>
         <Typography>
@@ -39,8 +39,8 @@ const Footer = () => {
               {" "}
               {new Date().getFullYear()}
               {"."}
-          </Typography>
-          </Container>
+        </Typography>
+      </Container>
     </div>
     </>
   );

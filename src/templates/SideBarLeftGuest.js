@@ -31,8 +31,6 @@ const SideBarLeftGuest = () => {
       {func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?updated_at_month=202201"},
       {func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?updated_at_month=202202"},
       {func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?updated_at_month=202203"},
-      //{func: selectMenu, label: "2022.3", id: "2022_3_date", value: "/?created_at=2022年3月"},
-      //{func: selectMenu, label: "2022.4", id: "2022_4_date", value: "/?created_at=2022年4月"}
   ])
 
   return(

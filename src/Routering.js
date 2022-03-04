@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import Page404 from "./components/Error/Page404";
-import { ProductDetail, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest } from './templates';
+import { ProductDetail, ProdctEditRich, ProductList, ProductsList, BookMarkList, Reset, SignIn, SignUp, GuestSignIn, TopSwiper, SideBar, SideBarLeft, SideBarGuest, Twitter } from './templates';
 import Auth from "./templates/Auth";
 import './App.css'
 import { Contact } from "./templates/Contact";
@@ -18,6 +18,7 @@ function Routering() {
         <Route exact path='/about' component={About} />
         <Route exact path="/product/:id" component={ProductDetail} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path='/twitter' component={Twitter} />
 
         <Route exact path={"/"}>
           <>
