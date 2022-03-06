@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import IconButton from "@material-ui/core/IconButton";
 import {Badge} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,6 +10,7 @@ import { db } from '../../../Firebase';
 import MenuIcon from "@material-ui/icons/Menu";
 import { getProductsInBookMark, getUseId } from '../../../reducks/users/selectors';
 import { fetchProductsInBookMark } from '../../../reducks/users/operations';
+import ClosableDrawer from '../ClosableDrawer/ClosableDrawer';
 
 const HeaderMenu = (props) => {
     const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const HeaderMenu = (props) => {
     const uid = getUseId(selector);
 //    const userId = getUserId(selector);
     let productsInBookMark = getProductsInBookMark(selector);
+
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const unsubscribe = db.collection('users').doc(uid).collection('bookmark')

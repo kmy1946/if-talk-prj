@@ -7,7 +7,7 @@ import './TopMenu.css'
 import { LogoText } from ".";
 import { getIsSignedIn, getProductsInBookMark } from "../../reducks/users/selectors";
 import { makeStyles } from "@material-ui/core";
-import { HeaderMenu, handleDrawerToggle, HeaderMenuGuest } from "../Header";
+import { HeaderMenu, handleDrawerToggle, HeaderMenuGuest, ClosableDrawer } from "../Header";
 import {Badge} from "@material-ui/core";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -92,6 +92,7 @@ const TopMenu = () => {
                     <div className={classes.iconButtons} style={{textAlign:'right'}}>
                       <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
                     </div>
+                    <ClosableDrawer open={open} onClose={handleDrawerToggle} />
                   </>
                 )
               )
@@ -127,7 +128,7 @@ const TopMenu = () => {
                             <a
                               className="topmenu-label__pc" 
                               onClick={() => dispatch(push('/'))}>
-                            {filter.label}
+                              {filter.label}
                             </a>
                           </p>
                         </li>
@@ -144,7 +145,7 @@ const TopMenu = () => {
                             <a
                               className="topmenu-label__mobile" 
                               onClick={() => dispatch(push('/'))}>
-                            {filter.label}
+                              {filter.label}
                             </a>
                           </p>
                         </li>

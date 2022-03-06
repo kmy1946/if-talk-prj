@@ -54,10 +54,10 @@ const ClosableDrawer = (props) => {
         {func: selectMenu, label: "上級者", id: "advanced", value: "/?clients=上級者"}
     ])
 
-    const [filters_updated_month, setFilters_updated_month] = useState([
-        {func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?updated_at_month=202201"},
-        {func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?updated_at_month=202202"},
-        {func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?updated_at_month=202203"}
+    const [filters_created_month, setFilters_updated_month] = useState([
+        {func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?created_at_month=202201"},
+        {func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?created_at_month=202202"},
+        {func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?created_at_month=202203"}
     ])
   
     const [filters_cat, setFilters_cat] = useState([])
@@ -128,7 +128,7 @@ const ClosableDrawer = (props) => {
                     <Divider variant="middle" />
                     <List>
                         <p className="sidebar__title"><ArchiveIcon/>アーカイブ</p>
-                        {filters_updated_month.map(pd_filter => (
+                        {filters_created_month.map(pd_filter => (
                             <ListItem button key={pd_filter.id} onClick={(e) => pd_filter.func(e, pd_filter.value)}>
                                 <ListItemText className={classes.sidebarleft__text}>
                                     <small>{pd_filter.label}</small>

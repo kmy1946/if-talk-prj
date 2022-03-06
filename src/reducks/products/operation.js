@@ -39,7 +39,7 @@ export const deleteProduct = (id) => {
  } else if(confirm === undefined) console.log('You did not delete product.')
 }
 
-export const fetchProducts = (clients, category, updated_at_month, created_at_month, created_at, page) => {
+export const fetchProducts = (clients, category, created_at, created_at_month, page, updated_at_month, ) => {
   return async (dispatch) => {
     dispatch(showLoadingAction("Loading..."));
     let query = productsRef.orderBy('created_at', 'desc')
@@ -62,7 +62,7 @@ export const fetchProducts = (clients, category, updated_at_month, created_at_mo
           dispatch(fetchProductsAction(productList))
       }).catch((error) => {
         dispatch(hideLoadingAction());
-        console.log(error);
+        //console.log(error);
         alert('エラーが発生しました。')
       })
       dispatch(hideLoadingAction());

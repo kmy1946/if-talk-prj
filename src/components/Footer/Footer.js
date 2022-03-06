@@ -1,23 +1,21 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography"
 import Container from "@material-ui/core/Container";
-import {makeStyles} from '@material-ui/core/styles';
 import './Footer.css'
 import { useDispatch } from "react-redux";
-import { push } from "connected-react-router";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { FooterArchive, FooterCategory, FooterLeft, FooterLeft2 } from ".";
 
 const Footer = () => {
   const dispatch = useDispatch();
   return (
     <>
-    <div className='footer_group'>
-    <div className='footer__description_box'>
-      <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
-    </div>
-    <FooterLeft/>
-    <Grid container spacing={2}>
+      <div className='footer_group'>
+      <div className='footer__description_box'>
+        <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
+      </div>
+      <FooterLeft/>
+      <Grid container spacing={2}>
         <Grid item xs={6}>
           <FooterArchive/>
         </Grid>
