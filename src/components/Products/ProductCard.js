@@ -215,9 +215,9 @@ const ProductCard = (props) => {
                   </Typography>
                   <Typography className={classes.updated_at}>
                     <ScheduleIcon style={{fontSize:14, marginRight:5, color:'blue'}}/>
-                    {props.updated_at.substr(0,4)}/{props.updated_at.substr(4,2)}/
-                    {props.updated_at.substr(6,2)}, {props.updated_at.substr(8,2)}:
-                    {props.updated_at.substr(10,2)}:{props.updated_at.substr(12,2)}
+                    {props.created_at.substr(0,4)}/{props.created_at.substr(4,2)}/
+                    {props.created_at.substr(6,2)}, {props.created_at.substr(8,2)}:
+                    {props.created_at.substr(10,2)}:{props.created_at.substr(12,2)}
                   </Typography>
               </div>
             </CardContent>

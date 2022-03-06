@@ -28,9 +28,14 @@ const SideBarLeftGuest = () => {
 
   const [filters, setFilters] = useState([
       //{func: selectMenu, label: "2022.3", id: "all_date", value: "/"},
-      {func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?updated_at_month=202201"},
-      {func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?updated_at_month=202202"},
-      {func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?updated_at_month=202203"},
+      
+      //{func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?updated_at_month=202201"},
+      //{func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?updated_at_month=202202"},
+      //{func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?updated_at_month=202203"},
+
+      {func: selectMenu, label: "2022.1", id: "2022_1_month", value: "/?created_at_month=202201"},
+      {func: selectMenu, label: "2022.2", id: "2022_2_month", value: "/?created_at_month=202202"},
+      {func: selectMenu, label: "2022.3", id: "2022_3_month", value: "/?created_at_month=202203"},
   ])
 
   return(

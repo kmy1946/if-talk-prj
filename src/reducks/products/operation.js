@@ -39,15 +39,17 @@ export const deleteProduct = (id) => {
  } else if(confirm === undefined) console.log('You did not delete product.')
 }
 
-export const fetchProducts = (clients, category, updated_at_month, page) => {
+export const fetchProducts = (clients, category, updated_at_month, created_at_month, created_at, page) => {
   return async (dispatch) => {
     dispatch(showLoadingAction("Loading..."));
-    let query = productsRef.orderBy('updated_at', 'desc')
+    let query = productsRef.orderBy('created_at', 'desc')
 
     query = (clients !== "") ? query.where('clients', '==', clients) : query;
     query = (category !== "") ? query.where('category', '==', category) : query;
 
-    query = (updated_at_month !== "") ? query.where('updated_at_month', '==', updated_at_month) : query;//updated_at_monthで判別
+    //query = (updated_at_month !== "") ? query.where('updated_at_month', '==', updated_at_month) : query;//updated_at_monthで判別
+
+    query = (created_at_month !== "") ? query.where('created_at_month', '==', created_at_month) : query;//updated_at_monthで判別
 
     query.limit(page).get()
       .then(snapshots => {
@@ -60,7 +62,7 @@ export const fetchProducts = (clients, category, updated_at_month, page) => {
           dispatch(fetchProductsAction(productList))
       }).catch((error) => {
         dispatch(hideLoadingAction());
-        //console.log(error);
+        console.log(error);
         alert('エラーが発生しました。')
       })
       dispatch(hideLoadingAction());
@@ -78,6 +80,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
   
     const myShapedDate = format(new Date(), 'yyyyMMddHHmmss');
     const myShapedDate_month = format(new Date(), 'yyyyMM');
+    const myShapedDate_month_created_at = format(new Date(), 'yyyyMM');
     const myShapedDate_date = format(new Date(), 'yyyyMMdd');
 
     const data = {
@@ -93,6 +96,7 @@ export const saveProduct = (id, name, images,  description, category, clients, u
       updated_at: myShapedDate,
 
       updated_at_month: myShapedDate_month,
+      created_at_month: myShapedDate_month_created_at,//クエリに使う?
       updated_at_date: myShapedDate_date,
     }
 

@@ -61,8 +61,10 @@ const ProductList = () => {
   const category = /^\?category=/.test(query) ? query.split('?category=')[1] : ""
   const updated_at_month = /^\?updated_at_month=/.test(query) ? query.split('?updated_at_month=')[1] : ""
 
+  const created_at_month = /^\?created_at_month=/.test(query) ? query.split('?created_at_month=')[1] : ""
+
   useEffect(() => {
-    dispatch(fetchProducts(clients, category, updated_at_month, page))//, created_at
+    dispatch(fetchProducts(clients, category, updated_at_month, created_at_month, page))//, created_at
   },[query, page])
   //console.log(products);
 
@@ -89,7 +91,7 @@ const ProductList = () => {
     }
   }
   const list__title_updated_at_month = () => {
-    if (query.slice( 0, 18 ) === '?updated_at_month=') {
+    if (query.slice( 0, 18 ) === '?created_at_month=') {
       const list__title__all = query.slice(18, 30)//202202
       const list__title__sliced = list__title__all.slice(0, 4)//2022
       const year_text = '年'
@@ -158,7 +160,7 @@ const ProductList = () => {
             
             {products.length > 0 && (
               products.map(product => (
-                <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at}/>
+                <ProductCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} uid={product.uid} updated_at={product.updated_at} created_at={product.created_at}/>
               )
             ))}
             <PrimaryButton label={"さらに読み込む"} onClick={() => updatePost()}/>
