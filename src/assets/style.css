@@ -101,6 +101,22 @@
 */
 
 /* 編集削除メニュー */
+.list-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  position: absolute;
+}
+.list-name__pc {
+  position: absolute;
+  font-size: 1.6vw;
+  font-weight: 550;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .toplist__menu {
   position: absolute;
   background-color: rgb(247, 247, 247);
@@ -212,7 +228,6 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
 .toswipercard_mobile {
   width: 100vw;
 }
@@ -347,7 +362,7 @@
 .p-grid__row__mobile {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 55vw;
+  margin-top: 38vw;
 }
 
 .p-grid__list-images {

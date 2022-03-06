@@ -68,7 +68,9 @@ const TopSwiper = () => {
     { width: 1000, itemsToShow: 5 }
   ];
   const breakPoints_mobile = [
-    { width: 1, itemsToShow: 1.31 },
+    { width: 1, itemsToShow: 1.35 },
+    { width: 250, itemsToShow: 1.7},// itemsToScroll: 2 },
+    { width: 400, itemsToShow: 3 },
   ];
   const myArrow = ({ type, onClick, isEdge }) => {
     const pointer = type === consts.PREV ? '〈' : '〉'
@@ -93,6 +95,7 @@ const TopSwiper = () => {
 
   const [featuredproducts, setFeaturedproducts] = useState([])
   const productsRef = db.collection('products')
+  
   useEffect(() => {
     (async () => {
       await productsRef.orderBy('updated_at', 'desc').where("featured", "==", true).get()
@@ -152,7 +155,10 @@ const TopSwiper = () => {
                 </>
                 :
                 <>
-                  <Carousel breakPoints={breakPoints_mobile} renderArrow={myArrowMobile} >
+                  <Carousel breakPoints={breakPoints_mobile}
+                    renderArrow={myArrowMobile}
+                    pagination={false}
+                  >
                     {featuredproducts.length > 0 && (
                       featuredproducts.map(product => (
                           <TopSwiperCardMobile key={product.id} id={product.id} name={product.name} images={product.images} category={product.category} clients={product.clients} username={product.username} />

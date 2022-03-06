@@ -50,21 +50,13 @@ const useStyles = makeStyles((theme) => ({
       right:0
     },
     media: {
-      width:'12vw',
-      height:'12vw',
+      width:'16vw',
+      height:'16vw',
       borderRadius:'2px'
   },
     product_image:{
       padding:'4px',
       position:'relative'
-    },
-    name: {
-      position:'absolute',
-      
-      width:'65vw',
-      fontSize:'1.3vw',
-      fontWeight:550,
-      whiteSpace:'noWrap'
     },
     updated_at: {
       position:'absolute',
@@ -183,7 +175,7 @@ const ProductCard = (props) => {
 
           <CardContent className={classes.content}>
             <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
-                <Typography color="textSecondary" className={classes.name}>
+                <Typography color="textSecondary" className='list-name__pc'>
                   {props.name}
                 </Typography>
                 <Typography className='product_card__category'>
@@ -215,9 +207,9 @@ const ProductCard = (props) => {
           </Box>
             <CardContent className={classes.content}>
               <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push('/product/'+props.id))}}>
-                  <Typography color="textSecondary" className={classes.name}>
+                  <p className='list-name__pc'>
                     {props.name}
-                  </Typography>
+                  </p>
                   <Typography className='product_card__category'>
                     {props.category}
                   </Typography>

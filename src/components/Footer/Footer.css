@@ -90,9 +90,6 @@ input[type="checkbox"].on-off:checked + ul{
   color: #226ac9;
   cursor: pointer;
 }
-ul li{
-  font-weight: 600;
-}
 .menu ul li:hover{
   color: #3db8ff;
   font-weight: 700;

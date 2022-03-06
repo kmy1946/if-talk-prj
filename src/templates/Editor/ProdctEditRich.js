@@ -294,10 +294,9 @@ const ProdctEditRich = () => {
         </div>
         <br/>
 
-        <p>Preview:</p>
+        <p>プレビュー：</p>
         <div className="preview" dangerouslySetInnerHTML={createMarkup(description)}></div>
         <div className="module-spacer--medium" />
-        {description}
       </div>
 
     </section>

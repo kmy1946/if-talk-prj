@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     position:'relative'
   },
     content: {
-      height:'3vw',
+      //height:'3vw',
       display:'flex',
       padding: '16px 8px',
       textAlign: 'left',
@@ -49,24 +49,23 @@ const useStyles = makeStyles((theme) => ({
       right:0
     },
     media: {
-      width:'9vh',
-      height:'9vh',
+      width:'16vh',
+      height:'16vh',
       borderRadius:'2px'
   },
     product_image:{
       padding:'4px',
       position:'relative'
     },
-    name: {
-      width:'65vw',
-      whiteSpace:'noWrap'
-    },
     category: {
+      position:'absolute',
       color:theme.palette.info.main,
       fontSize:'12px',
       whiteSpace: 'noWrap',
-      marginTop:'30px',
-      marginLeft:'-82px',
+      bottom:10,
+      right:10
+      //marginTop:'30px',
+      //marginLeft:'-82px',
     },
     clients: {
       color:theme.palette.info.main,
@@ -199,13 +198,6 @@ const ProductCardMobile = (props) => {
                       return false
                     }
             })()}
-                {/*
-                <Typography className={classes.username}>
-                  <CreateIcon />
-                  {props.username} さん
-                </Typography>
-                */}
-
             <a href={user_href} className={classes.user_hreflink} />
           </CardContent>
 
@@ -226,18 +218,12 @@ const ProductCardMobile = (props) => {
           
           </Box>
           <CardContent className={classes.content}>
-                <Typography color="textSecondary" className={classes.name}>
+                <Typography color="textSecondary" className='list-name'>
                   {props.name}
                 </Typography>
                 <Typography className={classes.category}>
                   {props.category}
                 </Typography>
-                {/*
-                <Typography className={classes.username}>
-                  <CreateIcon />
-                  {props.username} さん
-                </Typography>
-                */}
                 <div onClick={() => {dispatch(showLoadingAction("Loading..."));dispatch(push(`/product/${props.id}`))}} className={classes.guest_hreflink} />
           </CardContent>
       </Box>
