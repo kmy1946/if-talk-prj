@@ -21,6 +21,7 @@ const ProductDetail = () => {
           <section className="c-section-wrapin">
             <ProductDetailMobile />
           </section>
+          
           </>
         )
       }

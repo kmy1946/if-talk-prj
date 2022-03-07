@@ -1,17 +1,16 @@
-import { makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import React, { useEffect, useRef, useState } from "react";
 import { db } from "../../../Firebase";
 import '../Adv.css';
 const useStyles = makeStyles({});
-const AdvDetail = () => {
+const AdvTop = () => {
   const classes = useStyles();
-  const link = 'https://firebasestorage.googleapis.com/v0/b/itnotane.appspot.com/o/images%2FHenWUPPtWXqJmr8x?alt=media&token=587b84bb-e301-437b-ac8b-dba61844282b';
 
   const [advDetailData, setAdvDetailData] = useState([])
-  const productsRef = db.collection('adv_detail')
+  
   useEffect(() => {
     (async () => {
-      await productsRef.orderBy('order', 'desc').limit(1).get()
+      await db.collection('adv_top').orderBy('order', 'asc').get()
         .then(snapshots => {
           let results = []
           snapshots.forEach(snapshots => {
@@ -24,29 +23,22 @@ const AdvDetail = () => {
     },[])
   
   return (
-    <div className="adv-detail__group">
-      {/*
-        <Iframe id = 'adv-detail'
-          url = 'https://codeforfun.jp/demo/html/references/tag-iframe.html'
-          //position='absolute'
-          width='100%'
-          height='100%'
-          className={classes.adv_iframe}
-          display="initial"
-          allowFullScreen
-          //onLoad={loaded}
-        />
-      */}
-      {advDetailData.length > 0 && (
-        advDetailData.map(data => (
-              <a href={data.link} target='_blank' key={data.id}>
-                <img src={data.image} width='95%' height='95%' className="advdetail__img"/>
-              </a>
+    <div className="adv-top__group">
+      <Grid container className="about__grid">
+        {advDetailData.length > 0 && (
+          advDetailData.map(data => (
+              <Grid item xs={6} key={data.id}>
+                <a href={data.link} target='_blank' rel="nofollow">
+                  <img src={data.image} width='96%' height='96%' border="0" alt="" className="advtop__img"/>
+                  <img src={data.image2} border="0" width="1" height="1" alt=""/>
+                </a>
+              </Grid>
+              )
             )
           )
-        )
-      }
+        }
+      </Grid>
     </div>
   )
 }
-export default AdvDetail;
+export default AdvTop;

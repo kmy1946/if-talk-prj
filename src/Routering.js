@@ -6,6 +6,7 @@ import './App.css'
 import { Contact } from "./templates/Contact";
 import { WhenUserDetail } from "./components/ToUsers";
 import { About } from "./templates/About";
+import { AdvTop } from "./templates/Adv";
 
 function Routering() {
   return (
@@ -48,12 +49,14 @@ function Routering() {
                     <SideBarGuest/>
                   </div>
                 </div>
+                <AdvTop/>
               </>
               :
               <>
                 <main className="c-main">
                   <ProductList />
                 </main>
+                <AdvTop/>
               </>
             )
           }

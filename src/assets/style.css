@@ -110,7 +110,7 @@
 }
 .list-name__pc {
   position: absolute;
-  font-size: 1.6vw;
+  font-size: 1.5vw;
   font-weight: 550;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -153,10 +153,10 @@
   color: #3fbb6e;
 }
 .sidebar_group {
-  zoom: 0.8;
+  zoom: 1;
 }
 .sidebar_left_group {
-  zoom: 0.8;
+  zoom: 1;
 }
 .sidebar__title {
   color: #1e73c2;

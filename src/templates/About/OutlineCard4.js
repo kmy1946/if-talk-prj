@@ -12,7 +12,7 @@ import UnfoldMoreSharpIcon from '@material-ui/icons/UnfoldMoreSharp';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth:'90%',
+    maxWidth:'95%',
     height:'100%',
     margin:'0 auto'
   },

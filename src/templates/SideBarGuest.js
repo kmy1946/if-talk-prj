@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useDispatch } from "react-redux";
 import { push } from "connected-react-router";
 import { db } from "../Firebase";
+import { AdvTopRight } from "./Adv";
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -139,6 +140,7 @@ const SideBarGuest = () => {
                         ))}
                     </List>
                 </div>
+                <AdvTopRight/>
     </div>
   )
 }

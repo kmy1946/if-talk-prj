@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { db } from "../../../Firebase";
 import '../Adv.css';
@@ -15,7 +16,7 @@ const AdvDetailBottom = () => {
     }
     
     (async () => {
-      await db.collection("adv_detail_bottom").doc(id).collection('advertizement').orderBy('order', 'desc').get()
+      await db.collection("adv_detail_bottom").doc(id).collection('advertizement').orderBy('order', 'asc').get()
         .then(snapshots => {
           let results = []
           snapshots.forEach(snapshots => {
@@ -30,16 +31,20 @@ const AdvDetailBottom = () => {
 
   return (
     <div className="adv-detail_bottom__group">
-      {advDetailBottomData.length > 0 && (
-        advDetailBottomData.map(data => (
-            <a href={data.link} target='_blank' key={data.id}>
-              <img src={data.image} width='700px' height='auto' alt="" className="advdetail__bottom-img"/>
-              <img src={data.image2} border="0" width="1" height="1" alt=""/>
-            </a>
+      <Grid container className="about__grid">
+        {advDetailBottomData.length > 0 && (
+          advDetailBottomData.map(data => (
+              <Grid item xs={6} key={data.id}>
+                <a href={data.link} target='_blank' key={data.id}>
+                  <img src={data.image} width='99%' height='auto' alt="" className="advdetail__bottom-img"/>
+                  <img src={data.image2} border="0" width="1" height="1" alt=""/>
+                </a>
+              </Grid>
+              )
             )
           )
-        )
-      }
+        }
+      </Grid>
     </div>
   )
 }

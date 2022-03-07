@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useDispatch, useSelector } from "react-redux";
 import { push } from "connected-react-router";
 import { getIsSignedIn } from "../reducks/users/selectors";
+import { AdvTopLeft } from "./Adv";
 
 const useStyles = makeStyles((theme) => ({
   sidebarleft__text:{
@@ -70,11 +71,12 @@ const SideBarLeft = () => {
                             {filters_updated_month_guest.map(filter => (
                                 <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                     <ListItemText className={classes.sidebarleft__text}>
-                                        <small className={classes.sidebarleft__text__text}>{filter.label}</small>
+                                        <p className={classes.sidebarleft__text__text}>{filter.label}</p>
                                         
                                     </ListItemText>
                                 </ListItem>
                             ))}
+                            <AdvTopLeft/>
                             </>
                         )
                         }

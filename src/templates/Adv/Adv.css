@@ -1,4 +1,4 @@
-/* under sidebar */
+/* under detail sidebar */
 .adv-detail__group {
   margin-top: 40px;
 }
@@ -8,8 +8,27 @@
 /* bottom */
 .adv-detail_bottom__group {
   text-align: center;
+  padding-bottom: 3vw;
 }
 .advdetail__bottom-img {
-  padding-bottom: 30px;
-  margin-left: 30px;
+  padding-bottom: 10px;
+}
+
+/* top page */
+.adv-top__group {
+  text-align: center;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
+}
+.about__grid {
+}
+
+/* top page right left */
+.adv-top-right__group {
+}
+.adv-top-left__img {
+}
+.adv-top-left__group {
+}
+.adv-top-right__img {
 }

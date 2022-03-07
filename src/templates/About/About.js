@@ -5,7 +5,6 @@ import { OutlinedCard1, OutlinedCard2, OutlinedCard3, OutlinedCard4 } from ".";
 
 const useStyles = makeStyles({
   gridContainer: {
-    padding: '16px 20px',
     textAlign:'center'
   },
   about_grid: {
@@ -22,7 +21,7 @@ const About = () => {
       window.innerWidth > 760 ?
         <div className="about__background">
           <div className="about__box">
-            <Grid container>
+            <Grid container className="about__grid">
               <Grid item xs={6} className={classes.about_grid} >
                   <OutlinedCard1 />
               </Grid>

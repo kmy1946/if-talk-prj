@@ -13,6 +13,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule';
 import HomeIcon from '@material-ui/icons/Home';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
+import { AdvDetailBottom } from "../Adv";
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
     fontSize:13,
@@ -245,6 +246,8 @@ const ProductDetailMobile = () => {
                   )
                 }
           </div>
+          <AdvDetailBottom/>
+          <div className="module-spacer--small"/>
           <div className={classes.detail__topswiper}>
             <p className={classes.featured_p}>注目の記事</p>
             <TopSwiperDetailMobile/>
