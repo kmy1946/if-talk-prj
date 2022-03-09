@@ -236,15 +236,28 @@ b, strong {
 }
 
 pre {
+  position: relative;
 	display: block;
 	font-family: monospace;
-  font-weight: 600;
+  font-weight: 550;
 	white-space: pre;
   padding: 6px;
   background-color: #364549;
-  color: white;
+  color: rgb(231, 231, 231);
 	margin: 1em 0px;
   /*border-left: 5px solid rgb(206, 229, 255);*/
+}
+pre::before {
+  font-size: 1.2rem;
+  width: 100px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  content: '\コード';
+  color: rgb(58, 58, 58);
+  background: #3382c4;
 }
 code {
   counter-reset: code-line;
@@ -367,7 +380,7 @@ img {
   display: inline-block;
   height: auto;
   max-width: 100%;
-  vertical-align: middle
+  vertical-align: middle;
 }
 /*
 blockquote {
@@ -424,3 +437,62 @@ h3:after {
   width: 100%;
   border-bottom: solid 3px #4396e4;
 }
+h4 {
+  position: relative;
+  padding: 1rem 2rem;
+  text-align: left;
+  margin-top: 27px;
+  margin-bottom: 12px;
+  color: #22ac38;
+  border-radius: 10px 10px 10px 10px;
+  border: 2px solid;
+  background: #e3f5d8;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  font-size: 16px;
+}
+h4:before {
+  font-size: 1.2rem;
+  width: 100px;
+  height: 24px;
+  position: absolute;
+  top: -24px;
+  left: 0;
+  padding: 0 1em;
+  content: '\公式！';
+  color: rgb(58, 58, 58);
+  border-radius: 3px 3px 3px 3px;
+  background: #ebdd1c;
+}
+
+h5{
+  position: relative;
+  font-size: 18pt;
+  font-weight: bold;
+  margin: 0 0 1.5em;
+  padding: 0.1em 0 0.1em 1.8em;
+  border-bottom: 3px solid #66b5ff;
+  background: #e0edff;
+  }
+  
+  h5:before {
+  position:  absolute;
+  top: 0px;
+  left: -21px;
+  width: 13px;
+  height: 13px;
+  border-radius: 40px;
+  border: 2px solid #6e6e6e;
+  content: "";
+  
+  position: absolute;
+  content: '';
+  display: inline-block;
+  
+
+  width: 50px;
+  height: 50px;
+  background-image: url("../../public/icon/cat.png");
+  background-size: contain;
+  vertical-align: middle;
+  }

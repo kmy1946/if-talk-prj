@@ -3,6 +3,7 @@ import { Box } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import emailjs from '@emailjs/browser';
+import { Helmet } from "react-helmet"
 
 const Contact = () => {
   const [nameing, setNameing] = useState();
@@ -49,8 +50,14 @@ const Contact = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>
+        ITのタネ お問い合わせページ
+      </title>
+    </Helmet>
     <Box w={'full'} boxShadow={'2xl'} rounded={'lg'} p={6} textAlign={'center'}
-      className="card contact-box text-center mx-auto rounded" id="contact"
+      className="card contact-box mx-auto rounded" id="contact"
       style={{backgroundColor:'rgb(247, 250, 255)'}}
     >
 
@@ -68,13 +75,12 @@ const Contact = () => {
         <form ref={form} onSubmit={sendEmail}>
 
             <TextField
-              type="text" className="form-control contact-your-name" onChange={(event) => setNameing(event.target.value)} label={'Your Name'} name="name" id="name" required data-validation-required-message="Please enter your name" required
+              type="text" className="form-control contact-your-name" onChange={(event) => setNameing(event.target.value)} label={'Your Name'} name="name" id="name" required data-validation-required-message="Please enter your name"
               style={{marginTop:20}}
             />
             <TextField
               type="email" className="form-control contact-your-email" onChange={(event) => setEmail(event.target.value)}
               label={'Your Email Address'} name="email" id="email" required data-validation-required-message="Please enter your Email Address"
-              required
               style={{marginTop:20}}
             />
             <TextField
@@ -94,6 +100,7 @@ const Contact = () => {
 
       </div>
     </Box>
+    </>
   )
   
 }

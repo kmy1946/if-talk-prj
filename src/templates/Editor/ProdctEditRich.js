@@ -65,15 +65,7 @@ const ProdctEditRich = () => {
 
   const myBlockStyleFn = (contentBlock) => {
     const type = contentBlock.getType();
-    if (type === 'custom') {      
-      return {
-        //component: Code_Component,
-        editable: false,
-        props: {
-          foo: 'bar',
-        },
-      }
-    }
+    //if (type === 'header-five') {return 'header-five-custom'}
   }
 
   const [editorState, setEditorState] = useState(

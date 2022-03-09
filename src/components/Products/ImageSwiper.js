@@ -22,19 +22,32 @@ const ImageSwiper = (props) => {
   const images = props.images
   
   return (
-    <Swiper {...params} >
-      {images.length === 0 ? (
+    <>
+      {images.length === 0 ? (//画像数0,1,2以上で条件分岐
         <div className="p-media__thumb">
           <img src={NoImage} alt="No Image" className="img_swiper"/>
         </div>
-        ) : (
-        images.map(image => (
-          <div className="p-media__thumb" key={image.id}>
-            <img src={image.path} alt="記事画像" className="img_swiper"/>
-          </div>
-        ))
-      )}
-    </Swiper>
+        )
+        :
+        (
+          images.length === 1 ? (
+            images.map(image => (
+            <div className="p-media__thumb" key={image.id}>
+              <img src={image.path} alt="記事画像" className="img_swiper"/>
+            </div>
+            )
+          ))
+          :
+          <Swiper {...params} >
+            {images.map(image => (
+              <div className="p-media__thumb" key={image.id}>
+                <img src={image.path} alt="記事画像" className="img_swiper"/>
+              </div>  
+            ))}
+          </Swiper>
+        )
+      }
+    </>
   )
 }
 

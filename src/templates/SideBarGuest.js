@@ -1,6 +1,6 @@
 //ClosableDrawerをと同じ
 import React, {useCallback, useEffect, useState} from "react";
-import { Divider, makeStyles } from "@material-ui/core";
+import { Divider, Grid, makeStyles } from "@material-ui/core";
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -68,11 +68,11 @@ const SideBarGuest = () => {
           .orderBy('order', 'asc')
           .get()
           .then((snapshot) => {
-                const list = [];            
+                const list = [];
+                
               snapshot.forEach(snap => {
                   const category = snap.data();
                   const category_sizes = [];
-
                   (async() => {
                       await db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get()
                       .then(snap => {
@@ -112,7 +112,7 @@ const SideBarGuest = () => {
                     <Divider variant="middle" />
                     <Divider variant="middle" />
                     */}
-                    <List  className="sidebar_group">
+                    <List className="sidebar_group">
                         <p className="sidebar__title">カテゴリー</p>
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
@@ -121,7 +121,7 @@ const SideBarGuest = () => {
                                         {filter.label}
                                     </small>
                                     <small className={classes.category__counted}>
-                                        {filter.size}{/*{console.log(filters_cat)}*/}
+                                        {filter.size}
                                     </small>
                                 </ListItemText>
                             </ListItem>

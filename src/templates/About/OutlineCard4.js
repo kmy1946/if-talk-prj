@@ -53,12 +53,6 @@ const OutlinedCard4 = () => {
             ・問い合わせページ
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small" onClick={() => dispatch(push('/whensignin'))}>
-          <UnfoldMoreSharpIcon/>
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   );
 }

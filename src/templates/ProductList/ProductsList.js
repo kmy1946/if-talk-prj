@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet"
 import { ProductCardMobile } from "../../components/Products";
 import ProductCard from "../../components/Products/ProductCard";
 import { PrimaryButton } from "../../components/UIkit";
@@ -124,7 +125,12 @@ const ProductsList = () => {
       {/*
       <TopSwiper/>
       */}
-
+      
+      <Helmet>
+        <title>
+          ITのタネ
+        </title>
+      </Helmet>
       <div className="p-grid__row">
 
         {

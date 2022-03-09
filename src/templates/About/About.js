@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet"
 import './About.css';
 import { Grid, makeStyles } from "@material-ui/core";
 import { OutlinedCard1, OutlinedCard2, OutlinedCard3, OutlinedCard4 } from ".";
@@ -16,6 +17,11 @@ const About = () => {
   const classes = useStyles();
   return (
     <>
+    <Helmet>
+      <title>
+        ITのタネ 当サイトについて
+      </title>
+    </Helmet>
     {
       (
       window.innerWidth > 760 ?

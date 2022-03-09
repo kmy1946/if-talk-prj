@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { push } from "connected-react-router";
+import { Helmet } from "react-helmet"
 import { ImageSwiper } from "../../components/Products";
 import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
@@ -171,6 +172,14 @@ const ProductDetailMobile = () => {
     <>
       {product && (
         <>
+        <Helmet>
+          <title>{product.name}</title>
+          <meta
+              name="description"
+              content="プログラミングの知識解説をしているブログです。"
+          />
+          <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"></meta>
+        </Helmet>
         <div className={classes.detail_group}>
           <section className="c-section-wrapin_detail__mobile">
           <div className={classes.detail}>

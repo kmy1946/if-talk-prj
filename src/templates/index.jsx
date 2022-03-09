@@ -12,6 +12,7 @@ export { default as ProductList } from './ProductList/ProductList';
 export { default as ProductsList } from './ProductList/ProductsList';
 export { default as ProductDetail } from './ProductDetail/ProductDetail';
 export { default as ProductDetailSidebar } from './ProductDetail/ProductDetailSidebar';
+export { default as ProductDetailSidebarLeft } from './ProductDetail/ProductDetailSidebarLeft';
 export { default as ProductDetailPC } from './ProductDetail/ProductDetailPC';
 export { default as ProductDetailMobile } from './ProductDetail/ProductDetailMobile';
 export { default as ProductDetailBottm } from './ProductDetail/ProductDetailBottm';

@@ -8,7 +8,7 @@ const ProductDetailSidebar = () => {
   return(
     <div>
       <div>
-        <List className="toc__group">
+        <List className="toc__group" id='toc__group'>
           <p className="sidebar__title__detail">目次</p>
           <TableOfContents />
         </List>

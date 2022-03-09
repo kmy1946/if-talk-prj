@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core";
 import { push } from "connected-react-router";
+import { Helmet } from "react-helmet"
 import { ImageSwiper } from "../../components/Products";
 import { db, FirebaseTimestamp } from "../../Firebase";
 import { returnCodeToBr } from "../../function/common";
@@ -15,6 +16,11 @@ import NearMeIcon from '@material-ui/icons/NearMe';
 import HomeIcon from '@material-ui/icons/Home';
 import './ProductDetail.css';
 import { AdvDetailBottom } from "../Adv";
+
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
+import 'prismjs/themes/prism.css';
+import ProductDetailSidebarLeft from "./ProductDetailSidebarLeft";
 
 const useStyles = makeStyles((theme) => ({
   router_from_home: {
@@ -177,10 +183,25 @@ const ProductDetailPC = () => {
     <>
       {product && (
         <>
+        <Helmet>
+          <title>{product.name}</title>
+          <meta
+              name="description"
+              content="プログラミングの知識解説をしているブログです。"
+          />
+          <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0"></meta>
+        </Helmet>
         <div className={classes.detail__topswiper}>
           <TopSwiperDetail/>
         </div>
         <div className="pc-main-detail">
+
+      {/*
+        <div className="child2-detail-left">
+          <ProductDetailSidebarLeft/>
+        </div>
+      */}
+
       <section className="c-section-wrapin_detail">
           <div className={classes.detail}>
           <ul className={classes.router_from_home}>
@@ -225,9 +246,9 @@ const ProductDetailPC = () => {
               </div>
               <br/><br/>
             <div>
-            <div>
-              {returnCodeToBr(product.description)}
-            </div>
+              <div>
+                {returnCodeToBr(product.description)}
+              </div>
           {
             (
               product.username === '管理人' ?

@@ -4,7 +4,7 @@ import React from 'react'
 
 var KEY_SEPARATOR = '-'
 
-const defaultFilter = block => block.getType() === 'code-block'
+const defaultFilter = block => block.getType() === 'code'//'code-block'
 
 const defaultGetSyntax = block =>
   block.getData ? block.getData().get('syntac') : null

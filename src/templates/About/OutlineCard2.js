@@ -56,7 +56,7 @@ const OutlinedCard2 = () => {
             できる事：          
         </Typography>
         <Typography style={{textAlign:'left', marginLeft:'2vw'}}>
-          ・言語：Python, Javascript
+          ・言語：Python, Javascript, Typescript(勉強中)
           <br/>
           ・フレームワーク：Django, Flask, React.js, Next.js(勉強中)
           <br/>

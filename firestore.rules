@@ -55,6 +55,7 @@ service cloud.firestore {
         allow read; allow write;
       }
     }
+
     match /adv_top_sidebar/{adv_top_sidebarId} {
       allow read: if true;
       allow write: if request.auth.uid != null;
@@ -66,5 +67,8 @@ service cloud.firestore {
         allow read; allow write;
       }
     }
+
+
+    
   }
 }

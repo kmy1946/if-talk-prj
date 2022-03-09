@@ -123,7 +123,7 @@ const TopMenu = () => {
                   <>
                   <div className="navigation__pc">
                       {filters.map(filter => (
-                        <li className="button__pc" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
+                        <div className="button__pc" key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                           <p>
                             <a
                               className="topmenu-label__pc" 
@@ -131,7 +131,7 @@ const TopMenu = () => {
                               {filter.label}
                             </a>
                           </p>
-                        </li>
+                        </div>
                       ))}
                     </div>
                   </>

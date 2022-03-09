@@ -3,6 +3,9 @@ import DraftEditorBlock from 'draft-js/lib/DraftEditorBlock.react'
 import DraftEditorLeaf from 'draft-js/lib/DraftEditorLeaf.react'
 import DraftOffsetKey from 'draft-js/lib/DraftOffsetKey'
 
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
+
 const isBlockOnSelectionEdge = (selection, key) =>
   selection.getAnchorKey() === key || selection.getFocusKey() === key
 
@@ -12,7 +15,7 @@ export default class CodeBlock extends DraftEditorBlock {
     const blockKey = block.getKey()
     const text = block.getText()
     const lastLeafSet = this.props.tree.size - 1
-    const hasSelection = isBlockOnSelectionEdge(this.props.selection, blockKey)    
+    const hasSelection = isBlockOnSelectionEdge(this.props.selection, blockKey)  
 
     const children = this.props.tree
       .map((leafSet, ii) => {
@@ -117,7 +120,7 @@ export default class CodeBlock extends DraftEditorBlock {
         key={lineNum + 1}
         className={`line ${end.length ? '' : 'is-empty'}`}
       >
-        {end}
+          {end}
       </span>
     )
     return lines

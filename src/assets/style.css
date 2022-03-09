@@ -83,7 +83,7 @@
   white-space: nowrap;
   opacity: 0.9;
   padding: 0.4em;
-  background: #a6bfd3;
+  background: #81b8e6;
   color: rgb(255, 255, 255);
   text-shadow: 0.08vw 0.1vw 0.1vw rgb(22, 22, 22);
 }
@@ -110,8 +110,8 @@
 }
 .list-name__pc {
   position: absolute;
-  font-size: 1.5vw;
-  font-weight: 550;
+  font-size: 1.3vw;
+  font-weight: 500;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;

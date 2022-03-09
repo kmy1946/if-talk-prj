@@ -6,6 +6,9 @@ import { CardContent } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import LiveHelpSharpIcon from '@material-ui/icons/LiveHelpSharp';
+import HomeIcon from '@material-ui/icons/Home';
+import { push } from 'connected-react-router';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +32,7 @@ const useStyles = makeStyles({
 
 const OutlinedCard1 = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -46,14 +50,21 @@ const OutlinedCard1 = () => {
         <Typography variant="body2" component="p">
           使用技術
           <br />
-          Javascript, React.js, Python, Firebase 
+          Javascript(React.js), Firebase, Python 
           <br/>
-          material-ui, bootstrap,Inkscape
+          material-ui, bootstrap, Inkscape
           ,_etc.
         </Typography>
       </CardContent>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <CardActions>
-        <Button size="small"> </Button>
+        <Button size="small" onClick={() => dispatch(push('/contact'))}>
+          <HomeIcon/>
+          To Top Page !!
+        </Button>
       </CardActions>
     </Card>
   );
