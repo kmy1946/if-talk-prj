@@ -14,7 +14,7 @@ const AdvDetail = () => {
         id = id.split('/')[1]//productのidを取得
     }
     (async () => {
-      await db.collection('adv_detail').doc(id).collection('advertizement').orderBy('order', 'desc').get()
+      await db.collection('adv_detail').doc(id).collection('advertizement').orderBy('order', 'asc').get()
         .then(snapshots => {
           let results = []
           snapshots.forEach(snapshots => {

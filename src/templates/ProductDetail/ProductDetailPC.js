@@ -15,7 +15,7 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import HomeIcon from '@material-ui/icons/Home';
 import './ProductDetail.css';
-import { AdvDetailBottom } from "../Adv";
+import { AdvDetail, AdvDetailBottom, AdvDetailTop } from "../Adv";
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
@@ -194,6 +194,7 @@ const ProductDetailPC = () => {
         <div className={classes.detail__topswiper}>
           <TopSwiperDetail/>
         </div>
+        <AdvDetailTop/>
         <div className="pc-main-detail">
 
       {/*
@@ -239,7 +240,6 @@ const ProductDetailPC = () => {
             <div className={classes.detail_group__clients}>
               {detail_clients()}
             </div>
-
             <div className="module-spacer--small"/>
               <div className={classes.sliderBox}>
                 <ImageSwiper images={product.images}/>

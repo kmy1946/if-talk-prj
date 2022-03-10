@@ -47,6 +47,15 @@ service cloud.firestore {
       }
     }
 
+    match /adv_detail_top/{adv_detail_topId} {
+      allow read: if true;
+      allow write: if request.auth.uid != null;
+
+      match /advertizement/{advertizementId} {
+        allow read; allow write;
+      }
+    }
+
     match /adv_top/{adv_topId} {
       allow read: if true;
       allow write: if request.auth.uid != null;
