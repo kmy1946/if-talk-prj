@@ -27,7 +27,7 @@ const About = () => {
       window.innerWidth > 760 ?
         <div className="about__background">
           <div className="about__box">
-            <Grid container className="about__grid">
+            <Grid container>
               <Grid item xs={6} className={classes.about_grid} >
                   <OutlinedCard1 />
               </Grid>

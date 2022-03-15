@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize:'1vw'
   },
   category__counted: {
-      backgroundColor:'#e7e7e7',
+      //backgroundColor:'#e7e7e7',
   },
   clients__text: {
     fontSize:'1vw'
@@ -42,8 +42,6 @@ const useStyles = makeStyles((theme) => ({
 const SideBarGuest = () => {
   const classes = useStyles();
   const dispatch = useDispatch()
-
-
 
   const selectMenu = (event, path) => {
     dispatch(push(path));//pathはvalueで指定
@@ -62,29 +60,19 @@ const SideBarGuest = () => {
   ])
 
   const [filters_cat, setFilters_cat] = useState([]);
-
+  
   useEffect(() => {
       db.collection('categories')
           .orderBy('order', 'asc')
           .get()
           .then((snapshot) => {
-                const list = [];
-                
+                  const list = [];
               snapshot.forEach(snap => {
                   const category = snap.data();
-                  const category_sizes = [];
-                  (async() => {
-                      await db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get()
-                      .then(snap => {
-                          const category_size = snap.size
-                          category_sizes.push(category_size)
-                      })
-                      .catch((error) => {
-                          console.log(error);
-                    });
-                  })()
+                  //const category_sizes = [];
+                  //(async() => {await db.collection('products').orderBy('updated_at', 'desc').where('category', '==', category.name).get().then(snap => {const category_size = snap.size;category_sizes.push(category_size);})})()
                   
-                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category_sizes});
+                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category.size});
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
           })
@@ -121,7 +109,7 @@ const SideBarGuest = () => {
                                         {filter.label}
                                     </small>
                                     <small className={classes.category__counted}>
-                                        {filter.size}
+                                        ({filter.size})
                                     </small>
                                 </ListItemText>
                             </ListItem>

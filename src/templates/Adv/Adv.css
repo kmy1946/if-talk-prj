@@ -31,10 +31,12 @@
 
 /* top page right left */
 .adv-top-right__group {
+  margin-top: 10px;
+}
+.adv-top-right__img {
+  padding-top: 0px;
 }
 .adv-top-left__img {
 }
 .adv-top-left__group {
-}
-.adv-top-right__img {
 }

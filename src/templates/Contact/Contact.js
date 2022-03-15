@@ -76,22 +76,24 @@ const Contact = () => {
 
             <TextField
               type="text" className="form-control contact-your-name" onChange={(event) => setNameing(event.target.value)} label={'Your Name'} name="name" id="name" required data-validation-required-message="Please enter your name"
-              style={{marginTop:20}}
+              style={{marginTop:20}} variant="standard"
             />
             <TextField
               type="email" className="form-control contact-your-email" onChange={(event) => setEmail(event.target.value)}
               label={'Your Email Address'} name="email" id="email" required data-validation-required-message="Please enter your Email Address"
+              variant="standard" 
               style={{marginTop:20}}
             />
             <TextField
               type="text" className="form-control contact-your-message" onChange={(event) => setMessage(event.target.value)} label={'Message'} name="message" rows="5"
               required 
+              variant="standard" multiline
               style={{marginTop:20}}
             />
               <p className="help-block text-danger" />
 
             <Button label={'Send'} className="contact__submit-button" type="submit"
-              value="Send" id="sendMessageButton" style={{marginTop:40, width:250, height:40, backgroundColor:'#4dd0e1'}}
+              value="Send" id="sendMessageButton" style={{marginTop:140, width:250, height:40, backgroundColor:'#4dd0e1'}}
             >
               <i className="fas fa-paper-plane"/>
               Send !!!

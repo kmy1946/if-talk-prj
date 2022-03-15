@@ -240,6 +240,8 @@
 .contact-box {
   margin: 30px;
 }
+.contact__submit-button {
+}
 /*********** Module Spacer ***********/
 .module-spacer--extra-extra-extra-small {
   height: 3px;

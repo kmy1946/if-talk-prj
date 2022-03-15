@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
           height: 400,
           width: 400,
       },
-      marginTop: '30px',
+      //marginTop: '30px',
   },
   username: {
     textAlign: 'right',
@@ -222,10 +222,11 @@ const ProductDetailMobile = () => {
             </div>
             <br/>
             <br/>
-            <ProductDetailTOCMobile/>
+            
               <div className={classes.sliderBox}>
                 <ImageSwiper images={product.images}/>
               </div>
+              <ProductDetailTOCMobile/>
               <br/>
               <br/>
             <div>

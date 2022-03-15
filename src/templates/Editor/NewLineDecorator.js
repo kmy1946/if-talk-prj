@@ -9,7 +9,7 @@ const defaultRender = props => (
   </span>
 )
 
-const defaultFilter = block => block.getType() === 'code-block'
+const defaultFilter = block => block.getType() === 'code'//'code-block'
 
 const PrismOptions = Record({
   render: defaultRender,

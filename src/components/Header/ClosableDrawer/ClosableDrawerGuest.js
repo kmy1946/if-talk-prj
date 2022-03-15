@@ -75,7 +75,7 @@ const ClosableDrawerGuest = (props) => {
                 const list = []
                 snapshot.forEach(snapshot => {
                     const category = snapshot.data()
-                    list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
+                    list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category.size})
                 })
                 setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
             })
@@ -132,6 +132,7 @@ const ClosableDrawerGuest = (props) => {
                         {filters_cat.map(filter => (
                             <ListItem button key={filter.id} onClick={(e) => filter.func(e, filter.value)}>
                                 <ListItemText primary={filter.label} />
+                                <small>({filter.size})</small>
                             </ListItem>
                         ))}
                     </List>

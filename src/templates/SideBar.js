@@ -29,10 +29,13 @@ const useStyles = makeStyles((theme) => ({
   },
   category__text: {
     fontSize:'1vw'
-},
-clients__text: {
-  fontSize:'1vw'
-}
+    },
+    category__counted: {
+        backgroundColor:'#e7e7e7',
+    },
+    clients__text: {
+    fontSize:'1vw'
+    }
 }
 ));
 
@@ -61,7 +64,7 @@ const SideBar = () => {
               const list = []
               snapshot.forEach(snapshot => {
                   const category = snapshot.data()
-                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`})
+                  list.push({func: selectMenu, label:category.name, id:category.id, value:`/?category=${category.name}`, size:category.size})
               })
               setFilters_cat(prevState => [...prevState, ...list])//prevState --> 更新前のStateを持てる
           })
@@ -79,6 +82,9 @@ const SideBar = () => {
                                 <ListItemText >
                                     <small className={classes.category__text}>
                                         {filter.label}
+                                    </small>
+                                    <small className={classes.category__counted}>
+                                        {filter.size}
                                     </small>
                                 </ListItemText>
                             </ListItem>

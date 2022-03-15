@@ -38,7 +38,7 @@
   width: 100%;
   height: auto;
   line-height: 268px;
-  margin-top: 6vw;
+  margin-top: 5vw;
   padding: 3px;
   text-align: center;
   display: flex;
@@ -68,9 +68,9 @@
   width: 17vw;
   height: 100%;
   opacity: 0.99;
-  line-height: 236px;
+  line-height: 176px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .text-image {

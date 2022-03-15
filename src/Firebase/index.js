@@ -5,7 +5,7 @@ import 'firebase/compat/storage';
 import 'firebase/compat/functions';
 import { firebaseConfig } from './config';
 
-firebase.initializeApp(firebaseConfig);//react.js内でFirebaseを利用
+firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();//in v9 const auth=getAuth();//in oparatios.js onAuthStateChanged(auth, user => {});
 export const db = firebase.firestore();
 export const where = firebase.firestore();

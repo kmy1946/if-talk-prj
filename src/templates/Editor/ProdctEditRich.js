@@ -19,6 +19,10 @@ import { PrimaryButton, SelectBox, TextInput } from "../../components/UIkit";
 import { saveProduct } from "../../reducks/products/operation";
 //import Prism from "prismjs";
 //import "prismjs/themes/prism-tomorrow.css";
+//import 'prismjs/themes/prism.css'
+import MultiDecorator from './MultiDecorator';
+import PrismDecorator from './PrismDecorator';
+import NewLineDecorator from './NewLineDecorator';
 
 function myBlockRenderer(contentBlock) {
   const type = contentBlock.getType()
@@ -53,6 +57,13 @@ const blockRenderMap = Immutable.Map({//デフォルトのBlockRenderMapにタ�
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
 const ProdctEditRich = () => {
+
+  window.onbeforeunload = function(e) {
+    return "ブラウザを閉じても良いでしょうか？";
+    // 文字列はメッセージに反映されない
+    //必ずreturnすればブランクでもOK
+  }
+
   const dispatch = useDispatch()
   const styleMap = {//customstulemap
     'STRIKETHROUGH': {
@@ -69,14 +80,17 @@ const ProdctEditRich = () => {
   }
 
   const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(
-      ContentState.createFromText('')
-      )
+    //EditorState.createWithContent( ContentState.createFromText('') )
+
+    EditorState.createWithContent( ContentState.createFromText('data'),
+      new MultiDecorator([ new PrismDecorator({ defaultSyntax: 'javascript' }),
+        new NewLineDecorator() ]))
+
     //() => EditorState.createEmpty(),//htmlToEState(html)//
 
-    //() => EditorState.createWithContent( convertFromRaw(data),
-      //new MultiDecorator([ new PrismDecorator({ defaultSyntax: 'javascript' }),
-      //  new NewLineDecorator() ]))
+    //() => EditorState.createWithContent( convertFromRaw('data'),
+    //  new MultiDecorator([ new PrismDecorator({ defaultSyntax: 'javascript' }),
+    //    new NewLineDecorator() ]))
     );
   const  [description, setDescription] = useState('');
   const handleEditorChange = (state, e) => {
