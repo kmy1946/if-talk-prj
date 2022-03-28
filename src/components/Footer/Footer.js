@@ -12,7 +12,7 @@ const Footer = () => {
     <>
       <div className='footer_group'>
       <div className='footer__description_box'>
-        <p className="footer__description_text">プログラミングの話を分かりやすく解説しています！</p>
+        <p className="footer__description_text">プログラミングの話を書いています！</p>
       </div>
       <FooterLeft/>
       <Grid container spacing={2}>

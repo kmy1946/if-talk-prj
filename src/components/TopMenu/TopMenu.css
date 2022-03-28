@@ -3,6 +3,9 @@
 }
 .logotext_wrap {
   text-align: center;
+  width: 340px;
+  
+  margin: 0 auto;
 }
 .logotext {
   font-family: 'Times New Roman', Times, serif;
@@ -80,7 +83,7 @@
   width: 100%;
   height: 40px;
   color: rgb(255, 255, 255);
-  background-color: rgb(208, 236, 247);
+  background-color: rgb(209, 235, 245);
 }
 .topmenu-label__pc {
   text-shadow:

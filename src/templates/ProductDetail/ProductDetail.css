@@ -196,7 +196,8 @@ nav {
 }
 .featured-content__name__mobile {
   color: white;
-  transform: translate(3%, 10%);
+  width: 88%;
+  transform: translate(0%, 10%);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

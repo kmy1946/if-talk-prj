@@ -46,7 +46,6 @@ export const fetchProducts = (clients, category, created_at, created_at_month, p
     query = (category !== "") ? query.where('category', '==', category) : query;
 
     //query = (updated_at_month !== "") ? query.where('updated_at_month', '==', updated_at_month) : query;//updated_at_monthで判別
-
     query = (created_at_month !== "") ? query.where('created_at_month', '==', created_at_month) : query;//updated_at_monthで判別
 
     query.limit(page).get()

@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
     content_mobile: {
       position:"absolute",
       bottom:0,
-      width: '400px',
-      height: '80px',
+      width: '100%',
       opacity:0.85,
       backgroundColor:'rgb(88, 88, 88)',
       listStyle: 'none',
@@ -32,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'left',
       '&:last-child': {paddingBottom: 16},
   },
-    list_iconbutton: {
-      right:0
-    },
-    media_mobile: {
-      paddingTop: '100%',
-      width:'100%',
+  list_iconbutton: {
+    right:0
+  },
+  media_mobile: {
+    paddingTop: '100%',
+    width:'100%',
   },
   clients: {
     color:theme.palette.info.main,

@@ -6,6 +6,12 @@ import emailjs from '@emailjs/browser';
 import { Helmet } from "react-helmet"
 
 const Contact = () => {
+  //window.onbeforeunload = function(e) { return "ITのタネページからのメッセージ\n\nブラウザを閉じても良いでしょうか？\n入力中のフォームは削除されます。";
+    // 文字列はメッセージに反映されない
+    //必ずreturnすればブランクでもOK
+  //}
+  //window.addEventListener('beforeunload', (event) => { event.preventDefault(); event.returnValue = ''; });
+  //↑リロードのみに機能するためコメントアウト
   const [nameing, setNameing] = useState();
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();

@@ -11,7 +11,9 @@ const Twitter = () => {
       <br/>
       <div>
         <p className="twitter-text">
-          作成中...
+          <a href="https://twitter.com/M6w93EMuBBSptMG">
+            こちら
+          </a>
         </p>
       </div>
     </div>
